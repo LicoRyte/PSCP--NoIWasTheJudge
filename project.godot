@@ -21,8 +21,3 @@ GlobalAudio="*res://Service/GlobalAudio.gd"
 PlayerData="*res://Service/PlayerData.gd"
 StateUpdater="*res://Service/StateUpdater.gd"
 Utils="*res://Service/Utils.gd"
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
