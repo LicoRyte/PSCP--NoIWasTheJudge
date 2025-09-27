@@ -1,11 +1,15 @@
 extends Node
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+func fx(sfx: AudioStream):
+	var player = AudioStreamPlayer.new()
+	player.stream = sfx
+	add_child(player)
+	player.play()
+	await player.finished
+	remove_child(player)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func global_music(music : AudioStream):
 	pass
+	

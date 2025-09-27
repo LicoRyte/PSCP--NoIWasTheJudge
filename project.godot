@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameEvents="*res://Service/GameEvents.gd"
-GlobalAudio="*res://Service/GlobalAudio.gd"
 PlayerData="*res://Service/PlayerData.gd"
 StateUpdater="*res://Service/StateUpdater.gd"
 Utils="*res://Service/Utils.gd"
+GlobalAudio="*res://Service/GlobalAudioService.tscn"
