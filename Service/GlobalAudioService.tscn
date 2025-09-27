@@ -4,3 +4,5 @@
 
 [node name="GlobalAudioService" type="Node"]
 script = ExtResource("1_0i153")
+
+[node name="BackgroundPlayer" type="AudioStreamPlayer" parent="."]

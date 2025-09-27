@@ -3,6 +3,7 @@ class_name Player
 
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
 @onready var state_machine_at: StateMachine = $StateMachine_AT
+@onready var stamina: Node = $StaminaComponent
 
 var anims : AnimatedSprite2D
 
