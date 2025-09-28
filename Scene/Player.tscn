@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=15 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/Player State/player.gd" id="1_6l3be"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Base/state_machine.gd" id="2_3eeal"]
 [ext_resource type="Script" uid="uid://cidc6fiun12ev" path="res://Base/stamina_component.gd" id="2_jriwm"]
+[ext_resource type="Script" uid="uid://c7aondxicvck1" path="res://Base/health_component.gd" id="3_7dww1"]
 [ext_resource type="Script" uid="uid://d25it6lak1mfi" path="res://Scripts/Player State/run.gd" id="3_jvxg0"]
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/Player State/idle.gd" id="3_mud5u"]
 [ext_resource type="Script" uid="uid://b2phmbicu3qei" path="res://Scripts/Player State/jump.gd" id="5_fvocf"]
@@ -25,8 +26,11 @@ shape = SubResource("RectangleShape2D_j8lcb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 
-[node name="StaminaComponent" type="Node" parent="."]
+[node name="Stamina" type="Node" parent="."]
 script = ExtResource("2_jriwm")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_7dww1")
 
 [node name="StateMachine_MM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")
