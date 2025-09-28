@@ -4,14 +4,17 @@ class_name Player
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
 @onready var state_machine_at: StateMachine = $StateMachine_AT
 @onready var stamina: Node = $Stamina
+@onready var health: Node = $Health
 
 
 var anims : AnimatedSprite2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var current_health: float
+var current_stamina: float
 
 func _ready() -> void:
+	current_health = health.current_health
+	current_stamina = stamina.current_stamina
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
 

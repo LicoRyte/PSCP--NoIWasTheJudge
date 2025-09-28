@@ -31,6 +31,7 @@ script = ExtResource("2_jriwm")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("3_7dww1")
+max_health = 150.0
 
 [node name="StateMachine_MM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")

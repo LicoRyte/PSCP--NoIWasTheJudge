@@ -1,10 +1,14 @@
 extends Node
 
 
+
 @export var max_stamina: float = 100.0
 var current_stamina = max_stamina
 
 
+var component_owner: Node2D
+func _ready() -> void:
+	component_owner = get_parent()
 func set_max_stamina(amount: float):
 	max_stamina = amount
 
