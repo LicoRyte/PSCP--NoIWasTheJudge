@@ -22,3 +22,7 @@ Damage="*res://Service/DamageSystem.gd"
 StateUpdater="*res://Service/StateUpdater.gd"
 Utils="*res://Service/Utils.gd"
 GlobalAudio="*res://Service/GlobalAudioService.tscn"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
