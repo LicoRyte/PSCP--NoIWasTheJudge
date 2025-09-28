@@ -1,11 +1,11 @@
 extends Node
 
 var effect = {
-	"test" : ""
+	"test" : "put a audio files here"
 }
 
 var music = {
-	
+	"test_music": "put a files here though"
 }
 
 var current_music: AudioStream

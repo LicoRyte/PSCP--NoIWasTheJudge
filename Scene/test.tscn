@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://bur8iout8ew2u"]
+[gd_scene load_steps=2 format=3 uid="uid://bur8iout8ew2u"]
+
+[ext_resource type="Texture2D" uid="uid://sr4pf1fejscy" path="res://Old_asset/sprites/knight.png" id="1_wsa5o"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "dasdasdasd"
+
+[node name="Knight" type="Sprite2D" parent="."]
+position = Vector2(265, 165)
+texture = ExtResource("1_wsa5o")

@@ -13,13 +13,8 @@ func _ready() -> void:
 func set_max_health(amount: float):
 	max_health = amount
 
-func change_stamina(amount: float):
+func change_health(amount: float):
 	current_health += amount
 	current_health = clamp(current_health, 0, max_health)
 
-func use_stamina(amount: float):
-	if current_health <= 0 or amount > current_health:
-		return false
-	else:
-		return true
 	
