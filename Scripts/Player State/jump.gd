@@ -12,6 +12,8 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
+	
+	player.move_and_slide()
 	return null
 func process_input(event: InputEvent) -> State:
 	return null
