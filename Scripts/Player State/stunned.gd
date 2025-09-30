@@ -11,7 +11,6 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
-	return idle_state
 	return null
 func process_input(event: InputEvent) -> State:
 	return null

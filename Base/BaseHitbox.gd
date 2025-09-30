@@ -20,5 +20,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
+	Damage.deal_damage(30, body)
 	if body == collision_owner:
 		return
