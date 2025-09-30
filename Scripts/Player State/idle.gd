@@ -10,6 +10,7 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
+	#player.velocity.x = lerp(player.velocity.x , 40, delta)
 	player.move_and_slide()
 	return null
 func process_input(event: InputEvent) -> State:
