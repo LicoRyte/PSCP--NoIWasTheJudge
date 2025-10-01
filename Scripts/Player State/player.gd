@@ -12,6 +12,7 @@ var anims : AnimatedSprite2D
 
 var current_health: float
 var current_stamina: float
+var is_died: bool = false
 
 func _ready() -> void:
 	Damage._deal_damage.connect(recieve_damage)
@@ -51,4 +52,5 @@ func stamina_request(amount: float) -> bool:
 
 func _on_player_died():
 	GameEvents._player_died.emit()
+	is_died = true
 	
