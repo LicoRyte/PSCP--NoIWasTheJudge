@@ -6,17 +6,19 @@ extends State
 @export var killed_state: State
 @export var stunned_state: State
 
+
 var speed_jump = 20
 var immune = true
 
+
 func enter():
+	immune = true
 	player.velocity.y = speed_jump
 	pass
 func exit():
 	immune = true
 	pass
 func process_physics(delta: float) -> State:
-	
 	player.move_and_slide()
 	if player.is_died:
 		return killed_state
