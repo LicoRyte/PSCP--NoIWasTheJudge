@@ -6,7 +6,7 @@ extends State
 @export var killed_state: State
 @export var stunned_state: State
 
-var speed_jump = 20
+var speed_jump = 30
 var immune = false
 
 func enter():
