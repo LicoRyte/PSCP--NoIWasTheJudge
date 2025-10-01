@@ -187,3 +187,5 @@ shoot_state = NodePath("../Shoot")
 [node name="ranged_root" type="Node2D" parent="."]
 
 [node name="melee_root" type="Node2D" parent="."]
+
+[node name="CardContainer" type="Node" parent="."]
