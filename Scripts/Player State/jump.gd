@@ -16,7 +16,7 @@ func enter():
 	player.velocity.y = speed_jump
 	pass
 func exit():
-	immune = true
+	immune = false	
 	pass
 func process_physics(delta: float) -> State:
 	player.move_and_slide()
