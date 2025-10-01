@@ -14,6 +14,8 @@ var current_health: float
 var current_stamina: float
 var is_died: bool = false
 
+var cardcontainer := Array()
+
 func _ready() -> void:
 	Damage._deal_damage.connect(recieve_damage)
 	#Damage._do_stun.connect()
