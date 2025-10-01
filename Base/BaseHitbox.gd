@@ -3,7 +3,7 @@ class_name BaseHitbox
 
 var collision_shape: CollisionShape2D
 var collision_owner: Node2D
-
+var damage: int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if self.get_parent() is Node2D:
@@ -20,6 +20,10 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	Damage.deal_damage(30, body)
+	emit_damage(body)
+
+
+func emit_damage(body: Node2D):
 	if body == collision_owner:
 		return
+	Damage.deal_damage(damage, body)
