@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Base/state_machine.gd" id="2_3eeal"]
 [ext_resource type="Texture2D" uid="uid://x1r6v7024p2d" path="res://Old_asset/sprites/fruit.png" id="2_inyuv"]
 [ext_resource type="Script" uid="uid://cidc6fiun12ev" path="res://Base/stamina_component.gd" id="2_jriwm"]
-[ext_resource type="Script" path="res://Base/health_component.gd" id="3_7dww1"]
+[ext_resource type="Script" uid="uid://c7aondxicvck1" path="res://Base/health_component.gd" id="3_7dww1"]
 [ext_resource type="Script" uid="uid://d25it6lak1mfi" path="res://Scripts/Player State/run.gd" id="3_jvxg0"]
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/Player State/idle.gd" id="3_mud5u"]
 [ext_resource type="Script" uid="uid://b2phmbicu3qei" path="res://Scripts/Player State/jump.gd" id="5_fvocf"]

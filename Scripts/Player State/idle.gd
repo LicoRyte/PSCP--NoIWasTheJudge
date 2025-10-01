@@ -12,17 +12,13 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
-	var input_direction = Vector2(
-		Input.get_action_strength("Left") - Input.get_action_strength("Right"),
-		Input.get_action_strength("Up") - Input.get_action_strength("Down")
-	)
-	player.velocity = lerp(player.velocity, input_direction * move_speed, delta * acceleration)
+	if Input.is_action_just_pressed("Space"):
+		return jump_state
 	if player.is_died:
 		return killed_state
+		
 	#player.velocity.x = lerp(player.velocity.x , 40, delta)
 	player.move_and_slide()
-
-
 	return null
 func process_input(event: InputEvent) -> State:
 	return null
