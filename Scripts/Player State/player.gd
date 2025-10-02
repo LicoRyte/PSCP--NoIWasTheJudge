@@ -6,24 +6,30 @@ class_name Player
 @onready var stamina: Node = $Stamina
 @onready var health: Node = $Health
 
+signal _player_died
 
 
 var anims : AnimatedSprite2D
 
+@export var max_health: float
 var current_health: float
+@export var max_stamina: float
 var current_stamina: float
+
+#----Status
 var is_died: bool = false
 
+var effect := Array()
 var cardcontainer := Array()
-var weloveGithub = false
+
+
 
 func _ready() -> void:
-	Damage._deal_damage.connect(recieve_damage)
+	current_health = max_health
 	#Damage._do_stun.connect()
-	health._player_died.connect(_on_player_died)
+	Damage._deal_damage.connect(recieve_damage)
+	_player_died.connect(_on_player_died)
 	
-	current_health = health.current_health
-	current_stamina = stamina.current_stamina
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
 
@@ -43,9 +49,12 @@ func _unhandled_input(event: InputEvent) -> void:
 #----Component Function
 
 func recieve_damage(amount: float, target: Node2D = self) -> void:
-	if target == self and get_node_or_null("Health"):
-		health.change_health(amount)
-		GameEvents._hpchanged.emit(health.current_health - amount)
+	if target == self:
+		current_health -= amount
+	current_health = clamp(current_health, 0, max_health)
+	if current_health <= 0:
+		_player_died.emit()
+
 
 func stamina_request(amount: float) -> bool:
 	if get_node_or_null("Stamina"):

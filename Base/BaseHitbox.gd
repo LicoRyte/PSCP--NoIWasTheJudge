@@ -4,6 +4,7 @@ class_name BaseHitbox
 var collision_shape: CollisionShape2D
 var collision_owner: Node2D
 var damage: int = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if self.get_parent() is Node2D:
