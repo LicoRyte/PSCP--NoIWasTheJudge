@@ -1,6 +1,10 @@
 extends Area2D
 class_name BaseHitbox
 
+"""เป็นฐานสำคัญของระบบ hitboxes โจมตี"""
+"""หากมี object เข้ามาในพื้นที่ Area2D จะทำการเรียกฟังก์ชั่น emit_body()"""
+"""เอาไป extends และทำต่อได้ตามสบาย"""
+
 var collision_shape: CollisionShape2D
 var collision_owner: Node2D
 var damage: int = 1
@@ -14,11 +18,7 @@ func _ready() -> void:
 	if not self.is_connected("body_entered", _on_body_entered):
 		connect("body_entered", _on_body_entered)
 		print_debug("connect")
-		
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_body_entered(body: Node2D) -> void:
 	emit_damage(body)
@@ -27,4 +27,3 @@ func _on_body_entered(body: Node2D) -> void:
 func emit_damage(body: Node2D):
 	if body == collision_owner:
 		return
-	Damage.deal_damage(damage, body)

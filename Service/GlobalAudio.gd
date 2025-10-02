@@ -1,11 +1,15 @@
 extends Node
 
+"""เป็นระบบเสียงหลัก สามารถเรียกใช้ได้เลยโดยการนำไฟล์เสียงไปใส่ไว้ใน Dict และกำหนด Key ที่เป็น String"""
+"""การเรียกใช้คือ fx(string ของ Key เพลงที่ต้องการเรียก)"""
+"""รวมถึง Change_music() ด้วย"""
+
 var effect = {
-	"test" : "put a audio files here"
+	"test" : "put an audio files here"
 }
 
 var music = {
-	"test_music": "put a files here though"
+	"test_music": "put an files here though"
 }
 
 var current_music: AudioStream
