@@ -14,11 +14,11 @@ func do_stun(duration: float, reciever: Node2D):
 
 """Effect System"""
 
-signal _inflict_flame(damage: float, duration: float, reciever: Entity)
-signal _inflict_poison(damage: float, duration: float, reciever: Entity)
+signal _inflict_flame(effect: String, damage_duration_tick: Array , reciever: Entity)
+signal _inflict_poison(effect: String, damage_duration_tick: Array, reciever: Entity)
 
-func inflict_flame(damage: float, duration: float, reciever: Entity):
-	_inflict_flame.emit(damage, duration, reciever)
+func inflict_flame(damage: float, duration: float, tick: float, reciever: Entity):
+	_inflict_flame.emit("flame", [damage,duration, tick], reciever)
 
-func inflict_poison(damage: float, duration: float, reciever: Entity):
-	_inflict_poison.emit(damage,duration, reciever)
+func inflict_poison(damage: float, duration: float, tick: float, reciever: Entity):
+	_inflict_poison.emit("poison",[damage,duration,tick], reciever)
