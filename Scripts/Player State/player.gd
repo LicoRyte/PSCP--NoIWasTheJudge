@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 class_name Player
 
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
@@ -18,7 +18,6 @@ var current_stamina: float
 #----Status
 var is_died: bool = false
 
-var effect := Array()
 var cardcontainer := Array()
 
 
