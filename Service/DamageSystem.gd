@@ -13,12 +13,39 @@ func do_stun(duration: float, reciever: Node2D):
 	_do_stun.emit(duration, reciever)
 
 """Effect System"""
+"""Attributes Keyword"""
+"""Damage : ดาเมจที่ได้รับ"""
+"""Duration : ระยะเวลาของ Effect"""
+"""Tick : ความถี่ของ damage ที่ได้รับแต่ละครั้ง เช่นทุกๆ 0.35 วิ"""
+"""Move_Speed  : ปรับความเร็ว/ทิศทางของ Entity"""
+"""Defense : ปรับ Defense ของ Entity"""
+"""Damage_Multiplier : ปรับ Damage_multiplier ของ entity"""
 
-signal _inflict_flame(damage: float, duration: float, reciever: Entity)
-signal _inflict_poison(damage: float, duration: float, reciever: Entity)
+"""REMINDER : EVERY EFFECT ต้องมี Duration else ระเบิด"""
 
-func inflict_flame(damage: float, duration: float, reciever: Entity):
-	_inflict_flame.emit(damage, duration, reciever)
+signal _inflict_flame(tag: String, attributes: Dictionary , reciever: Entity)
+signal _inflict_poison(tag: String, attributes: Dictionary, reciever: Entity)
+signal _inflict_freeze(tag: String, attributes: Dictionary, reciever: Entity)
 
-func inflict_poison(damage: float, duration: float, reciever: Entity):
-	_inflict_poison.emit(damage,duration, reciever)
+
+func inflict_flame(damage: float, duration: float, tick: float, reciever: Entity):
+	_inflict_flame.emit("flame", {
+		"Damage" : damage,
+		"Duration" : duration,
+		"Tick" : tick
+	}, reciever)
+
+func inflict_poison(damage: float, duration: float, tick: float, defense_reduction: float, reciever: Entity):
+	_inflict_poison.emit("poison",{
+		"Damage" : damage,
+		"Duration" : duration,
+		"Tick" : tick,
+		"Defense" : defense_reduction
+	}, reciever)
+	
+func inflict_chill(damage: float, move_speed: float, chill_time: float, reciever: Entity):
+	_inflict_freeze.emit("chill", {
+		"Damage" : damage,
+		"Duration" : chill_time,
+		"Move_Speed" : move_speed
+	}, reciever)

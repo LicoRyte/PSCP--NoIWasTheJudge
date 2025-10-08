@@ -5,37 +5,33 @@ class_name Player
 @onready var state_machine_at: StateMachine = $StateMachine_AT
 
 
-signal _player_died
 
 
 var anims : AnimatedSprite2D
 
-@export var max_health: float = 100.0
-var current_health: float
-@export var max_stamina: float = 100.0
-var current_stamina: float
 
-#----Status
-var is_died: bool = false
+@export var max_stamina: float = 100.0
+@export var move_speed: float = 200
+var current_stamina: float
+var current_move_speed: float
+
 
 var cardcontainer := Array()
 
-
-
 func _ready() -> void:
-	current_health = max_health
-	#Damage._do_stun.connect()
-	Damage._deal_damage.connect(recieve_damage)
+	super._ready()
+	current_stamina = max_stamina
 	_player_died.connect(_on_player_died)
-	
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
 
+func _process(delta: float) -> void:
+	super._process(delta)
+	current_move_speed = move_speed * current_speed_multiplier
 
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 	state_machine_at.process_physics(delta)
-
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine_mm.process_events(event)
 	state_machine_mm.process_events(event)
@@ -44,13 +40,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 """Health And Stamina Function"""
-func recieve_damage(amount: float, target: Node2D, source : Node = null) -> void:
-	if target == self:
-		current_health -= amount
-		#print(current_health)
-	current_health = clamp(current_health, 0, max_health)
-	if current_health <= 0:
-		_player_died.emit()
 
 func stamina_request(amount: float) -> bool:
 	if current_stamina <= 0 or amount > current_stamina:
@@ -65,7 +54,6 @@ func change_stamina(amount: float):
 
 
 """Signal-Based Function"""
-
 func _on_player_died():
 	GameEvents._player_died.emit()
 	is_died = true

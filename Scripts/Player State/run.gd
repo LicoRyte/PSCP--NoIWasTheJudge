@@ -17,7 +17,7 @@ func process_physics(delta: float) -> State:
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
-	player.velocity = lerp(player.velocity, input_direction * move_speed, delta * acceleration)
+	player.velocity = lerp(player.velocity, input_direction * player.current_move_speed, delta * acceleration)
 	player.move_and_slide()
 
 	if player.is_died:
