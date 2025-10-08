@@ -11,23 +11,23 @@ var anims : AnimatedSprite2D
 
 
 @export var max_stamina: float = 100.0
+@export var move_speed: float = 200
 var current_stamina: float
+var current_move_speed: float
 
-#----Status
 
 var cardcontainer := Array()
-
-
 
 func _ready() -> void:
 	super._ready()
 	current_stamina = max_stamina
-	#Damage._do_stun.connect()
 	_player_died.connect(_on_player_died)
-	
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
 
+func _process(delta: float) -> void:
+	super._process(delta)
+	current_move_speed = move_speed * current_speed_multiplier
 
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
@@ -54,7 +54,6 @@ func change_stamina(amount: float):
 
 
 """Signal-Based Function"""
-
 func _on_player_died():
 	GameEvents._player_died.emit()
 	is_died = true

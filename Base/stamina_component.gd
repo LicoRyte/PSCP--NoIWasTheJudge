@@ -1,6 +1,7 @@
 extends Node
 
 """ไม่ใช้แล้ว แต่เก็บไว้ศึกษาได้"""
+"""OK จากไกด์"""
 
 @export var max_stamina: float = 100.0
 var current_stamina = max_stamina

@@ -16,7 +16,7 @@ func process_physics(delta: float) -> State:
 	if player.is_died:
 		return killed_state
 	#player.velocity.x = lerp(player.velocity.x , 40, delta)
-	player.move_and_slide()
+	#player.move_and_slide()
 	return null
 
 func process_input(event: InputEvent) -> State:
