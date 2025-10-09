@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=35 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/Player State/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Base/state_machine.gd" id="2_3eeal"]
+[ext_resource type="PackedScene" path="res://Scene/gun.tscn" id="2_7dww1"]
 [ext_resource type="Texture2D" uid="uid://sr4pf1fejscy" path="res://Old_asset/sprites/knight.png" id="2_jriwm"]
 [ext_resource type="Script" uid="uid://d25it6lak1mfi" path="res://Scripts/Player State/run.gd" id="3_jvxg0"]
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/Player State/idle.gd" id="3_mud5u"]
@@ -182,6 +183,11 @@ scale = Vector2(1.8125, 1.8125)
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"Idle"
 autoplay = "Idle"
+
+[node name="gun" parent="AnimatedSprite2D" instance=ExtResource("2_7dww1")]
+position = Vector2(0, -0.55172414)
+rotation = -1.7484555e-07
+scale = Vector2(0.55172414, 0.55172414)
 
 [node name="StateMachine_MM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")
