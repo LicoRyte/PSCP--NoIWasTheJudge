@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7rso8dryw1hy"]
+
+[ext_resource type="Script" uid="uid://dncahchauy2kx" path="res://Scene/gun.gd" id="1_0fcgr"]
+[ext_resource type="Texture2D" uid="uid://05e3vhc8j7vu" path="res://Old_asset/sprites/platforms.png" id="2_gjdbb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fcgr"]
+atlas = ExtResource("2_gjdbb")
+region = Rect2(0, 48, 64, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dk5gl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fcgr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="gun" type="Node2D"]
+rotation = -6.2831855
+script = ExtResource("1_0fcgr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 3.0000029)
+scale = Vector2(1, 0.80734134)
+sprite_frames = SubResource("SpriteFrames_dk5gl")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(34, 5.722046e-06)
+gizmo_extents = 239.4
