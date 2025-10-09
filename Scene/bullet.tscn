@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://coovwfthqgqem"]
+
+[ext_resource type="Script" uid="uid://bvm1ofav8t80u" path="res://Scene/bullet.gd" id="1_k7h5k"]
+[ext_resource type="Texture2D" uid="uid://bvhn4f0jwhxj1" path="res://Old_asset/sprites/coin.png" id="2_jm66p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7h5k"]
+atlas = ExtResource("2_jm66p")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8qja"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7h5k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_k7h5k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_v8qja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-88, 0)
+rect = Rect2(76, -10, 24, 20)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
