@@ -7,11 +7,33 @@ extends State
 
 var move_speed = 200
 var acceleration = 60
+var jump_speed = 420.0 #อยากให้กระโดดได้เร็วเท่าไหร่
+var gravity_vertical = 1200.0
+var height_of_jump = 0.0 #อยากให้กระโดดได้สูงเท่าไหร่
+var vertical_jump_speed = 0.0
+var is_jumping = false
+var immune = true
 
 func enter():
-	pass
+	player.animated_sprite_2d.play("run")
 func exit():
 	pass
+func do_jump() -> void:
+	if not is_jumping and height_of_jump <= 0.0:
+		is_jumping = true
+		vertical_jump_speed = jump_speed
+
+func apply_jump_physics(delta: float) -> void:
+	if is_jumping:
+		vertical_jump_speed -= gravity_vertical * delta
+		height_of_jump += vertical_jump_speed * delta
+		
+	if height_of_jump <= 0.0:
+		height_of_jump = 0.0
+		vertical_jump_speed = 0.0
+		is_jumping = false
+	
+	player.animated_sprite_2d.offset.y = -height_of_jump
 func process_physics(delta: float) -> State:
 	var input_direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
@@ -19,7 +41,18 @@ func process_physics(delta: float) -> State:
 	).normalized()
 	player.velocity = lerp(player.velocity, input_direction * player.current_move_speed, delta * acceleration)
 	player.move_and_slide()
-
+	#print(input_direction.x)
+	apply_jump_physics(delta)
+	
+	"""หันซ้ายขวาของ sprite ผู้เล่น"""
+	if input_direction.x > 0:
+		player.animated_sprite_2d.flip_h = false
+	elif input_direction.x < 0:
+		player.animated_sprite_2d.flip_h = true
+	if Input.is_action_just_pressed("Space"):
+		do_jump()
+	if not player.velocity:
+		return idle_state
 	if player.is_died:
 		return killed_state
 	return null
