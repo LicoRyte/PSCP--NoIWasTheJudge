@@ -50,6 +50,8 @@ func process_physics(delta: float) -> State:
 	apply_jump_physics(delta)
 	if height_of_jump == 0.0 and input_direction:
 		return run_state
+	if height_of_jump == 0.0 and not input_direction:
+		return idle_state
 	if player.is_died:
 		return killed_state
 	return null
