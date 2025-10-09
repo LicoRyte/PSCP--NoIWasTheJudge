@@ -3,9 +3,7 @@ class_name Player
 
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
 @onready var state_machine_at: StateMachine = $StateMachine_AT
-
-
-
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var anims : AnimatedSprite2D
 
@@ -28,7 +26,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
-
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 	state_machine_at.process_physics(delta)
