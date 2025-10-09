@@ -18,10 +18,7 @@ func process_input(event: InputEvent) -> State:
 		Input.get_action_strength("Up") - Input.get_action_strength("Down")
 	)
 	
-	if Input.is_action_just_pressed("Space"):
-		return jump_state
-	if player.is_died:
-		return killed_state
+
 	if input_direction:
 		return run_state
 	if Input.is_action_just_pressed("Space"):
