@@ -25,7 +25,6 @@ func process_input(event: InputEvent) -> State:
 		Input.get_action_strength("Up") - Input.get_action_strength("Down")
 	)
 
-	
 	if input_direction:
 		return run_state
 	if Input.is_action_just_pressed("Space"):
