@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 GameEvents="*res://Service/GameEvents.gd"
 Damage="*res://Service/DamageSystem.gd"
 StateUpdater="*res://Service/StateUpdater.gd"
-Utils="*res://Service/Utils.gd"
 GlobalAudio="*res://Service/GlobalAudioService.tscn"
 
 [display]

@@ -1,11 +1,16 @@
 extends Node2D
 
 const bullet = preload("res://Scene/bullet.tscn")
-
+#@onready var sprite: AnimatedSprite2D = $".."
+var sprite : Node2D
 @onready var marker: Marker2D = $Marker2D #ปากปืน
+func _ready() -> void:
+	sprite = get_parent()
+
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
+	global_position = sprite.global_position
 
 # player หันเกิน 90 สลับด้านปืน
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
