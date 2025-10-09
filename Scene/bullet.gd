@@ -1,4 +1,5 @@
 extends Node2D
+class_name Bullet
 
 const bullet_speed:int = 200
 

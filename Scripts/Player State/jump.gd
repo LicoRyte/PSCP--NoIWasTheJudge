@@ -37,7 +37,7 @@ func apply_jump_physics(delta: float) -> void:
 		vertical_jump_speed = 0.0
 		is_jumping = false
 	
-	player.animated_sprite_2d.offset.y = -height_of_jump
+	player.animated_sprite_2d.global_position.y = player.global_position.y - height_of_jump
 
 func process_physics(delta: float) -> State:
 	do_jump()

@@ -17,7 +17,7 @@ var immune = true
 func enter():
 	player.animated_sprite_2d.play("run")
 func exit():
-	pass
+	pass 
 func do_jump() -> void:
 	if not is_jumping and height_of_jump <= 0.0:
 		is_jumping = true
@@ -33,7 +33,7 @@ func apply_jump_physics(delta: float) -> void:
 		vertical_jump_speed = 0.0
 		is_jumping = false
 	
-	player.animated_sprite_2d.offset.y = -height_of_jump
+	player.animated_sprite_2d.global_position.y = player.global_position.y + -height_of_jump
 func process_physics(delta: float) -> State:
 	var input_direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
@@ -50,7 +50,7 @@ func process_physics(delta: float) -> State:
 	elif input_direction.x < 0:
 		player.animated_sprite_2d.flip_h = true
 	if Input.is_action_just_pressed("Space"):
-		do_jump()
+		return jump_state
 	if not player.velocity:
 		return idle_state
 	if player.is_died:
