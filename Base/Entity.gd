@@ -5,12 +5,6 @@ class_name Entity
 signal _entity_died
 
 var status_effect = {
-	"flame" : {
-		"Damage" : 5,
-		"Duration" : 3,
-		"Tick" : 0.35,
-		"Timer" : 0.0
-	}
 }
 
 
