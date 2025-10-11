@@ -7,6 +7,8 @@ signal _hpchanged(amount: float)
 signal _player_died
 signal _card_append(card: Card)
 signal _card_description(card_name : String, card_description : String)
+signal _bullet_modifier_append(modifier: BulletModifier)
+signal _bullet_modifier_remove(modifier: BulletModifier)
 
 func card_append(card: Card):
 	print_debug("Appended")

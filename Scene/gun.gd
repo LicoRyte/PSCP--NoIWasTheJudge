@@ -22,6 +22,6 @@ func _process(delta: float) -> void:
 # คลิกซ้ายแล้วใส่กระสุนเข้ามาใน node
 	if Input.is_action_just_pressed("Lmb"):
 		var bullet_instance = bullet.instantiate()
-		get_parent().add_child(bullet_instance)
+		get_parent().get_parent().get_parent().add_child(bullet_instance)
 		bullet_instance.global_position = marker.global_position
 		bullet_instance.rotation = rotation
