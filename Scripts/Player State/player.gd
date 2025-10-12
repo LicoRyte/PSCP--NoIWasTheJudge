@@ -5,6 +5,7 @@ class_name Player
 @onready var state_machine_at: StateMachine = $StateMachine_AT
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+
 var anims : AnimatedSprite2D
 
 
@@ -19,10 +20,10 @@ var cardcontainer := Array()
 func _ready() -> void:
 	super._ready()
 	current_stamina = max_stamina
-	_player_died.connect(_on_player_died)
+	_entity_died.connect(_on_player_died)
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
-
+	
 func _process(delta: float) -> void:
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
@@ -54,4 +55,12 @@ func change_stamina(amount: float):
 func _on_player_died():
 	GameEvents._player_died.emit()
 	is_died = true
+
+func _on_card_container_child_entered_tree(card: Card) -> void:
+	card.player_stat_change(self)
+	card.card_added()
+
+func _on_card_container_child_exiting_tree(card: Card) -> void:
+	card.player_stat_revert(self)
+	card.card_removed()
 	

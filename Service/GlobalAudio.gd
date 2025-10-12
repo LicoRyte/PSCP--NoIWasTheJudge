@@ -23,6 +23,7 @@ func fx(sfx: String):
 	player.play()
 	await player.finished
 	remove_child(player)
+	player.queue_free()
 
 func change_music(new_music: String):
 	if current_music != music[new_music]:

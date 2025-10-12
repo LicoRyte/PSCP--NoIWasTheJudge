@@ -2,13 +2,13 @@ extends CharacterBody2D
 class_name Entity
 """Base Class ของทุกๆ สิ่งๆ ที่สามารถรับ damage รับ status effect ได้"""
 
-signal _player_died
+signal _entity_died
 
 var status_effect = {
 }
 
 
-var flame_time_counter: float = 0.0
+#var flame_time_counter: float = 0.0
 
 
 """Enity Stats"""
@@ -46,7 +46,7 @@ func recieve_damage(amount: float, target: Entity, source : Node = null) -> void
 		print(current_health)
 	current_health = clamp(current_health, 0, max_health)
 	if current_health <= 0:
-		_player_died.emit()
+		_entity_died.emit()
 
 func HasEffect(effect: String) -> bool:
 	return status_effect.has(effect)
