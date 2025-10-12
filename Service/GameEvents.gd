@@ -7,11 +7,20 @@ signal _hpchanged(amount: float)
 signal _player_died
 signal _card_append(card: Card)
 signal _card_description(card_name : String, card_description : String)
+
 signal _bullet_modifier_append(modifier: BulletModifier)
+
 signal _bullet_modifier_remove(modifier: BulletModifier)
 
+var current_mod : Array[BulletModifier] = [
+	#ReverseBullet.new()
+]
+
+func add_bullet_mod(mod : BulletModifier) -> void:
+	current_mod.append(mod)
+	_bullet_modifier_append.emit(mod)
+
 func card_append(card: Card):
-	print_debug("Appended")
 	_card_append.emit(card)
 
 func update_description(card_name: String, card_description: String):
