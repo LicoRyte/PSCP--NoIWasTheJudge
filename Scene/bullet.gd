@@ -16,9 +16,9 @@ var extra_damage = 0
 
 
 func _ready() -> void:
-	for mod in modifier:
-		mod.on_spawn(self)
-	GameEvents._bullet_modifier_append.connect(add_mod)
+	for i in GameEvents.current_mod:
+		add_mod(i)
+	GameEvents._bullet_modifier_append.connect(new_mod_added)
 	GameEvents._bullet_modifier_remove.connect(remove_mod)
 	
 
@@ -54,9 +54,14 @@ func apply_hit(target: Entity):
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-func add_mod(mod : BulletModifier):
-	modifier.append(mod)
+func new_mod_added(mod : BulletModifier):
+	add_mod(mod)
 
+func add_mod(mod : BulletModifier):
+	if mod not in modifier:
+		modifier.append(mod)
+		mod.on_spawn(self)
+	
 func remove_mod(mod: BulletModifier):
 	modifier.erase(mod)
 	

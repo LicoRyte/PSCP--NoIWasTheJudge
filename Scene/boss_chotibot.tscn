@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ub8xljt2csls"]
+
+[ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss/Chotibot.gd" id="1_i6xj8"]
+
+[node name="Chotibot" type="Node2D"]
+script = ExtResource("1_i6xj8")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bur8iout8ew2u"]
+[gd_scene load_steps=4 format=3 uid="uid://bur8iout8ew2u"]
 
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/Player.tscn" id="1_wsa5o"]
+[ext_resource type="PackedScene" uid="uid://d1giuihtglqfc" path="res://Scene/Card/spicychickensteak.tscn" id="2_o6ksy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsa5o"]
 
@@ -16,3 +17,6 @@ position = Vector2(95, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 shape = SubResource("RectangleShape2D_wsa5o")
+
+[node name="Spicychickensteak" parent="." instance=ExtResource("2_o6ksy")]
+position = Vector2(362, 117)
