@@ -1,23 +1,21 @@
 extends Card
-class_name SpicyChickenSteak
+class_name CatWalk
 
 
 func player_stat_change(player: Player):
-	player.max_health += 5
+	player.move_speed += 35
+	print(player.move_speed)
 
 func player_stat_revert(player: Player):
-	player.max_health -= 5
+	player.move_speed -= 35
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and not applied:
-		GameEvents.card_append(SpicyChickenSteak.new())
+		GameEvents.card_append(CatWalk.new())
 		applied = true
 
 func card_added():
-	bullet_scripts = [
-		ReverseBullet.new()
-	]
-	print(bullet_scripts)
-	for i in bullet_scripts:
-		print_debug(i)
-		GameEvents.add_bullet_mod(i)
+	pass
+
+func card_removed():
+	pass
