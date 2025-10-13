@@ -57,6 +57,7 @@ func _on_player_died():
 	is_died = true
 
 func _on_card_container_child_entered_tree(card: Card) -> void:
+	print_debug(card)
 	card.player_stat_change(self)
 	card.card_added()
 

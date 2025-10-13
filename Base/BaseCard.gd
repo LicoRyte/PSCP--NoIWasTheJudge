@@ -14,6 +14,7 @@ func player_stat_change(player: Player):
 func player_stat_revert(player: Player):
 	pass
 func card_added():
+	print(self, " added")
 	for mod in bullet_scripts:
 		GameEvents.add_bullet_mod(mod)
 func card_removed():

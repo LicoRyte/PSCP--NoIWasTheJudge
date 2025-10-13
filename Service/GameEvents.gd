@@ -15,10 +15,10 @@ signal _bullet_modifier_remove(modifier: BulletModifier)
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()
 ]
-
 func add_bullet_mod(mod : BulletModifier) -> void:
 	current_mod.append(mod)
 	_bullet_modifier_append.emit(mod)
+	print_debug(current_mod)
 
 func card_append(card: Card):
 	_card_append.emit(card)
