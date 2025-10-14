@@ -13,7 +13,7 @@ signal _player_died
 
 """Card Events"""
 signal _card_append(card: Card)
-signal _card_description(card_name : String, card_description : String)
+signal _card_description(card_name : String, card_description : String, card_tag: String)
 
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()

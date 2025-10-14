@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdscgo7gai7dh"]
+[gd_scene load_steps=5 format=3 uid="uid://cod70jap7w0p6"]
 
-[ext_resource type="Script" path="res://Service/CardRandomizer.gd" id="1_s0e2e"]
+[ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Service/CardRandomizer.gd" id="1_s0e2e"]
 [ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://font/Tiny5-Regular.ttf" id="3_gr52n"]
 [ext_resource type="PackedScene" uid="uid://d1giuihtglqfc" path="res://Scene/Card/Backfire.tscn" id="3_ohnpx"]
-[ext_resource type="PackedScene" path="res://Scene/Card/Cat-Walk.tscn" id="4_ohnpx"]
+[ext_resource type="PackedScene" uid="uid://th28212ig6k6" path="res://Scene/Card/Cat-Walk.tscn" id="4_ohnpx"]
 
 [node name="CardRandomizer" type="Node2D"]
 script = ExtResource("1_s0e2e")

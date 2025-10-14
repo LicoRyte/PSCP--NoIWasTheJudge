@@ -19,3 +19,11 @@ func card_added():
 
 func card_removed():
 	pass
+
+
+func _on_area_2d_mouse_entered() -> void:
+	GameEvents._card_description.emit(card_name, card_description, stat_change)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	GameEvents._card_description.emit("", "", "")

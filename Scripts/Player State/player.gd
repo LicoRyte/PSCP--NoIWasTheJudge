@@ -27,6 +27,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	GameEvents._hpchanged.emit(current_health)
+	#print_debug(GameEvents.current_mod)
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
 func _physics_process(delta: float) -> void:

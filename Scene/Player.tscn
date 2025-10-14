@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/Player State/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Base/state_machine.gd" id="2_3eeal"]
-[ext_resource type="PackedScene" path="res://Scene/gun.tscn" id="2_7dww1"]
+[ext_resource type="PackedScene" uid="uid://cpr40bw0gbsp5" path="res://Scene/gun.tscn" id="2_7dww1"]
 [ext_resource type="Texture2D" uid="uid://sr4pf1fejscy" path="res://Old_asset/sprites/knight.png" id="2_jriwm"]
 [ext_resource type="Script" uid="uid://d25it6lak1mfi" path="res://Scripts/Player State/run.gd" id="3_jvxg0"]
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/Player State/idle.gd" id="3_mud5u"]

@@ -8,6 +8,9 @@ size = Vector2(96, 128)
 
 [node name="Cat-Walk" type="Node2D"]
 script = ExtResource("1_w2m58")
+card_name = "Cat-Walk"
+card_description = "Increase your walk speed"
+stat_change = "SPD + 35"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_w2m58")
@@ -18,3 +21,5 @@ texture = ExtResource("2_w2m58")
 shape = SubResource("RectangleShape2D_w2m58")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
