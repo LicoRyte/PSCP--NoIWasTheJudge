@@ -1,11 +1,16 @@
 extends Node
 
+var card_1 : PackedScene
+var card_2 : PackedScene
+var card_3 : PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var card_storage = {
+	
+}
 
+var blacklist = {
+	
+}
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func card_random():
 	pass
