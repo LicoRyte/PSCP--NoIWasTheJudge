@@ -23,8 +23,10 @@ func _ready() -> void:
 	GameEvents._card_append.connect(add_card_to_card_container)
 	state_machine_mm.initialize(self)
 	state_machine_at.initialize(self)
+	GameEvents._hpchanged.emit(current_health)
 	
 func _process(delta: float) -> void:
+	GameEvents._hpchanged.emit(current_health)
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
 func _physics_process(delta: float) -> void:
