@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://b35l4f10a5hx4"]
+
+[ext_resource type="Script" uid="uid://ngk5r511xx72" path="res://Scripts/enemy/enemy.gd" id="1_a2w56"]
+[ext_resource type="Texture2D" uid="uid://r8nec87ea0xj" path="res://Old_asset/sprites/slime_purple.png" id="1_ksmlx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2w56"]
+atlas = ExtResource("1_ksmlx")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytwpb"]
+atlas = ExtResource("1_ksmlx")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twu3r"]
+atlas = ExtResource("1_ksmlx")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0sql"]
+atlas = ExtResource("1_ksmlx")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7daf2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2w56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytwpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twu3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0sql")
+}],
+"loop": true,
+"name": &"run",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62j1s"]
+radius = 182.88794
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vo3e1"]
+radius = 15.132746
+
+[node name="enemy" type="CharacterBody2D"]
+script = ExtResource("1_a2w56")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -21.999998)
+scale = Vector2(1.9166666, 1.9166666)
+sprite_frames = SubResource("SpriteFrames_7daf2")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.27045533
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_62j1s")
+debug_color = Color(0.57551855, 0.45502687, 0.82508385, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_vo3e1")
+
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

@@ -17,6 +17,7 @@ var immune = true
 
 func enter():
 	immune = true
+	player.animated_sprite_2d.play("jump")
 	do_jump()
 	pass
 func exit():

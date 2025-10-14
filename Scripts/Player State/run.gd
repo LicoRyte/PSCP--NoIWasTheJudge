@@ -7,12 +7,6 @@ extends State
 
 var move_speed = 200
 var acceleration = 60
-var jump_speed = 420.0 #อยากให้กระโดดได้เร็วเท่าไหร่
-var gravity_vertical = 1200.0
-var height_of_jump = 0.0 #อยากให้กระโดดได้สูงเท่าไหร่
-var vertical_jump_speed = 0.0
-var is_jumping = false
-var immune = true
 
 func enter():
 	player.animated_sprite_2d.play("run")
