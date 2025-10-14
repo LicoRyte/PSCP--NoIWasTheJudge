@@ -14,7 +14,6 @@ var can_destroy = false        #หากเป็นจริงให้ลบ
 var base_bullet_speed : int = 200 #ปรับความเร็วของกระสุน หากติดลบจะไปทิศตรงกันข้าม
 var extra_damage = 0
 
-
 func _ready() -> void:
 	for i in GameEvents.current_mod:
 		add_mod(i)
@@ -42,8 +41,9 @@ func apply_hit(target: Entity):
 	#วิธีการคือเราจะ Append function ของ Modifier เข้าไปใน values ของ key function
 	for mod in modifier:
 		bullet_attributes = mod.on_hit(self, target, bullet_attributes) # นำ Bullet Attribute บวก effect จาก Modifier แต่ละตัว
+		print_debug(bullet_attributes)
 		
-	Damage.deal_damage(bullet_attributes["damage"] + extra_damage, target)
+	Damage.deal_damage(base_damage + extra_damage, target)
 	
 	#แล้วจึง loop เข้าไปใช้ function แต่ละตัว
 	for fn in bullet_attributes["function"]:
@@ -63,3 +63,7 @@ func add_mod(mod : BulletModifier):
 func remove_mod(mod: BulletModifier):
 	modifier.erase(mod)
 	
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		apply_hit(body)
