@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=37 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/Player State/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Base/state_machine.gd" id="2_3eeal"]
@@ -11,6 +11,9 @@
 [ext_resource type="Script" uid="uid://31iow1tjnx7a" path="res://Scripts/Player State/shoot.gd" id="8_adgam"]
 [ext_resource type="Script" uid="uid://drwmlclw1wapj" path="res://Scripts/Player State/punch.gd" id="9_g1hv4"]
 [ext_resource type="Script" uid="uid://bmbaooq2l5jbh" path="res://Scripts/Player State/unarm.gd" id="10_liw1m"]
+[ext_resource type="Texture2D" uid="uid://cxb0kllnej8dg" path="res://art/healthbarUnder.png" id="12_6q824"]
+[ext_resource type="Texture2D" uid="uid://sogb2tbsql3o" path="res://art/healthbarProgress.png" id="13_c7h21"]
+[ext_resource type="Script" uid="uid://cbfb8cly81ds2" path="res://Scene/healtbar2.gd" id="14_eol6p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8lcb"]
 size = Vector2(24, 35)
@@ -246,3 +249,27 @@ shoot_state = NodePath("../Shoot")
 [node name="melee_root" type="Node2D" parent="."]
 
 [node name="CardContainer" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 27.0
+grow_horizontal = 0
+value = 100.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 10.0
+grow_horizontal = 0
+texture_under = ExtResource("12_6q824")
+texture_progress = ExtResource("13_c7h21")
+script = ExtResource("14_eol6p")
+player = NodePath("../..")
