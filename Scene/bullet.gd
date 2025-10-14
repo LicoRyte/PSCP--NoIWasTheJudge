@@ -18,8 +18,6 @@ var extra_damage = 0
 func _ready() -> void:
 	for i in GameEvents.current_mod:
 		add_mod(i)
-	GameEvents._bullet_modifier_append.connect(new_mod_added)
-	GameEvents._bullet_modifier_remove.connect(remove_mod)
 	
 
 func _process(delta: float) -> void:

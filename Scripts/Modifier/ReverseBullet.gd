@@ -12,7 +12,7 @@ func _ready() -> void:
 func on_spawn(bullet: Bullet):
 	reverse_speed = bullet.base_bullet_speed / time_till_reverse
 	
-	bullet.extra_damage += 2
+	bullet.extra_damage += 4
 
 func on_active(bullet : Bullet, delta):
 	bullet.base_bullet_speed -= reverse_speed * delta  * 3
