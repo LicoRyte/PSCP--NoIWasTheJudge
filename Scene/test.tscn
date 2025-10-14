@@ -1,7 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bur8iout8ew2u"]
 
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/Player.tscn" id="1_wsa5o"]
+<<<<<<< Updated upstream
 [ext_resource type="PackedScene" uid="uid://b35l4f10a5hx4" path="res://Scene/enemy/enemy.tscn" id="2_o6ksy"]
+=======
+[ext_resource type="PackedScene" uid="uid://iccjh5nvx5k7" path="res://Scene/health.tscn" id="2_o6ksy"]
+>>>>>>> Stashed changes
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsa5o"]
 
@@ -19,5 +23,13 @@ position = Vector2(95, 32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Area2D"]
 shape = SubResource("RectangleShape2D_wsa5o")
 
+<<<<<<< Updated upstream
 [node name="enemy" parent="." instance=ExtResource("2_o6ksy")]
 position = Vector2(377, 93)
+=======
+[node name="Control" parent="." instance=ExtResource("2_o6ksy")]
+offset_left = 601.0
+offset_top = 16.0
+offset_right = 601.0
+offset_bottom = 16.0
+>>>>>>> Stashed changes
