@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cod70jap7w0p6"]
+[gd_scene load_steps=5 format=3 uid="uid://cod70jap7w0p6"]
 
 [ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Service/CardRandomizer.gd" id="1_s0e2e"]
 [ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://font/Tiny5-Regular.ttf" id="3_gr52n"]
+[ext_resource type="PackedScene" uid="uid://d1giuihtglqfc" path="res://Scene/Card/Backfire.tscn" id="3_ohnpx"]
+[ext_resource type="PackedScene" uid="uid://th28212ig6k6" path="res://Scene/Card/Cat-Walk.tscn" id="4_ohnpx"]
 
 [node name="CardRandomizer" type="Node2D"]
 script = ExtResource("1_s0e2e")
@@ -86,8 +88,12 @@ autowrap_mode = 2
 [node name="Card Slot1" type="Node2D" parent="CanvasLayer"]
 position = Vector2(180, 149)
 
+[node name="Backfire" parent="CanvasLayer/Card Slot1" instance=ExtResource("3_ohnpx")]
+
 [node name="Card Slot2" type="Node2D" parent="CanvasLayer"]
 position = Vector2(320, 149)
+
+[node name="Cat-Walk" parent="CanvasLayer/Card Slot2" instance=ExtResource("4_ohnpx")]
 
 [node name="Card Slot3" type="Node2D" parent="CanvasLayer"]
 position = Vector2(460, 149)
