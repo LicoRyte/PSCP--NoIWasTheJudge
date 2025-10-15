@@ -13,10 +13,10 @@ signal _game_continue
 var current_card_on_screen = []
 
 var card_storage = [
-	preload("uid://d1giuihtglqfc"), #Backfire
-	preload("uid://th28212ig6k6"), #Cat-Walk
-	preload("uid://cp8404a2y6pjk"), #SpicySteak aka node_2d
-	preload("uid://wsm20eare230"), #Upgrade Gun
+	preload("res://Scene/Card/Backfire.tscn"), #Backfire
+	preload("res://Scene/Card/Cat-Walk.tscn"), #Cat-Walk
+	preload("res://Scene/Card/node_2d.tscn"), #SpicySteak aka node_2d
+	preload("res://Scene/Card/Upgrade Gun.tscn")
 ]
 
 enum sequence_flow {
