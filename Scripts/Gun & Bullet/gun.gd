@@ -10,6 +10,7 @@ var sprite : Node2D
 @export var fire_rate := 0.3
 @export var reload_time := 1.0
 
+
 var reduce_fire_rate = 0
 var extra_bullet = 0
 
@@ -19,7 +20,6 @@ var is_reloading := false
 
 var fire_timer : Timer
 var reload_timer : Timer
-
 
 func _ready() -> void:
 	sprite = get_parent()
@@ -37,14 +37,12 @@ func _ready() -> void:
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	reload_timer.timeout.connect(_on_reload_timer_timeout)
 
-
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	global_position = sprite.global_position
 
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	scale.y = -1 if rotation_degrees > 90 and rotation_degrees <= 270 else 1
-
 
 	if Input.is_action_pressed("Lmb") and can_shoot and not is_reloading:
 		if curr_bullet > 0:
@@ -80,7 +78,6 @@ func start_reload() -> void:
 	can_shoot = false
 	reload_timer.start()
 	print("Reloading...")
-
 
 func _on_reload_timer_timeout() -> void:
 	is_reloading = false
