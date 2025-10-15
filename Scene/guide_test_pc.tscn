@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://w2f7u6w6i24r"]
+[gd_scene load_steps=4 format=3 uid="uid://w2f7u6w6i24r"]
 
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/Player.tscn" id="1_1n7ll"]
+[ext_resource type="Script" uid="uid://qfq0eqsqmdri" path="res://Scripts/enemy/guide_test_pc.gd" id="1_coa8h"]
 [ext_resource type="PackedScene" uid="uid://b35l4f10a5hx4" path="res://Scene/enemy/enemy.tscn" id="2_4v0kp"]
 
 [node name="guide_test_pc" type="Node2D"]
+script = ExtResource("1_coa8h")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -654.0
