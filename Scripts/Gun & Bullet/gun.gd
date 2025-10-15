@@ -1,4 +1,5 @@
 extends Node2D
+class_name Gun
 
 const bullet = preload("res://Scene/Gun & Bullet/bullet.tscn")
 
@@ -6,11 +7,12 @@ var sprite : Node2D
 @onready var marker: Marker2D = $Marker2D
 
 @export var max_bullet := 8
-@export var fire_rate := 0.4
+@export var fire_rate := 0.3
 @export var reload_time := 1.0
 
-@export var reduce_fire_rate = 0
-@export var extra_bullet = 0
+
+var reduce_fire_rate = 0
+var extra_bullet = 0
 
 var curr_bullet = max_bullet + extra_bullet
 var can_shoot := true
@@ -19,12 +21,11 @@ var is_reloading := false
 var fire_timer : Timer
 var reload_timer : Timer
 
-
 func _ready() -> void:
 	sprite = get_parent()
 	fire_timer = Timer.new()
 	fire_timer.one_shot = true
-	fire_timer.wait_time = fire_rate - reduce_fire_rate
+	fire_timer.wait_time = fire_rate
 	add_child(fire_timer)
 
 	#timer
@@ -36,14 +37,12 @@ func _ready() -> void:
 	fire_timer.timeout.connect(_on_fire_timer_timeout)
 	reload_timer.timeout.connect(_on_reload_timer_timeout)
 
-
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	global_position = sprite.global_position
 
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	scale.y = -1 if rotation_degrees > 90 and rotation_degrees <= 270 else 1
-
 
 	if Input.is_action_pressed("Lmb") and can_shoot and not is_reloading:
 		if curr_bullet > 0:
@@ -54,6 +53,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Relode") and not is_reloading and curr_bullet < max_bullet:
 		start_reload()
 
+func change_fire_rate():
+	if fire_timer:
+		fire_timer.wait_time = fire_rate - reduce_fire_rate
 
 func shoot() -> void:
 	can_shoot = false
@@ -77,9 +79,8 @@ func start_reload() -> void:
 	reload_timer.start()
 	print("Reloading...")
 
-
 func _on_reload_timer_timeout() -> void:
 	is_reloading = false
 	can_shoot = true
-	curr_bullet = max_bullet
+	curr_bullet = max_bullet + extra_bullet
 	print("Reload complete! Bullets refilled:", curr_bullet)
