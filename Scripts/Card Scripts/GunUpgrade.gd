@@ -3,10 +3,10 @@ extends Card
 class_name Gun_upgrade
 
 func player_stat_change(player: Player):
-	player.move_speed += 20
+	pass
 
 func player_stat_revert(player: Player):
-	player.move_speed -= 20
+	pass
 
 func gun_stat_change(gun:Gun):
 	gun.extra_bullet += 7
@@ -24,10 +24,16 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		applied = true
 
 func card_added():
-	pass
+	bullet_scripts = [
+		Upgrade.new()
+	]
+	for i in bullet_scripts:
+		print_debug(i)
+		GameEvents.add_bullet_mod(i)
 
 func card_removed():
-	pass
+	for i in bullet_scripts:
+		GameEvents.remove_bullet_mod(i)
 
 func _on_area_2d_mouse_entered() -> void:
 	GameEvents._card_description.emit(card_name, card_description, stat_change)
