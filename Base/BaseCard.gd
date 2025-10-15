@@ -10,17 +10,28 @@ var bullet_scripts: Array[BulletModifier] = [
 @export var stat_change : String
 
 var applied = false
+
 func _ready() -> void:
 	pass
+
 func player_stat_change(player: Player):
 	pass
+
 func player_stat_revert(player: Player):
 	pass
+
 func card_added():
 	pass
+
 func card_removed():
 	for mod in bullet_scripts:
 		GameEvents._bullet_modifier_remove.emit(mod)
 
 func scene_added():
+	pass
+
+func gun_stat_change(gun:Gun):
+	pass
+
+func gun_stat_revert(gun:Gun):
 	pass

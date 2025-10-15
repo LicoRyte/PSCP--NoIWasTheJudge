@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://wsm20eare230"]
+
+[ext_resource type="Script" uid="uid://bnli4dt87es7j" path="res://Scripts/Card Scripts/GunUpgrade.gd" id="1_0ymxd"]
+[ext_resource type="Texture2D" uid="uid://bj0uc0poslc66" path="res://pic/Card/Backfire.png" id="1_3swlv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3swlv"]
+size = Vector2(96, 128)
+
+[node name="UpgradeGun" type="Node2D"]
+script = ExtResource("1_0ymxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.1415927
+texture = ExtResource("1_3swlv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3swlv")
+debug_color = Color(1.4439225e-06, 0.57767826, 0.8148861, 0.41960785)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

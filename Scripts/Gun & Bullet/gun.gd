@@ -1,4 +1,5 @@
 extends Node2D
+class_name Gun
 
 const bullet = preload("res://Scene/Gun & Bullet/bullet.tscn")
 
@@ -6,11 +7,11 @@ var sprite : Node2D
 @onready var marker: Marker2D = $Marker2D
 
 @export var max_bullet := 8
-@export var fire_rate := 0.4
+@export var fire_rate := 0.3
 @export var reload_time := 1.0
 
-@export var reduce_fire_rate = 0
-@export var extra_bullet = 0
+var reduce_fire_rate = 0
+var extra_bullet = 0
 
 var curr_bullet = max_bullet + extra_bullet
 var can_shoot := true
@@ -24,7 +25,7 @@ func _ready() -> void:
 	sprite = get_parent()
 	fire_timer = Timer.new()
 	fire_timer.one_shot = true
-	fire_timer.wait_time = fire_rate - reduce_fire_rate
+	fire_timer.wait_time = fire_rate
 	add_child(fire_timer)
 
 	#timer
@@ -54,6 +55,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("Relode") and not is_reloading and curr_bullet < max_bullet:
 		start_reload()
 
+func change_fire_rate():
+	if fire_timer:
+		fire_timer.wait_time = fire_rate - reduce_fire_rate
 
 func shoot() -> void:
 	can_shoot = false
@@ -81,5 +85,5 @@ func start_reload() -> void:
 func _on_reload_timer_timeout() -> void:
 	is_reloading = false
 	can_shoot = true
-	curr_bullet = max_bullet
+	curr_bullet = max_bullet + extra_bullet
 	print("Reload complete! Bullets refilled:", curr_bullet)
