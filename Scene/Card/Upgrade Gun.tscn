@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://wsm20eare230"]
+[gd_scene load_steps=4 format=3 uid="uid://xoa7a6sf1510"]
 
-[ext_resource type="Script" uid="uid://bnli4dt87es7j" path="res://Scripts/Card Scripts/GunUpgrade.gd" id="1_0ymxd"]
+[ext_resource type="Script" path="res://Scripts/Card Scripts/GunUpgrade.gd" id="1_0ymxd"]
 [ext_resource type="Texture2D" uid="uid://bj0uc0poslc66" path="res://pic/Card/Backfire.png" id="1_3swlv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3swlv"]

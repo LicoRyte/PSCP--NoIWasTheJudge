@@ -1,16 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cod70jap7w0p6"]
+[gd_scene load_steps=3 format=3 uid="uid://cod70jap7w0p6"]
 
 [ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Service/CardRandomizer.gd" id="1_s0e2e"]
 [ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://font/Tiny5-Regular.ttf" id="3_gr52n"]
-[ext_resource type="PackedScene" uid="uid://d1giuihtglqfc" path="res://Scene/Card/Backfire.tscn" id="3_ohnpx"]
-[ext_resource type="PackedScene" uid="uid://th28212ig6k6" path="res://Scene/Card/Cat-Walk.tscn" id="4_ohnpx"]
 
 [node name="CardRandomizer" type="Node2D"]
 script = ExtResource("1_s0e2e")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="SelectorUI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="SelectorUI"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +18,7 @@ grow_vertical = 2
 size_flags_horizontal = 8
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectorUI/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -30,17 +28,17 @@ offset_top = -113.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Card" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Card" type="MarginContainer" parent="SelectorUI/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 72
 theme_override_constants/margin_right = 72
 theme_override_constants/margin_bottom = 12
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer/Card"]
+[node name="PanelContainer2" type="PanelContainer" parent="SelectorUI/Control/VBoxContainer/Card"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Card/PanelContainer2"]
+[node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/Card/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_gr52n")
@@ -49,16 +47,16 @@ text = "Card Name"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Description" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="Description" type="MarginContainer" parent="SelectorUI/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 72
 theme_override_constants/margin_right = 72
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer/Description"]
+[node name="PanelContainer2" type="PanelContainer" parent="SelectorUI/Control/VBoxContainer/Description"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/Description/PanelContainer2"]
+[node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/Description/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_gr52n")
@@ -67,16 +65,16 @@ text = "Description"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="tag" type="MarginContainer" parent="CanvasLayer/Control/VBoxContainer"]
+[node name="tag" type="MarginContainer" parent="SelectorUI/Control/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 72
 theme_override_constants/margin_right = 72
 
-[node name="PanelContainer2" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer/tag"]
+[node name="PanelContainer2" type="PanelContainer" parent="SelectorUI/Control/VBoxContainer/tag"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/VBoxContainer/tag/PanelContainer2"]
+[node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/tag/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_gr52n")
@@ -85,15 +83,13 @@ text = "Tag"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Card Slot1" type="Node2D" parent="CanvasLayer"]
-position = Vector2(180, 149)
+[node name="CardGrid" type="Node2D" parent="SelectorUI"]
 
-[node name="Backfire" parent="CanvasLayer/Card Slot1" instance=ExtResource("3_ohnpx")]
+[node name="slot1" type="Node2D" parent="SelectorUI/CardGrid"]
+position = Vector2(185, 150)
 
-[node name="Card Slot2" type="Node2D" parent="CanvasLayer"]
-position = Vector2(320, 149)
+[node name="slot2" type="Node2D" parent="SelectorUI/CardGrid"]
+position = Vector2(320, 150)
 
-[node name="Cat-Walk" parent="CanvasLayer/Card Slot2" instance=ExtResource("4_ohnpx")]
-
-[node name="Card Slot3" type="Node2D" parent="CanvasLayer"]
-position = Vector2(460, 149)
+[node name="slot3" type="Node2D" parent="SelectorUI/CardGrid"]
+position = Vector2(455, 150)
