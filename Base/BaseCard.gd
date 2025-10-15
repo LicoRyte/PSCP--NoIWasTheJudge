@@ -29,9 +29,9 @@ func card_removed():
 
 func scene_added():
 	pass
-
-func gun_stat_change(gun:Gun):
-	pass
-
-func gun_stat_revert(gun:Gun):
-	pass
+#
+#func gun_stat_change(gun:Gun):
+	#pass
+#
+#func gun_stat_revert(gun:Gun):
+	#pass

@@ -1,29 +1,36 @@
 extends Entity
 class_name Enemy
 
-var speed_enemy = 1
-var player = null
-var player_chase = false
+@onready var player = get_node("/root/guide_test_pc/Player")
 @export var health:float = 100.0
+var player_chase = false
 
 func _ready() -> void:
 	Damage._deal_damage.connect(_on_deal_damage)
 
-func _enemy_is_died():
-	queue_free()
-
 func _physics_process(delta: float) -> void:
+	var direction = global_position.direction_to(player.global_position)
 	if player_chase:
-		position += ((player.position - position) / speed_enemy) * delta
+		velocity = direction * 100
+		move_and_slide()
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-		player = body
-		player_chase = true
+	player_chase = true
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
-	player = null
 	player_chase = false
 
+
+
+
+
+
+
+
+
+func _enemy_is_died():
+	queue_free()
+	
 func _on_deal_damage(amount: float, receiver: Node2D, source: Node) -> void:
 	if receiver == self:
 		health -= amount
