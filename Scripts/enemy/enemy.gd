@@ -30,4 +30,3 @@ func _on_deal_damage(amount: float, receiver: Node2D, source: Node) -> void:
 		print_debug(health)
 		if health <= 0:
 			_enemy_is_died()
-			
