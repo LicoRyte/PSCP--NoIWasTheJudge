@@ -1,6 +1,9 @@
 extends Node2D
 class_name Card
 
+
+signal chosen(card: Card)
+
 var bullet_scripts: Array[BulletModifier] = [
 	#เอา Modifier ที่เกี่ยวข้องกับ bullet มาใส่ให้การ์ด
 	#FlameBullet.new()

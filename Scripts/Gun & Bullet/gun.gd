@@ -7,13 +7,8 @@ var sprite : Node2D
 @onready var marker: Marker2D = $Marker2D
 
 @export var max_bullet := 8
-<<<<<<< Updated upstream
 @export var fire_rate := 0.3
 @export var reload_time := 1.0
-=======
-@export var fire_rate := 0.1
-@export var reload_time := 1
->>>>>>> Stashed changes
 
 
 var reduce_fire_rate = 0

@@ -8,13 +8,10 @@ signal _hpchanged(amount: float)
 signal _player_died
 
 
-
-
-
 """Card Events"""
 signal _card_append(card: Card)
 signal _card_description(card_name : String, card_description : String, card_tag: String)
-
+signal _reward_sequence
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()
 ]
