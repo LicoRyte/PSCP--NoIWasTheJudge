@@ -71,7 +71,7 @@ func _on_card_container_child_entered_tree(card: Card) -> void:
 
 func _on_card_container_child_exiting_tree(card: Card) -> void:
 	card.player_stat_revert(self)
-	card.card_removed()
+	#card.card_removed()
 
 func add_card_to_card_container(card: Card):
 	print("Should")

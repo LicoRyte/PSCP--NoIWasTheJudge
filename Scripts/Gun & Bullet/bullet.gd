@@ -60,6 +60,7 @@ func add_mod(mod : BulletModifier):
 	if mod not in modifier:
 		modifier.append(mod)
 		mod.on_spawn(self)
+		print("POS : ", self.position)
 	
 func remove_mod(mod: BulletModifier):
 	modifier.erase(mod)

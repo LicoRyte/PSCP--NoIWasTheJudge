@@ -10,6 +10,9 @@ size = Vector2(96, 128)
 
 [node name="SplitFire" type="Node2D"]
 script = ExtResource("1_dpmch")
+card_name = "Split Fire"
+card_description = "+2 Additional Bullets"
+stat_change = "DMG -1"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dpmch")

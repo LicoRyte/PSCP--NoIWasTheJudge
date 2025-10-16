@@ -1,6 +1,6 @@
 extends Card
 
-class_name Gun_upgrade
+class_name Quickdraw
 
 func player_stat_change(player: Player):
 	pass
@@ -9,18 +9,18 @@ func player_stat_revert(player: Player):
 	pass
 
 func gun_stat_change(gun:Gun):
-	gun.extra_bullet += 7
-	gun.reduce_fire_rate = 0.2
+	gun.extra_bullet += 2
+	gun.reduce_fire_rate = 0.4
 	gun.change_fire_rate()
 
 func  gun_stat_revert(gun:Gun):
-	gun.extra_bullet -= 7
+	gun.extra_bullet -= 2
 	gun.reduce_fire_rate = 0
 	gun.change_fire_rate()
 	
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and not applied:
-		GameEvents.card_append(Gun_upgrade.new())
+		chosen.emit(Quickdraw.new())
 		applied = true
 
 func card_added():

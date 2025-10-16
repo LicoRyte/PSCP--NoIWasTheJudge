@@ -55,32 +55,43 @@ func reward_sequence():
 func to(new_sequence: sequence_flow):
 	current_sequence = new_sequence
 
-func show_card(array_of_card : Array):
+func show_card(pool: Array) -> void:
 	selector_ui.visible = true
 	clear_card_from_screen()
-	var pickable = array_of_card.duplicate()
+
+	var pickable := pool.duplicate()
 	pickable.shuffle()
-	
-	for i in range(min(available_slots.size(), card_storage.size())):
-		var scene = pickable[i]
-		var card = scene.instantiate()
+
+	for i in range(min(available_slots.size(), pickable.size())):
+		var scene: PackedScene = pickable[i]
+		var card := scene.instantiate()
 		card.position = available_slots[i].global_position
+		card.set_meta("source_scene", scene)
 		card.chosen.connect(_on_card_selected)
-		card.set_meta("source", scene)
 		add_child(card)
 		current_card_on_screen.append(card)
 
+func _on_card_selected(card: Card) -> void:
+	var src: PackedScene = card.get_meta("source_scene")
+	if src != null:
+		card_storage.erase(src)
+		if src not in blacklist:
+			blacklist.append(src)
 
-func _on_card_selected(card : Card):
-	var source : PackedScene = card.get_meta("source")
-	if source != null:
-		print("Has Source")
-		card_storage.erase(source)
-		if source not in blacklist:
-			blacklist.append(source)
+
+	current_card_on_screen.erase(card)
 	GameEvents.card_append(card)
+
 	for c in current_card_on_screen:
-		c.queue_free()
+		if is_instance_valid(c):
+			c.queue_free()
+	current_card_on_screen.clear()
+	selector_ui.visible = false
+
+
+	for c in current_card_on_screen:
+		if is_instance_valid(c):
+			c.queue_free()
 	current_card_on_screen.clear()
 	selector_ui.visible = false
 

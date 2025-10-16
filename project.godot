@@ -21,7 +21,7 @@ GameEvents="*res://Service/GameEvents.gd"
 Damage="*res://Service/DamageSystem.gd"
 GlobalAudio="*res://Service/GlobalAudioService.tscn"
 CamCom="*res://Service/CameraComposer.gd"
-CardRandomizer="*res://Service/CardRandomizer.tscn"
+RewardSequence="*res://Service/RewardSequence.tscn"
 
 [display]
 
