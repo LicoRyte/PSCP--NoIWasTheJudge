@@ -2,7 +2,7 @@ extends BulletModifier
 class_name SplitBullet
 
 @export var cloned_bullets: int = 2
-@export var spread_angle_deg: float = 15
+@export var spread_angle_deg: float = 45
 
 func on_spawn(bullet: Bullet) -> void:
 	if bullet.has_meta("split_done"):
@@ -39,7 +39,8 @@ func _do_split(bullet: Bullet) -> void:
 		clone.set_meta("dir", dir)
 
 		clone.global_rotation = dir.angle()
-		clone.base_bullet_speed = bullet.base_bullet_speed
+		clone.base_bullet_speed = bullet.base_bullet_speed / 1.25
+		clone.base_damage = bullet.base_damage / 1.25
 		clone.extra_damage = bullet.extra_damage
 		clone.bullet_duration = bullet.bullet_duration
 
