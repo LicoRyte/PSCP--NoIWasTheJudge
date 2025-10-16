@@ -24,7 +24,7 @@ func _do_split(bullet: Bullet) -> void:
 	bullet.set_meta("dir", base_dir)
 	bullet.global_rotation = base_angle
 	bullet.top_level = true
-	bullet.extra_damage = max(0, bullet.extra_damage - 2)
+	bullet.extra_damage += -2
 
 	var half := (cloned_bullets - 1) / 2.0
 	for i in range(cloned_bullets):
@@ -37,6 +37,7 @@ func _do_split(bullet: Bullet) -> void:
 		var angle_offset := deg_to_rad(spread_angle_deg * (i - half))
 		var dir := base_dir.rotated(angle_offset)
 		clone.set_meta("dir", dir)
+
 		clone.global_rotation = dir.angle()
 		clone.base_bullet_speed = bullet.base_bullet_speed
 		clone.extra_damage = bullet.extra_damage

@@ -18,6 +18,9 @@ func card_added():
 		print_debug(i)
 		GameEvents.add_bullet_mod(i)
 
+func gun_stat_change(gun:Gun):
+	gun.reduce_fire_rate -= 0.3
+
 func _on_area_2d_mouse_entered() -> void:
 	GameEvents._card_description.emit(card_name, card_description, stat_change)
 

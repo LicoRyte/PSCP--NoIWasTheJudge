@@ -5,7 +5,11 @@ extends Node
 """รวมถึง Change_music() ด้วย"""
 
 var effect = {
-	"test" : "put an audio files here"
+	"test" : "put an audio files here",
+	"damage" : preload("uid://cp7eslbjgjbnc"),
+	"shoot": preload("uid://dnb2cwhwvqvnl"),
+	"killed" : preload("uid://c0jrj35iwfb5s")
+	
 }
 
 var music = {

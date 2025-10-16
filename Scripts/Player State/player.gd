@@ -79,4 +79,4 @@ func add_card_to_card_container(card: Card):
 	card_container.add_child(card)
 
 func camera_shake():
-	CamCom.apply_shake(player_cam,2,2)
+	CamCom.apply_shake(player_cam,5,10)

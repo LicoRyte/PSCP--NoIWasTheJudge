@@ -6,6 +6,7 @@ class_name Enemy
 var player_chase = false
 
 func _ready() -> void:
+	super._ready()
 	Damage._deal_damage.connect(_on_deal_damage)
 
 func _physics_process(_delta: float) -> void:

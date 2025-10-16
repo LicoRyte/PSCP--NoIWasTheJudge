@@ -58,6 +58,7 @@ func change_fire_rate():
 		fire_timer.wait_time = fire_rate - reduce_fire_rate
 
 func shoot() -> void:
+	GlobalAudio.fx("shoot")
 	can_shoot = false
 	fire_timer.start()
 

@@ -5,7 +5,7 @@ extends Node2D
 @onready var card_name: Label = $SelectorUI/Control/VBoxContainer/Card/PanelContainer2/Label
 @onready var card_des: Label = $SelectorUI/Control/VBoxContainer/Description/PanelContainer2/Label
 @onready var card_stat: Label = $SelectorUI/Control/VBoxContainer/tag/PanelContainer2/Label
-@onready var available_slots = $SelectorUI/CardGrid.get_children() #position (slot1,2,3)
+@onready var available_slots:  = $SelectorUI/CardGrid.get_children() #position (slot1,2,3)
 
 signal _game_continue
 
