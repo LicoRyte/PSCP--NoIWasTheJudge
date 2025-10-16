@@ -3,6 +3,7 @@ class_name Bullet
 
 
 
+
 var modifier :Array[BulletModifier] = [
 	#ReverseBullet.new()
 ] #เก็บ Scripts ตัวลูกของ BulletModifer
@@ -66,4 +67,5 @@ func remove_mod(mod: BulletModifier):
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
+		GameEvents._bullet_hit_enemies.emit()
 		apply_hit(body)

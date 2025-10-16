@@ -16,13 +16,17 @@ var card_storage = [
 	preload("res://Scene/Card/Backfire.tscn"), #Backfire
 	preload("res://Scene/Card/Cat-Walk.tscn"), #Cat-Walk
 	preload("res://Scene/Card/node_2d.tscn"), #SpicySteak aka node_2d
-	preload("res://Scene/Card/Upgrade Gun.tscn")
+	preload("res://Scene/Card/Upgrade Gun.tscn"), #Upgrade_gun
+	preload("res://Scene/Card/SplitFire.tscn") #Splitfire 
+]
+
+var blacklist = [
+	
 ]
 
 enum sequence_flow {
 	CONTINUE, SELECTION, BEFORE_CONTINUE
 }
-
 
 
 
@@ -52,27 +56,37 @@ func to(new_sequence: sequence_flow):
 	current_sequence = new_sequence
 
 func show_card(array_of_card : Array):
-	print(array_of_card)
 	selector_ui.visible = true
 	clear_card_from_screen()
 	var pickable = array_of_card.duplicate()
 	pickable.shuffle()
 	
-	for i in range(available_slots.size() - 1):
-		var card = pickable[i].instantiate()
+	for i in range(min(available_slots.size(), card_storage.size())):
+		var scene = pickable[i]
+		var card = scene.instantiate()
 		card.position = available_slots[i].global_position
 		card.chosen.connect(_on_card_selected)
+		card.set_meta("source", scene)
 		add_child(card)
 		current_card_on_screen.append(card)
 
 
 func _on_card_selected(card : Card):
+	var source : PackedScene = card.get_meta("source")
+	if source != null:
+		print("Has Source")
+		card_storage.erase(source)
+		if source not in blacklist:
+			blacklist.append(source)
 	GameEvents.card_append(card)
 	for c in current_card_on_screen:
 		c.queue_free()
 	current_card_on_screen.clear()
 	selector_ui.visible = false
 
+func reset_storage():
+	card_storage += blacklist	
+	
 
 func clear_card_from_screen():
 	for c in current_card_on_screen:

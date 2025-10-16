@@ -5,6 +5,9 @@ class_name Player
 @onready var state_machine_at: StateMachine = $StateMachine_AT
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var card_container: Node = $CardContainer
+@onready var player_cam: Camera2D = $Camera2D
+
+
 var gun : Gun
 
 var anims : AnimatedSprite2D
@@ -17,6 +20,7 @@ var current_move_speed: float
 
 func _ready() -> void:
 	super._ready()
+	GameEvents._bullet_hit_enemies.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
 	_entity_died.connect(_on_player_died)
@@ -70,4 +74,9 @@ func _on_card_container_child_exiting_tree(card: Card) -> void:
 	card.card_removed()
 
 func add_card_to_card_container(card: Card):
+	print("Should")
+	print(card)
 	card_container.add_child(card)
+
+func camera_shake():
+	CamCom.apply_shake(player_cam,2,2)

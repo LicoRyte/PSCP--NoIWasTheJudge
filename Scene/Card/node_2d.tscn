@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://cp8404a2y6pjk"]
+[gd_scene load_steps=5 format=3 uid="uid://cp8404a2y6pjk"]
 
 [ext_resource type="Script" uid="uid://bp4dxws7kynho" path="res://Scripts/Card Scripts/TestCard.gd" id="1_owals"]
-[ext_resource type="Texture2D" uid="uid://61jqvhoin2yx" path="res://pic/Card/Cat-Walk.png" id="1_t8ldc"]
+[ext_resource type="Texture2D" uid="uid://cfqk73bfcwysk" path="res://pic/Card/SpicySteak.png" id="2_owals"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q405b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owals"]
 size = Vector2(96, 128)
 
 [node name="TestCard" type="Node2D"]
 script = ExtResource("1_owals")
+card_name = "Spicy Steak"
+card_description = "enemies burn"
+stat_change = "HP +  20"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_t8ldc")
+material = SubResource("ShaderMaterial_q405b")
+texture = ExtResource("2_owals")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_owals")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

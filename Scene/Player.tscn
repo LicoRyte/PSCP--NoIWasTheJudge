@@ -195,6 +195,8 @@ collision_layer = 3
 script = ExtResource("1_inyuv")
 max_stamina = 75.0
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5.5)
 shape = SubResource("RectangleShape2D_j8lcb")

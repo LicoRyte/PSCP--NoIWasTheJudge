@@ -6,7 +6,7 @@ extends Node
 """Player Events"""
 signal _hpchanged(amount: float)
 signal _player_died
-
+signal _bullet_hit_enemies
 
 """Card Events"""
 signal _card_append(card: Card)

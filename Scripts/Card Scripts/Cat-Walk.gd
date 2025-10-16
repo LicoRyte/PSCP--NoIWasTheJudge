@@ -11,7 +11,7 @@ func player_stat_revert(player: Player):
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and not applied:
-		GameEvents.card_append(CatWalk.new())
+		chosen.emit(self)
 		applied = true
 
 func card_added():

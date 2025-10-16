@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cod70jap7w0p6"]
+[gd_scene load_steps=4 format=3 uid="uid://cod70jap7w0p6"]
 
 [ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Service/CardRandomizer.gd" id="1_s0e2e"]
+[ext_resource type="FontFile" uid="uid://3x8dmhqmf8d8" path="res://font/Roundberly.ttf" id="2_gr52n"]
 [ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://font/Tiny5-Regular.ttf" id="3_gr52n"]
 
 [node name="CardRandomizer" type="Node2D"]
@@ -41,9 +42,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/Card/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_gr52n")
+theme_override_fonts/font = ExtResource("2_gr52n")
 theme_override_font_sizes/font_size = 24
-text = "Card Name"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -61,7 +61,6 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_gr52n")
 theme_override_font_sizes/font_size = 16
-text = "Description"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -79,7 +78,6 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_gr52n")
 theme_override_font_sizes/font_size = 12
-text = "Tag"
 horizontal_alignment = 1
 autowrap_mode = 2
 
