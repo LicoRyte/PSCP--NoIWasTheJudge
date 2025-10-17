@@ -7,6 +7,6 @@
 
 [node name="Chotibot" parent="." instance=ExtResource("1_ofhem")]
 position = Vector2(-119, 157)
-max_health = 2025.0
+max_health = 200.0
 
 [node name="Player" parent="." instance=ExtResource("1_sdf0p")]

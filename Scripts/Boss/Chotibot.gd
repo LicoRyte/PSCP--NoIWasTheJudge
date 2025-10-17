@@ -6,7 +6,8 @@ enum BossStage {
 	IDLE,      
 	BULLET,  
 	BEAM,
-	STATIC  
+	STATIC,
+	DEFEATED
 }
 var current_state = BossStage.BEAM
 
@@ -35,6 +36,9 @@ var max_PSCP_count = 7
 var current_PSCP = 0
 var current_PSCP_timer = 0.0
 
+var destroyed_effect_cooldown = 0.17
+var current_time = 0.0
+
 func _ready() -> void:
 	super._ready()
 	animation_player.play("Idle")
@@ -44,6 +48,9 @@ func _process(delta: float) -> void:
 	super._process(delta)
 	if Input.is_action_just_pressed("DevTest"):
 		to(BossStage.BEAM)
+	
+	if current_health <= 0:
+		to(BossStage.DEFEATED)
 	match current_state:
 		
 		BossStage.BEAM:
@@ -82,6 +89,13 @@ func _process(delta: float) -> void:
 				current_PSCP = 0
 				current_PSCP_timer = 0.0
 				to(BossStage.BEAM)
+		BossStage.DEFEATED:
+			current_time += delta
+			if current_time > destroyed_effect_cooldown:
+				CamCom.play_effect("fracture", global_position)
+				GlobalAudio.fx("boss_defeated")
+				current_time = 0.0
+				GameEvents._shake_call.emit()
 
 func to(new_state : BossStage):
 	current_state = new_state
