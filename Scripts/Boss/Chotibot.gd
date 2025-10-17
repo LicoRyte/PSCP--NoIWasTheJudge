@@ -1,5 +1,6 @@
 extends Entity
 class_name Chotibot
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum BossStage {  
 	IDLE,      
@@ -12,7 +13,7 @@ var current_state = BossStage.BEAM
 var attack_scene = {
 	"BEAM" : preload("res://Scripts/Boss/beam.tscn"),
 	"PSCP" : preload("res://Scripts/Boss/pscp.tscn"),
-	"STATIC" : preload("res://Scripts/Boss/static.tscn")
+	"STATIC" : preload("res://Scripts/Boss/static.tscn"),
 }
 
 
@@ -34,7 +35,13 @@ var max_PSCP_count = 7
 var current_PSCP = 0
 var current_PSCP_timer = 0.0
 
+func _ready() -> void:
+	super._ready()
+	animation_player.play("Idle")
+	
+
 func _process(delta: float) -> void:
+	super._process(delta)
 	if Input.is_action_just_pressed("DevTest"):
 		to(BossStage.BEAM)
 	match current_state:
