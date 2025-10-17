@@ -6,6 +6,7 @@ extends Node2D
 @onready var card_des: Label = $SelectorUI/Control/VBoxContainer/Description/PanelContainer2/Label
 @onready var card_stat: Label = $SelectorUI/Control/VBoxContainer/tag/PanelContainer2/Label
 @onready var available_slots:  = $SelectorUI/CardGrid.get_children() #position (slot1,2,3)
+@onready var grid: Node2D = $SelectorUI/CardGrid
 
 signal _game_continue
 
@@ -108,3 +109,8 @@ func update_label(name : String, des : String, tag : String):
 	card_name.text = name
 	card_des.text = des
 	card_stat.text = tag
+func go_to_zero(delta  :float):
+	grid.position  = lerp(grid.position, Vector2(0,0), delta * 200)
+
+func leave(delta: float):
+	grid.position = lerp(grid.position, Vector2(0,-360), delta * 200)

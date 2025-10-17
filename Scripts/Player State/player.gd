@@ -20,7 +20,7 @@ var current_move_speed: float
 
 func _ready() -> void:
 	super._ready()
-	GameEvents._bullet_hit_enemies.connect(camera_shake)
+	GameEvents._shake_call.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
 	_entity_died.connect(_on_player_died)
@@ -79,4 +79,4 @@ func add_card_to_card_container(card: Card):
 	card_container.add_child(card)
 
 func camera_shake():
-	CamCom.apply_shake(player_cam,5,10)
+	CamCom.apply_shake(player_cam,3,5)

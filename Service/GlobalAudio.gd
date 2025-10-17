@@ -41,3 +41,7 @@ func change_music(new_music: String):
 			background_player.play()
 		)
 	
+func reverb(pitch_scale : float):
+	if background_player.stream:
+		var tween = create_tween()
+		tween.tween_property(background_player, "pitch_scale", pitch_scale, 0.2)

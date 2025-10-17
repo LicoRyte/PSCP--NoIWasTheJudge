@@ -1,21 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://coovwfthqgqem"]
+[gd_scene load_steps=9 format=3 uid="uid://coovwfthqgqem"]
 
 [ext_resource type="Script" uid="uid://bvm1ofav8t80u" path="res://Scripts/Gun & Bullet/bullet.gd" id="1_k7h5k"]
-[ext_resource type="Texture2D" uid="uid://bvhn4f0jwhxj1" path="res://Old_asset/sprites/coin.png" id="2_jm66p"]
+[ext_resource type="Texture2D" uid="uid://cubak3hiaoyne" path="res://pic/Art Asset/Bullet_Sprite.png" id="2_x3dh6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k7h5k"]
-atlas = ExtResource("2_jm66p")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3dh6"]
+atlas = ExtResource("2_x3dh6")
+region = Rect2(0, 0, 48, 8)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_v8qja"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5vqr"]
+atlas = ExtResource("2_x3dh6")
+region = Rect2(48, 0, 48, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pvef"]
+atlas = ExtResource("2_x3dh6")
+region = Rect2(96, 0, 48, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70oxx"]
+atlas = ExtResource("2_x3dh6")
+region = Rect2(144, 0, 48, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_er5qg"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k7h5k")
+"texture": SubResource("AtlasTexture_x3dh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5vqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pvef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70oxx")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 24.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7h5k"]
@@ -25,8 +46,9 @@ radius = 8.0
 script = ExtResource("1_k7h5k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
-sprite_frames = SubResource("SpriteFrames_v8qja")
+position = Vector2(-18, 0)
+sprite_frames = SubResource("SpriteFrames_er5qg")
+frame_progress = 0.8322382
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-88, 0)

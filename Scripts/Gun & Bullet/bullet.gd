@@ -2,6 +2,7 @@ extends Node2D
 class_name Bullet
 
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 
 var modifier :Array[BulletModifier] = [
@@ -18,10 +19,16 @@ var extra_damage = 0
 func _ready() -> void:
 	for i in GameEvents.current_mod:
 		add_mod(i)
+	animated_sprite_2d.play("default")
 	
 
 func _process(delta: float) -> void:
-	position += transform.x * base_bullet_speed * delta
+	position += transform.x * base_bullet_speed * delta * 1.5
+	
+	if base_bullet_speed < 0:
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 	for mod in modifier:
 		mod.on_active(self, delta)
 	bullet_duration -= delta
@@ -66,7 +73,7 @@ func remove_mod(mod: BulletModifier):
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Enemy:
-		GameEvents._bullet_hit_enemies.emit()
+		GameEvents._shake_call.emit()
 		GlobalAudio.fx("damage")
 		apply_hit(body)
 		queue_free()
