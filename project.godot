@@ -20,8 +20,8 @@ config/icon="res://icon.svg"
 GameEvents="*res://Service/GameEvents.gd"
 Damage="*res://Service/DamageSystem.gd"
 GlobalAudio="*res://Service/GlobalAudioService.tscn"
-CamCom="*res://Service/CameraComposer.gd"
 RewardSequence="*res://Service/RewardSequence.tscn"
+CamCom="*res://Service/CameraComposer.tscn"
 
 [display]
 
