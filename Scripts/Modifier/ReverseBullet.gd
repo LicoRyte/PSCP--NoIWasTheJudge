@@ -16,5 +16,5 @@ func on_spawn(bullet: Bullet):
 
 func on_active(bullet : Bullet, delta):
 	bullet.base_bullet_speed -= reverse_speed * delta  * 3
-	bullet.base_bullet_speed = clamp(bullet.base_bullet_speed, -bullet.base_bullet_speed, bullet.base_bullet_speed)
+	bullet.base_bullet_speed = clamp(bullet.base_bullet_speed, -1000, bullet.base_bullet_speed)
 	

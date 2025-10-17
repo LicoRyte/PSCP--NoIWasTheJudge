@@ -3,9 +3,9 @@ extends BulletModifier #Modifier ต้อง extends จาก BulletModifier �
 class_name FlameBullet #ตั้งชื่อ Scripts aka Class
 
 
-var burn_damage : float =  3
-var burn_tick : float = 0.35
-var duration : float = 5
+var burn_damage : float =  2
+var burn_tick : float = 0.5
+var duration : float = 2
 
 
 func _ready() -> void:
