@@ -28,7 +28,4 @@ func _enemy_is_died():
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:
 	if receiver == self:
 		CamCom.play_effect("fracture", receiver.global_position)
-		current_health -= amount
 		print_debug(current_health)
-		if health <= 0:
-			_enemy_is_died()
