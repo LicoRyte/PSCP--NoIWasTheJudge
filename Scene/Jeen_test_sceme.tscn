@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvr84a0ucs0qc"]
+[gd_scene load_steps=3 format=3 uid="uid://dvr84a0ucs0qc"]
 
+[ext_resource type="PackedScene" uid="uid://ub8xljt2csls" path="res://Scene/boss_chotibot.tscn" id="1_ofhem"]
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/Player.tscn" id="1_sdf0p"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Chotibot" parent="." instance=ExtResource("1_ofhem")]
+position = Vector2(-119, 157)
+max_health = 2025.0
 
 [node name="Player" parent="." instance=ExtResource("1_sdf0p")]

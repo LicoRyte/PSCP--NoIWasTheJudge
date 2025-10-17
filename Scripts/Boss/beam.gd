@@ -4,12 +4,14 @@ extends Node2D
 @onready var hitbox: Area2D = $Area2D
 @onready var beam: Sprite2D = $Sprite2D
 
-@export var delay_before_attack: float = 1.25
+@export var delay_before_attack: float = 1.5
 @export var fade_time: float = 0.5
-@export var beam_damage: float = 10.0
+@export var beam_damage: float = 30
 
 var state = "charge"
 var timer = 0.0
+
+var does_sound = false
 
 func _ready():
 	timer = delay_before_attack
@@ -27,14 +29,19 @@ func _process(delta):
 				beam.scale.y = 1.0
 				state = "attack"
 		"attack":
+			if not does_sound:
+				GlobalAudio.fx("beam")
+				does_sound = true
 			hitbox.monitoring = true
 			for i in hitbox.get_overlapping_bodies():
 				if i.has_meta("damaged"):
 					continue
-				if i == Player:
+				if i is Player:
 					i.set_meta("damaged", true)
 					Damage.deal_damage(beam_damage, i)
 			var tween = create_tween()
 			tween.tween_property(beam, "scale:y", 0.0, fade_time)
 			await tween.finished
 			queue_free()
+
+		

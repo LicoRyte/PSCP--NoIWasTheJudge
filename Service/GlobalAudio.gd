@@ -8,8 +8,9 @@ var effect = {
 	"test" : "put an audio files here",
 	"damage" : preload("uid://cp7eslbjgjbnc"),
 	"shoot": preload("uid://dnb2cwhwvqvnl"),
-	"killed" : preload("uid://c0jrj35iwfb5s")
-	
+	"killed" : preload("uid://c0jrj35iwfb5s"),
+	"beam" : preload("uid://ux5cda518ijw"),
+	"spear" : preload("uid://dn1s45xyt4o8e")
 }
 
 var music = {
