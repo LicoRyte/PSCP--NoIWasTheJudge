@@ -7,6 +7,7 @@ var player_chase = false
 
 func _ready() -> void:
 	super._ready()
+	_entity_died.connect(_enemy_is_died)
 	Damage._deal_damage.connect(_on_deal_damage)
 
 func _physics_process(_delta: float) -> void:
@@ -27,7 +28,7 @@ func _enemy_is_died():
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:
 	if receiver == self:
 		CamCom.play_effect("fracture", receiver.global_position)
-		health -= amount
-		print_debug(health)
+		current_health -= amount
+		print_debug(current_health)
 		if health <= 0:
 			_enemy_is_died()
