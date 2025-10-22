@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvr84a0ucs0qc"]
+[gd_scene load_steps=4 format=3 uid="uid://dvr84a0ucs0qc"]
 
 [ext_resource type="PackedScene" uid="uid://ub8xljt2csls" path="res://Scene/boss_chotibot.tscn" id="1_ofhem"]
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/Player.tscn" id="1_sdf0p"]
+[ext_resource type="PackedScene" uid="uid://iccjh5nvx5k7" path="res://Scene/health_staminaBar.tscn" id="3_ud10k"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -10,3 +11,9 @@ position = Vector2(-119, 157)
 max_health = 200.0
 
 [node name="Player" parent="." instance=ExtResource("1_sdf0p")]
+
+[node name="Control" parent="." instance=ExtResource("3_ud10k")]
+offset_left = 321.0
+offset_top = -57.0
+offset_right = 321.0
+offset_bottom = -57.0

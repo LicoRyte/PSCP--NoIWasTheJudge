@@ -4,9 +4,10 @@ extends Node
 """เป็นระบบเกมหลัก ใช้ update สถานะเกม ตรวจสอบ Win condition ควบคุมสิ่งที่เกิดขึ้น"""
 
 """Player Events"""
-signal _hpchanged(amount: float)
+signal _hpchanged(current_hp: float)
 signal _player_died
 signal _shake_call
+signal _staminachanged(current_stamina: float)
 
 """Card Events"""
 signal _card_append(card: Card)

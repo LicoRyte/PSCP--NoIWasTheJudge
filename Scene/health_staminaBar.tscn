@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://iccjh5nvx5k7"]
+[gd_scene load_steps=6 format=3 uid="uid://iccjh5nvx5k7"]
 
 [ext_resource type="Texture2D" uid="uid://w5w2u7cntoo3" path="res://art/bg.png" id="1_80816"]
 [ext_resource type="Texture2D" uid="uid://drcgsajx8nfne" path="res://art/red.png" id="2_13i2f"]
 [ext_resource type="Script" uid="uid://enrvnudjhypj" path="res://Scene/healthBar.gd" id="3_13i2f"]
 [ext_resource type="Texture2D" uid="uid://bq407b24ff0i4" path="res://art/blue.png" id="4_dr0th"]
+[ext_resource type="Script" uid="uid://c223pid3r2p13" path="res://Scene/staminabar.gd" id="5_13i2f"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -14,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+[node name="healthbar" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -29,7 +30,7 @@ texture_under = ExtResource("1_80816")
 texture_progress = ExtResource("2_13i2f")
 script = ExtResource("3_13i2f")
 
-[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+[node name="staminabar" type="TextureProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -45,3 +46,5 @@ grow_vertical = 2
 value = 70.0
 texture_under = ExtResource("1_80816")
 texture_progress = ExtResource("4_dr0th")
+script = ExtResource("5_13i2f")
+max_stamina = null
