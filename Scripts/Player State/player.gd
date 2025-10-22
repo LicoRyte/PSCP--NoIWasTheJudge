@@ -80,3 +80,9 @@ func add_card_to_card_container(card: Card):
 
 func camera_shake():
 	CamCom.apply_shake(player_cam,3,5)
+
+func recieve_damage(amount: float, target: Entity, source : Node = null) -> void:
+	super(amount, target, source)
+	CamCom.play_effect("fracture", target.global_position)
+	camera_shake()
+	GlobalAudio.fx("damage")

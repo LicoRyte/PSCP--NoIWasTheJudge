@@ -67,7 +67,7 @@ func _UpdateEffect(delta: float):
 
 		if HasAttributes(name, "Tick"):
 			effect["Timer" ] += delta
-			
+
 			if effect["Timer"] >= effect["Tick"]:
 				effect["Timer"] -= effect["Tick"]
 				recieve_damage(effect['Damage'], self)
@@ -82,7 +82,7 @@ func _CalculateMultiplier():
 	total_defense_mul = 0
 	total_dmg_mul = 0
 	total_speed_mul = 0
-	
+
 	for e in status_effect.values():
 		total_dmg_mul += e.get("Damage_Multiplier", 0.0)
 		total_defense_mul += e.get("Defense", 0.0)

@@ -72,7 +72,7 @@ func remove_mod(mod: BulletModifier):
 	
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Enemy:
+	if body is Enemy or body is Chotibot:
 		GameEvents._shake_call.emit()
 		GlobalAudio.fx("damage")
 		apply_hit(body)
