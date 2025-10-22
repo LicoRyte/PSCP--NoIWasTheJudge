@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cp8404a2y6pjk"]
 
 [ext_resource type="Script" uid="uid://bp4dxws7kynho" path="res://Scripts/Card Scripts/TestCard.gd" id="1_owals"]
-[ext_resource type="Texture2D" uid="uid://cfqk73bfcwysk" path="res://pic/Card/SpicySteak.png" id="2_owals"]
+[ext_resource type="Texture2D" uid="uid://cfqk73bfcwysk" path="res://Asset/pic/Card/SpicySteak.png" id="2_owals"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q405b"]
 

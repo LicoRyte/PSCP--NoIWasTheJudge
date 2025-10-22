@@ -17,11 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameEvents="*res://Service/GameEvents.gd"
-Damage="*res://Service/DamageSystem.gd"
-GlobalAudio="*res://Service/GlobalAudioService.tscn"
-RewardSequence="*res://Service/RewardSequence.tscn"
-CamCom="*res://Service/CameraComposer.tscn"
+GameEvents="*res://Scripts/Service_scripts/GameEvents.gd"
+Damage="*res://Scripts/Service_scripts/DamageSystem.gd"
+GlobalAudio="*res://Scene/Service_scene/GlobalAudioService.tscn"
+RewardSequence="*res://Scene/Service_scene/RewardSequence.tscn"
+CamCom="*res://Scene/Service_scene/CameraComposer.tscn"
 
 [display]
 

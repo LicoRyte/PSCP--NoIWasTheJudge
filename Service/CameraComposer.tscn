@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://3jj06rjeiyol"]
-
-[ext_resource type="Script" uid="uid://bw7r3smd65p64" path="res://Service/CameraComposer.gd" id="1_7272t"]
-
-[node name="CameraComposer" type="Node2D"]
-script = ExtResource("1_7272t")

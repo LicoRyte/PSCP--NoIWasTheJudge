@@ -1,0 +1,194 @@
+[gd_scene load_steps=15 format=3 uid="uid://ub8xljt2csls"]
+
+[ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss_scene/Chotibot.gd" id="1_3vx4m"]
+[ext_resource type="Texture2D" uid="uid://cnkntt5r6x4i2" path="res://Asset/pic/Art Asset/handleft.png" id="2_mld1g"]
+[ext_resource type="Texture2D" uid="uid://dpay6hnjt3bnb" path="res://Asset/pic/Art Asset/GuideHEad.png" id="3_n806f"]
+[ext_resource type="Texture2D" uid="uid://dvorq868m5cim" path="res://Asset/pic/Art Asset/handright.png" id="4_170nd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6xj8"]
+size = Vector2(113, 165)
+
+[sub_resource type="Animation" id="Animation_ainwb"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/handright:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.0000001),
+"update": 0,
+"values": [Vector2(-14.999996, 75), Vector2(-80, 32.00001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/handleft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1.0000004),
+"update": 0,
+"values": [Vector2(34, 31.000011), Vector2(84, 73)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1.0000001),
+"update": 0,
+"values": [0.0, 0.26208445]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_jrp62"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/handright:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-14.999996, 75)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/handleft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 31.000011)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/head:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jrp62"]
+_data = {
+&"Idle": SubResource("Animation_ainwb"),
+&"RESET": SubResource("Animation_jrp62")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrp62"]
+atlas = ExtResource("2_mld1g")
+region = Rect2(0, 0, 433, 577)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0np8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrp62")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l2h8"]
+atlas = ExtResource("3_n806f")
+region = Rect2(0, 0, 470, 388)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ainwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7l2h8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ainwb"]
+atlas = ExtResource("4_170nd")
+region = Rect2(0, 0, 433, 577)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jrp62"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ainwb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Chotibot" type="CharacterBody2D"]
+script = ExtResource("1_3vx4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -16)
+shape = SubResource("RectangleShape2D_i6xj8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jrp62")
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="handleft" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(34, 31.000011)
+scale = Vector2(0.30369517, 0.24696709)
+sprite_frames = SubResource("SpriteFrames_0np8t")
+
+[node name="head" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-13.5, -9.999985)
+scale = Vector2(0.47021276, 0.48969072)
+sprite_frames = SubResource("SpriteFrames_ainwb")
+flip_h = true
+
+[node name="handright" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-14.999996, 75)
+scale = Vector2(0.30369517, 0.24696709)
+sprite_frames = SubResource("SpriteFrames_jrp62")
