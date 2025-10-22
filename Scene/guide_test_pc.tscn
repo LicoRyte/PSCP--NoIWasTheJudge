@@ -18,8 +18,5 @@ color = Color(0.4040268, 0.4040268, 0.4040268, 1)
 [node name="Player" parent="." instance=ExtResource("1_1n7ll")]
 position = Vector2(-287, -127)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
-
 [node name="enemy" parent="." instance=ExtResource("2_4v0kp")]
 position = Vector2(187, -47)
