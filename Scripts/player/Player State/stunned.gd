@@ -4,7 +4,7 @@ extends State
 @export var run_state: State
 @export var jump_state: State
 @export var killed_state: State
-
+@export var dash_state: State
 
 func enter():
 	pass

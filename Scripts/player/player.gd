@@ -7,16 +7,23 @@ class_name Player
 @onready var card_container: Node = $CardContainer
 @onready var player_cam: Camera2D = $Camera2D
 
+"""dash component"""
+@export var dash_speed: float = 750.0
+@export var dash_duration: float = 0.18
+@export var dash_cooldown: float = 0.35
 
-var gun : Gun
-
-var anims : AnimatedSprite2D
-
-
+"""player component"""
 @export var max_stamina: float = 100.0
 @export var move_speed: float = 200
+
+var last_input_direction := Vector2(0,0)
+var is_dashing: bool = false
+var can_dash: bool = true
+var _dash_cd_left: float = 0.0
 var current_stamina: float
 var current_move_speed: float
+var gun : Gun
+var anims : AnimatedSprite2D
 
 func _ready() -> void:
 	super._ready()
@@ -34,6 +41,15 @@ func _process(delta: float) -> void:
 	#print_debug(GameEvents.current_mod)
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
+	
+	"""นับเวลา dash cooldown"""
+	if not can_dash:
+		_dash_cd_left -= delta
+		if _dash_cd_left <= 0.0:
+			_dash_cd_left = 0.0
+			can_dash = true
+			
+
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 	state_machine_at.process_physics(delta)
@@ -55,7 +71,6 @@ func stamina_request(amount: float) -> bool:
 func change_stamina(amount: float):
 	current_stamina += amount
 	current_stamina = clamp(current_stamina, 0, max_stamina)
-
 
 
 """Signal-Based Function"""

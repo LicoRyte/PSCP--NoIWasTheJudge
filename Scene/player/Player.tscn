@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=45 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/player/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Scripts/Base/state_machine.gd" id="2_3eeal"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c1iw6g24hvfx7" path="res://Scripts/player/Player State/stunned.gd" id="7_3pik8"]
 [ext_resource type="Script" uid="uid://31iow1tjnx7a" path="res://Scripts/player/Player State/shoot.gd" id="8_adgam"]
 [ext_resource type="Script" uid="uid://drwmlclw1wapj" path="res://Scripts/player/Player State/punch.gd" id="9_g1hv4"]
+[ext_resource type="Script" uid="uid://b7whr2y1petr7" path="res://Scripts/player/Player State/dash.gd" id="10_fq3oi"]
 [ext_resource type="Script" uid="uid://bmbaooq2l5jbh" path="res://Scripts/player/Player State/unarm.gd" id="10_liw1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8lcb"]
@@ -40,6 +41,30 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_c7h21"]
 atlas = ExtResource("2_jriwm")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hm8o0"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbnkk"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u0m1"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuydm"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6k38i"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1240t"]
+atlas = ExtResource("2_jriwm")
+region = Rect2(192, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xqgwv"]
 atlas = ExtResource("2_jriwm")
@@ -130,6 +155,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hm8o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbnkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u0m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuydm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6k38i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1240t")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_xqgwv")
 }],
 "loop": true,
@@ -212,8 +260,10 @@ texture = SubResource("GradientTexture2D_inyuv")
 position = Vector2(0, 1)
 scale = Vector2(1.8125, 1.8125)
 sprite_frames = SubResource("SpriteFrames_j8lcb")
-animation = &"jump"
+animation = &"dash"
 autoplay = "Idle"
+frame = 5
+frame_progress = 1.0
 
 [node name="gun" parent="AnimatedSprite2D" instance=ExtResource("2_7dww1")]
 
@@ -221,40 +271,53 @@ autoplay = "Idle"
 script = ExtResource("2_3eeal")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("run_state", "jump_state", "killed_state", "stunned_state")]
+[node name="Idle" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("run_state", "jump_state", "killed_state", "stunned_state", "dash_state")]
 script = ExtResource("3_mud5u")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
 stunned_state = NodePath("../Stunned")
+dash_state = NodePath("../Dash")
 
-[node name="Run" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "jump_state", "killed_state", "stunned_state")]
+[node name="Run" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "jump_state", "killed_state", "stunned_state", "dash_state")]
 script = ExtResource("3_jvxg0")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
 stunned_state = NodePath("../Stunned")
+dash_state = NodePath("../Dash")
 
-[node name="Jump" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "killed_state", "stunned_state")]
+[node name="Jump" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "killed_state", "stunned_state", "dash_state")]
 script = ExtResource("5_fvocf")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 killed_state = NodePath("../Killed")
 stunned_state = NodePath("../Stunned")
+dash_state = NodePath("../Dash")
 
-[node name="Killed" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "stunned_state")]
+[node name="Killed" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "stunned_state", "dash_state")]
 script = ExtResource("6_pmp2f")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 stunned_state = NodePath("../Stunned")
+dash_state = NodePath("../Dash")
 
-[node name="Stunned" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state")]
+[node name="Stunned" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "dash_state")]
 script = ExtResource("7_3pik8")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
+dash_state = NodePath("../Dash")
+
+[node name="Dash" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "stunned")]
+script = ExtResource("10_fq3oi")
+idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+jump_state = NodePath("../Jump")
+killed_state = NodePath("../Killed")
+stunned = NodePath("../Stunned")
 
 [node name="StateMachine_AT" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")

@@ -1,10 +1,10 @@
 extends State
 
-
 @export var idle_state : State
 @export var run_state: State
 @export var killed_state: State
 @export var stunned_state: State
+@export var dash_state: State
 
 var acceleration = 60
 var move_speed = 200.0
@@ -49,10 +49,15 @@ func process_physics(delta: float) -> State:
 	player.velocity = lerp(player.velocity, input_direction * player.current_move_speed, delta * acceleration)
 	player.move_and_slide()
 	apply_jump_physics(delta)
-	if height_of_jump == 0.0 and input_direction:
+	if not height_of_jump and input_direction:
 		return run_state
-	if height_of_jump == 0.0 and not input_direction:
+	if not height_of_jump and not input_direction:
 		return idle_state
+	
+	"""dash"""
+	if Input.is_action_just_pressed("Dash") and player.can_dash:
+		return dash_state
+	
 	if player.is_died:
 		return killed_state
 	return null
