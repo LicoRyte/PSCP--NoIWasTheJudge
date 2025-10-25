@@ -3,6 +3,7 @@ class_name Entity
 """Base Class ของทุกๆ สิ่งๆ ที่สามารถรับ damage รับ status effect ได้"""
 
 signal _entity_died
+signal _object_died
 
 var status_effect = {
 }

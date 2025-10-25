@@ -10,17 +10,19 @@ signal _shake_call
 signal _staminachanged(current_stamina: float)
 
 """Card Events"""
-signal _card_append(card: Card)
+signal _card_append(card: CardResource)
 signal _card_description(card_name : String, card_description : String, card_tag: String)
 signal _reward_sequence
+
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()
 ]
-func card_append(card: Card):
+
+func card_append(card: CardResource):
 	_card_append.emit(card)
 
-func update_description(card_name: String, card_description: String):
-	_card_description.emit(card_name, card_description)
+func update_description(card_name: String, card_description: String, card_tag : String):
+	_card_description.emit(card_name, card_description, card_tag)
 
 """Bullet Events"""
 func add_bullet_mod(mod : BulletModifier) -> void:

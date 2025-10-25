@@ -11,6 +11,7 @@ var bullet_scripts: Array[BulletModifier] = [
 @export var card_name : String
 @export var card_description : String
 @export var stat_change : String
+@export var card_illustration : Texture2D
 
 var applied = false
 

@@ -1,18 +1,20 @@
-[gd_scene load_steps=45 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=47 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/player/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Scripts/Base/state_machine.gd" id="2_3eeal"]
+[ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="2_3u0m1"]
 [ext_resource type="PackedScene" uid="uid://cpr40bw0gbsp5" path="res://Scene/Gun & Bullet/gun.tscn" id="2_7dww1"]
+[ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_hm8o0"]
 [ext_resource type="Texture2D" uid="uid://sr4pf1fejscy" path="res://Asset/Old_asset/sprites/knight.png" id="2_jriwm"]
+[ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="2_kbnkk"]
+[ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="2_tuydm"]
 [ext_resource type="Script" uid="uid://d25it6lak1mfi" path="res://Scripts/player/Player State/run.gd" id="3_jvxg0"]
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/player/Player State/idle.gd" id="3_mud5u"]
 [ext_resource type="Script" uid="uid://b2phmbicu3qei" path="res://Scripts/player/Player State/jump.gd" id="5_fvocf"]
 [ext_resource type="Script" uid="uid://b10f5seiqoync" path="res://Scripts/player/Player State/killed.gd" id="6_pmp2f"]
 [ext_resource type="Script" uid="uid://c1iw6g24hvfx7" path="res://Scripts/player/Player State/stunned.gd" id="7_3pik8"]
-[ext_resource type="Script" uid="uid://31iow1tjnx7a" path="res://Scripts/player/Player State/shoot.gd" id="8_adgam"]
-[ext_resource type="Script" uid="uid://drwmlclw1wapj" path="res://Scripts/player/Player State/punch.gd" id="9_g1hv4"]
 [ext_resource type="Script" uid="uid://b7whr2y1petr7" path="res://Scripts/player/Player State/dash.gd" id="10_fq3oi"]
-[ext_resource type="Script" uid="uid://bmbaooq2l5jbh" path="res://Scripts/player/Player State/unarm.gd" id="10_liw1m"]
+[ext_resource type="Script" uid="uid://ceuhx3dreapte" path="res://Scripts/Base/CardComponent.gd" id="15_kbnkk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8lcb"]
 size = Vector2(24, 35)
@@ -238,17 +240,38 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 3
 script = ExtResource("1_inyuv")
 max_stamina = 75.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="StatusComponent" type="Node" parent="."]
+script = ExtResource("2_tuydm")
+metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
+
+[node name="StatComponent" type="Node" parent="."]
+script = ExtResource("2_3u0m1")
+metadata/_custom_type_script = "uid://d3nyobw1vdebu"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_kbnkk")
+max_health = 100.0
+metadata/_custom_type_script = "uid://d6qnnarpvn53"
+
+[node name="CardContainerComponent" type="Node" parent="."]
+script = ExtResource("15_kbnkk")
+metadata/_custom_type_script = "uid://ceuhx3dreapte"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5.5)
 shape = SubResource("RectangleShape2D_j8lcb")
+script = ExtResource("2_hm8o0")
+metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.25882354)
@@ -318,31 +341,3 @@ run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
 stunned = NodePath("../Stunned")
-
-[node name="StateMachine_AT" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
-script = ExtResource("2_3eeal")
-starting_state = NodePath("Unarm")
-
-[node name="Shoot" type="Node" parent="StateMachine_AT" node_paths=PackedStringArray("punch_state", "unarm_state")]
-script = ExtResource("8_adgam")
-punch_state = NodePath("../Punch")
-unarm_state = NodePath("../Unarm")
-
-[node name="Punch" type="Node" parent="StateMachine_AT" node_paths=PackedStringArray("shoot_state", "unarm_state")]
-script = ExtResource("9_g1hv4")
-shoot_state = NodePath("../Shoot")
-unarm_state = NodePath("../Unarm")
-
-[node name="Unarm" type="Node" parent="StateMachine_AT" node_paths=PackedStringArray("punch_state", "shoot_state")]
-script = ExtResource("10_liw1m")
-punch_state = NodePath("../Punch")
-shoot_state = NodePath("../Shoot")
-
-[node name="ranged_root" type="Node2D" parent="."]
-
-[node name="melee_root" type="Node2D" parent="."]
-
-[node name="CardContainer" type="Node" parent="."]
-
-[connection signal="child_entered_tree" from="CardContainer" to="." method="_on_card_container_child_entered_tree"]
-[connection signal="child_exiting_tree" from="CardContainer" to="." method="_on_card_container_child_exiting_tree"]

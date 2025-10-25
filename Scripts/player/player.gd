@@ -2,7 +2,6 @@ extends Entity
 class_name Player
 
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
-@onready var state_machine_at: StateMachine = $StateMachine_AT
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var card_container: Node = $CardContainer
 @onready var player_cam: Camera2D = $Camera2D
@@ -30,15 +29,14 @@ func _ready() -> void:
 	GameEvents._shake_call.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
+	
 	_entity_died.connect(_on_player_died)
-	GameEvents._card_append.connect(add_card_to_card_container)
+	
 	state_machine_mm.initialize(self)
-	state_machine_at.initialize(self)
 	GameEvents._hpchanged.emit(current_health)
 	
 func _process(delta: float) -> void:
 	GameEvents._hpchanged.emit(current_health)
-	#print_debug(GameEvents.current_mod)
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
 	
@@ -52,9 +50,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
-	state_machine_at.process_physics(delta)
 func _unhandled_input(event: InputEvent) -> void:
-	state_machine_mm.process_events(event)
 	state_machine_mm.process_events(event)
 
 

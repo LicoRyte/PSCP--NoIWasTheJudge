@@ -1,13 +1,22 @@
 extends Node
 
-"""ระบบ damage"""
-"""วิธีการเรียกใช้คือ Damage.deal_damage(ดาเมจ, object ที่ต้องการทำดาเมจใส่)"""
-"""สิ่งที่ต้องการจะให้รับดาเมจได้ ควรจะมี Damage._deal_damage.connect(ฟังก์ชั่นรับดามจ) กำกับไว้ที่ ready() ด้วย  (ดูตัอย่างจาก Player)"""
 
 signal _deal_damage(amount: float, reciever: Node2D, source: Node)
 signal _do_stun(duration: float, reciever: Node2D)
-func deal_damage(amount: float, reciever: Node2D, source: Node= null):
-	_deal_damage.emit(amount, reciever, source)
+
+func deal_damage(damage : float, detect_area : HitboxComponent, crit_rate: float = 0, crit_mul : float = 0):
+	var att_pack = Attack.new()
+	att_pack.damage = damage
+	att_pack.crit_chance = crit_rate
+	att_pack.crit_multiplier = crit_mul
+	att_pack.roll()
+	if detect_area.has_method("detect_attack"):
+		detect_area.detect_attack(att_pack)
+
+func deal_effect(effect : Effect, detect_area: CollisionShape2D):	
+	if detect_area.has_method("detect_effect"):
+		detect_area.detect_effect(effect)
+
 
 func do_stun(duration: float, reciever: Node2D):
 	_do_stun.emit(duration, reciever)

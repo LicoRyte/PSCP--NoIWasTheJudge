@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://b35l4f10a5hx4"]
+[gd_scene load_steps=15 format=3 uid="uid://b35l4f10a5hx4"]
 
 [ext_resource type="Script" uid="uid://ngk5r511xx72" path="res://Scripts/enemy/enemy.gd" id="1_a2w56"]
 [ext_resource type="Texture2D" uid="uid://r8nec87ea0xj" path="res://Asset/Old_asset/sprites/slime_purple.png" id="1_ksmlx"]
+[ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="3_y0sql"]
+[ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="4_7daf2"]
+[ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="5_62j1s"]
+[ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="6_7daf2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7daf2"]
 atlas = ExtResource("1_ksmlx")
@@ -79,6 +83,23 @@ debug_color = Color(0.57551855, 0.45502687, 0.82508385, 0.41960785)
 position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_a2w56")
 debug_color = Color(0.95571464, 1.4439225e-06, 0.54431456, 0.41960785)
+script = ExtResource("3_y0sql")
+metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_7daf2")
+max_health = 100.0
+metadata/_custom_type_script = "uid://d6qnnarpvn53"
+
+[node name="StatComponent" type="Node" parent="."]
+script = ExtResource("5_62j1s")
+base_defense = 1.0
+base_speed = 1.0
+metadata/_custom_type_script = "uid://d3nyobw1vdebu"
+
+[node name="StatusComponent" type="Node" parent="."]
+script = ExtResource("6_7daf2")
+metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

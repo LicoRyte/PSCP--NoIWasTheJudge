@@ -1,13 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cod70jap7w0p6"]
+[gd_scene load_steps=8 format=3 uid="uid://cod70jap7w0p6"]
 
 [ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Scripts/Service_scripts/CardRandomizer.gd" id="1_s0e2e"]
 [ext_resource type="FontFile" uid="uid://3x8dmhqmf8d8" path="res://Asset/font/Roundberly.ttf" id="2_gr52n"]
 [ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://Asset/font/Tiny5-Regular.ttf" id="3_gr52n"]
+[ext_resource type="Script" uid="uid://12lhb3fecep2" path="res://Scripts/Base/CardAreaComponent.gd" id="4_021o5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_021o5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytxbc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0uhf"]
 
 [node name="CardRandomizer" type="Node2D"]
 script = ExtResource("1_s0e2e")
 
 [node name="SelectorUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="SelectorUI"]
+offset_right = 641.0
+offset_bottom = 361.0
+mouse_filter = 2
+color = Color(0.015686275, 0.015686275, 0.11372549, 0.8235294)
 
 [node name="Control" type="Control" parent="SelectorUI"]
 layout_mode = 3
@@ -87,8 +101,37 @@ autowrap_mode = 2
 [node name="slot1" type="Node2D" parent="SelectorUI/CardGrid"]
 position = Vector2(185, 150)
 
+[node name="CardAreaComponent" type="Area2D" parent="SelectorUI/CardGrid/slot1"]
+script = ExtResource("4_021o5")
+metadata/_custom_type_script = "uid://12lhb3fecep2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectorUI/CardGrid/slot1/CardAreaComponent"]
+shape = SubResource("RectangleShape2D_021o5")
+
+[node name="Sprite2D" type="Sprite2D" parent="SelectorUI/CardGrid/slot1/CardAreaComponent"]
+
 [node name="slot2" type="Node2D" parent="SelectorUI/CardGrid"]
 position = Vector2(320, 150)
 
+[node name="CardAreaComponent" type="Area2D" parent="SelectorUI/CardGrid/slot2"]
+script = ExtResource("4_021o5")
+metadata/_custom_type_script = "uid://12lhb3fecep2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectorUI/CardGrid/slot2/CardAreaComponent"]
+shape = SubResource("RectangleShape2D_ytxbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="SelectorUI/CardGrid/slot2/CardAreaComponent"]
+
 [node name="slot3" type="Node2D" parent="SelectorUI/CardGrid"]
 position = Vector2(455, 150)
+
+[node name="CardAreaComponent" type="Area2D" parent="SelectorUI/CardGrid/slot3"]
+script = ExtResource("4_021o5")
+metadata/_custom_type_script = "uid://12lhb3fecep2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectorUI/CardGrid/slot3/CardAreaComponent"]
+shape = SubResource("RectangleShape2D_b0uhf")
+
+[node name="Sprite2D" type="Sprite2D" parent="SelectorUI/CardGrid/slot3/CardAreaComponent"]
+
+[connection signal="input_event" from="SelectorUI/CardGrid/slot1/CardAreaComponent" to="SelectorUI/CardGrid/slot1/CardAreaComponent" method="_on_input_event"]
