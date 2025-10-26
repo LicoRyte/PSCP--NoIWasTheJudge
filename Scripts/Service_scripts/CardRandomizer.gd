@@ -10,10 +10,14 @@ extends Node2D
 signal _game_continue
 
 var current_card_on_screen = []
+
+
 var card_storage = [
 	NewBackfire.new(),
 	NewSpicySteak.new()
 ]
+
+
 var blacklist = []
 
 enum sequence_flow { CONTINUE, SELECTION, BEFORE_CONTINUE }

@@ -29,25 +29,20 @@ func _ready() -> void:
 	GameEvents._shake_call.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
-	
 	_entity_died.connect(_on_player_died)
-	
 	state_machine_mm.initialize(self)
 	GameEvents._hpchanged.emit(current_health)
-	
+
 func _process(delta: float) -> void:
 	GameEvents._hpchanged.emit(current_health)
 	super._process(delta)
 	current_move_speed = move_speed * current_speed_multiplier
-	
 	"""นับเวลา dash cooldown"""
 	if not can_dash:
 		_dash_cd_left -= delta
 		if _dash_cd_left <= 0.0:
 			_dash_cd_left = 0.0
 			can_dash = true
-			
-
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 func _unhandled_input(event: InputEvent) -> void:
@@ -74,26 +69,10 @@ func _on_player_died():
 	GameEvents._player_died.emit()
 	is_died = true
 
-func _on_card_container_child_entered_tree(card: Card) -> void:
-	print_debug(card)
-	card.player_stat_change(self)
-	card.card_added()
-	card.gun_stat_change(gun)
-
-func _on_card_container_child_exiting_tree(card: Card) -> void:
-	card.player_stat_revert(self)
-	#card.card_removed()
-
-func add_card_to_card_container(card: Card):
-	print("Should")
-	print(card)
-	card_container.add_child(card)
-
 func camera_shake():
 	CamCom.apply_shake(player_cam,3,5)
 
 func recieve_damage(amount: float, target: Entity, source : Node = null) -> void:
-	super(amount, target, source)
 	CamCom.play_effect("fracture", target.global_position)
 	camera_shake()
 	GlobalAudio.fx("damage")

@@ -5,6 +5,7 @@ var added_health:  float = 15
 const BACKFIRE = preload("uid://bj0uc0poslc66")
 
 
+
 func _init() -> void:
 	_set_name("Backfire")
 	_set_description("Bullets will travel the opposite way")

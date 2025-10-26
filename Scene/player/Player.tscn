@@ -256,6 +256,8 @@ metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 
 [node name="StatComponent" type="Node" parent="."]
 script = ExtResource("2_3u0m1")
+base_defense = 2.0
+base_speed = 2.0
 metadata/_custom_type_script = "uid://d3nyobw1vdebu"
 
 [node name="HealthComponent" type="Node" parent="."]

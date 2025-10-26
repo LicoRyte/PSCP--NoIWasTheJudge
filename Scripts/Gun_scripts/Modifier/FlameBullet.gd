@@ -12,7 +12,7 @@ func _ready() -> void:
 	pass
 
 func on_spawn(bullet: Bullet):
-	bullet.extra_damage += 2
+	pass
 
 func on_hit(bullet, target, bullet_attributes):
 	var eff = Effect.new()

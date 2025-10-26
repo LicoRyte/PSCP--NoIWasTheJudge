@@ -12,18 +12,18 @@ func _ready() -> void:
 
 
 func receive_damage(attack : Attack, is_magic : bool = false):
-	#var actual_damage = attack.get_damage()
-	var actual_attack = attack.get_damage()
-	print(actual_attack)
-
+	var actual_attack = attack.get_damage() #5
+	
 	if not is_magic:
-		actual_attack = stat_component.calculate_output(attack).get_damage()
-
-	current_health -= actual_attack
+		actual_attack = stat_component.calculate_output(attack).get_damage()  #1
+		
+	current_health -= actual_attack #100 - 1 = 99
 	print(current_health)
 	if current_health <= 0:
 		if get_parent().has_signal("_object_died"):
 			get_parent()._object_died.emit()
+
+
 
 func _add_max_health(amount : float, increase_current: bool = false):
 	max_health += amount

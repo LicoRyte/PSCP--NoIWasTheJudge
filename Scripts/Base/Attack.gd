@@ -9,7 +9,6 @@ var does_crit : bool = false
 func get_damage():
 	return damage
 
-
 func roll():
 	var rand = randf_range(0,100)
 	if rand <= crit_chance:

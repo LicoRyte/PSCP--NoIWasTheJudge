@@ -30,54 +30,11 @@ var total_speed_mul: float
 
 func _ready() -> void:
 	current_health = max_health
-	Damage._deal_damage.connect(recieve_damage)
-	
-	#Status Effect
-	Damage._inflict_flame.connect(Status_Append)
-	Damage._inflict_freeze.connect(Status_Append)
 
 func _process(delta: float) -> void:
 	_UpdateMultiplier()
-	_UpdateEffect(delta)
 	_CalculateMultiplier()
 
-func recieve_damage(amount: float, target: Entity, source : Node = null) -> void:
-	if target == self:
-		current_health -= amount
-		print(current_health)
-	current_health = clamp(current_health, 0, max_health)
-	if current_health <= 0:
-		_entity_died.emit()
-
-func HasEffect(effect: String) -> bool:
-	return status_effect.has(effect)
-
-func HasAttributes(effect: String, att: String) -> bool:
-	return status_effect[effect].has(att)
-
-func Status_Append(effect_name: String, attributes: Dictionary, reciever: Entity):
-	if reciever != self or HasEffect(effect_name):
-		return
-	status_effect[effect_name] = attributes
-	status_effect[effect_name]["Timer"] = 0.0
-
-func _UpdateEffect(delta: float):
-	for name in status_effect.keys():
-		var effect = status_effect[name]
-		effect["Duration"] -= delta
-
-		if HasAttributes(name, "Tick"):
-			effect["Timer" ] += delta
-
-			if effect["Timer"] >= effect["Tick"]:
-				effect["Timer"] -= effect["Tick"]
-				recieve_damage(effect['Damage'], self)
-
-		if effect["Duration"] <= 0:
-			status_effect.erase(name)
-			continue
-
-		status_effect[name] = effect
 
 func _CalculateMultiplier():
 	total_defense_mul = 0

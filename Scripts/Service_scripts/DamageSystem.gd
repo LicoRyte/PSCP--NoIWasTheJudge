@@ -13,13 +13,12 @@ func deal_damage(damage : float, detect_area : HitboxComponent, crit_rate: float
 	if detect_area.has_method("detect_attack"):
 		detect_area.detect_attack(att_pack)
 
-func deal_effect(effect : Effect, body: Node2D):
-	print("pass rental")
+func deal_effect(effect : Effect, body: Node2D): #Enemy  
 	var detect_area = Common.get_component(body, HitboxComponent)
 	if not detect_area:
 		return
 	if detect_area.has_method("detect_effect"):
-		detect_area.detect_effect(effect)
+		detect_area.detect_effect(effect) 
 
 
 func do_stun(duration: float, reciever: Node2D):
