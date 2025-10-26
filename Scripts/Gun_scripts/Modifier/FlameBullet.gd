@@ -15,8 +15,12 @@ func on_spawn(bullet: Bullet):
 	bullet.extra_damage += 2
 
 func on_hit(bullet, target, bullet_attributes):
-	#Append function เข้าไปใน Array ใน bullet.gd
+	var eff = Effect.new()
+	eff.damage = burn_damage
+	eff.tick_value = burn_tick
+	eff.duration = duration
+	eff.inflict(target)
 	bullet_attributes["function"].append(
-		Callable(Damage, "inflict_flame").bind(burn_damage, duration, burn_tick, target)
+		Callable(Damage, "deal_effect").bind(eff , target)
 	)
 	return bullet_attributes

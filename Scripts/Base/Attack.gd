@@ -7,7 +7,7 @@ var crit_multiplier: float
 var does_crit : bool = false
 
 func get_damage():
-	return damage	
+	return damage
 
 
 func roll():

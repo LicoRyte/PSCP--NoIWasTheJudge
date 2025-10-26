@@ -11,7 +11,8 @@ signal _game_continue
 
 var current_card_on_screen = []
 var card_storage = [
-	NewBackfire.new()
+	NewBackfire.new(),
+	NewSpicySteak.new()
 ]
 var blacklist = []
 
@@ -33,8 +34,9 @@ func _process(delta: float) -> void:
 			_game_continue.emit()
 		sequence_flow.SELECTION:
 			show_card(card_storage)
+			to(sequence_flow.BEFORE_CONTINUE)
 		sequence_flow.BEFORE_CONTINUE:
-			to(sequence_flow.CONTINUE)
+			pass
 
 
 func reward_sequence():
