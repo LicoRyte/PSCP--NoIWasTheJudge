@@ -14,8 +14,9 @@ func detect_attack(attack: Attack):
 	if is_immune or not health_component:
 		return
 	health_component.receive_damage(attack)
+	CamCom.play_effect("fracture", global_position)
 
 func detect_effect(effect: Effect): 
 	if is_immune or not status_component:
 		return
-	status_component.addEffect(effect) 
+	status_component.addEffect(effect)

@@ -3,8 +3,8 @@ class_name Chotibot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 enum BossStage {  
-	IDLE,      
-	BULLET,  
+	IDLE,
+	BULLET,
 	BEAM,
 	STATIC,
 	DEFEATED
@@ -40,17 +40,15 @@ var destroyed_effect_cooldown = 0.17
 var current_time = 0.0
 
 func _ready() -> void:
-	super._ready()
 	animation_player.play("Idle")
+	connect("_object_died", defeated)
 	
 
 func _process(delta: float) -> void:
-	super._process(delta)
 	if Input.is_action_just_pressed("DevTest"):
 		to(BossStage.BEAM)
 	
-	if current_health <= 0:
-		to(BossStage.DEFEATED)
+
 	match current_state:
 		
 		BossStage.BEAM:
@@ -99,3 +97,6 @@ func _process(delta: float) -> void:
 
 func to(new_state : BossStage):
 	current_state = new_state
+
+func defeated():
+	to(BossStage.DEFEATED)

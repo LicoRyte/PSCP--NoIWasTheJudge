@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://w2f7u6w6i24r"]
+[gd_scene load_steps=5 format=3 uid="uid://w2f7u6w6i24r"]
 
 [ext_resource type="Script" uid="uid://qfq0eqsqmdri" path="res://Scripts/enemy/guide_test_pc.gd" id="1_jn21w"]
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/player/Player.tscn" id="2_jl3c4"]
 [ext_resource type="PackedScene" uid="uid://b35l4f10a5hx4" path="res://Scene/enemy/enemy.tscn" id="3_7bq5j"]
+[ext_resource type="PackedScene" uid="uid://ub8xljt2csls" path="res://Scene/Boss_scene/boss_chotibot.tscn" id="4_jl3c4"]
 
 [node name="guide_test_pc" type="Node2D"]
 script = ExtResource("1_jn21w")
@@ -20,3 +21,6 @@ position = Vector2(-287, -127)
 
 [node name="enemy" parent="." instance=ExtResource("3_7bq5j")]
 position = Vector2(187, -47)
+
+[node name="Chotibot" parent="." instance=ExtResource("4_jl3c4")]
+position = Vector2(-491, -122)

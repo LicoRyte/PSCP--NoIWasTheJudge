@@ -15,7 +15,6 @@ func card_added():
 		SplitBullet.new()
 	]
 	for i in bullet_scripts:
-		print_debug(i)
 		GameEvents.add_bullet_mod(i)
 
 func gun_stat_change(gun:Gun):

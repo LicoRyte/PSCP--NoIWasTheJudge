@@ -3,7 +3,6 @@ class_name Player
 
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var card_container: Node = $CardContainer
 @onready var player_cam: Camera2D = $Camera2D
 
 """dash component"""
@@ -25,18 +24,14 @@ var gun : Gun
 var anims : AnimatedSprite2D
 
 func _ready() -> void:
-	super._ready()
 	GameEvents._shake_call.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
 	_entity_died.connect(_on_player_died)
 	state_machine_mm.initialize(self)
-	GameEvents._hpchanged.emit(current_health)
 
 func _process(delta: float) -> void:
-	GameEvents._hpchanged.emit(current_health)
-	super._process(delta)
-	current_move_speed = move_speed * current_speed_multiplier
+	current_move_speed = move_speed
 	"""นับเวลา dash cooldown"""
 	if not can_dash:
 		_dash_cd_left -= delta
@@ -73,6 +68,5 @@ func camera_shake():
 	CamCom.apply_shake(player_cam,3,5)
 
 func recieve_damage(amount: float, target: Entity, source : Node = null) -> void:
-	CamCom.play_effect("fracture", target.global_position)
 	camera_shake()
 	GlobalAudio.fx("damage")

@@ -6,7 +6,6 @@ class_name Enemy
 var player_chase = false
 
 func _ready() -> void:
-	super._ready()
 	connect("_object_died",_enemy_is_died)
 	_entity_died.connect(_enemy_is_died)
 	Damage._deal_damage.connect(_on_deal_damage)

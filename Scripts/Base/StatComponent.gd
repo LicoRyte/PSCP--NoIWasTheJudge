@@ -37,4 +37,5 @@ func non_status_calculation(attack : Attack):
 	return attack
 
 func status_calculation(attack : Attack):
+	attack.damage = attack.get_damage() - base_defense
 	return attack
