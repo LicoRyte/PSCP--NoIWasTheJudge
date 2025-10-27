@@ -40,6 +40,7 @@ func remove_effect(effect_name : String):
 func getMultiplier():
 	var defense_sum: float = 1.0
 	var speed_sum: float = 1.0
+	var damage_sum: float = 1.0
 
 	for eff: Effect in current_effect.values():
 		defense_sum += eff.get_defense_value() #5 "Flame" 0.35 2 2
@@ -47,5 +48,6 @@ func getMultiplier():
 
 	return {
 		"defense": defense_sum,
-		"speed": speed_sum #3
+		"speed": speed_sum, #3
+		"damage": damage_sum
 	}

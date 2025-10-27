@@ -12,6 +12,7 @@ class_name StatComponent
 
 var defense_multiplier: float = 1.0
 var speed_multiplier: float = 1.0
+var damage_multiplier: float = 1.0
 
 func _ready() -> void:
 	status_component = Common.get_component(get_parent(), StatusComponent)
