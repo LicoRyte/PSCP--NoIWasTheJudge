@@ -14,9 +14,16 @@ signal _card_append(card: CardResource)
 signal _card_description(card_name : String, card_description : String, card_tag: String)
 signal _reward_sequence
 
+var	player_health:HealthComponent
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()
 ]
+
+func set_health(health:HealthComponent):
+	player_health = health
+	
+func get_health():
+	return player_health
 
 func card_append(card: CardResource):
 	_card_append.emit(card)

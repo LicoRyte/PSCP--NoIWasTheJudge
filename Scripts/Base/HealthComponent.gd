@@ -1,6 +1,8 @@
 extends Node
 class_name HealthComponent
 
+signal health_changed(current_health: float, max_health: float)
+
 var current_health: float
 @export var max_health: float
 
@@ -9,6 +11,8 @@ var current_health: float
 func _ready() -> void:
 	stat_component = Common.get_component(get_parent(), StatComponent)
 	current_health = max_health
+	if get_parent() is Player:
+		GameEvents.set_health(self)
 
 
 func receive_damage(attack : Attack, is_magic : bool = false):
@@ -18,6 +22,7 @@ func receive_damage(attack : Attack, is_magic : bool = false):
 		actual_attack = stat_component.calculate_output(attack).get_damage()  #1
 		
 	current_health -= actual_attack #100 - 1 = 99
+	emit_signal("health_changed", current_health, max_health)
 	print(current_health)
 	if current_health <= 0:
 		if get_parent().has_signal("_object_died"):
