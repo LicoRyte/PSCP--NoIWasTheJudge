@@ -26,6 +26,7 @@ func fx(sfx: String):
 	var player = AudioStreamPlayer.new()
 	player.stream = effect[sfx]
 	add_child(player)
+	player.volume_db -= 30
 	player.play()
 	await player.finished
 	remove_child(player)
