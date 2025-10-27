@@ -4,7 +4,7 @@ class_name Common
 static func get_component(node: Node, class_you_want_to_find_in_that_node): #get_parent() #StatComponent
 	if is_instance_of(node, class_you_want_to_find_in_that_node):
 		return node
-	
+
 	for child in node.get_children():
 		var found = get_component(child, class_you_want_to_find_in_that_node)
 		if found:

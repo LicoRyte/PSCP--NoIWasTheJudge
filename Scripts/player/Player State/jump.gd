@@ -15,13 +15,19 @@ var vertical_jump_speed = 0.0
 var is_jumping = false
 var immune = true
 
+var hitbox : HitboxComponent
+
+func _ready() -> void:
+	call_deferred("_assign_hitbox")
+
 func enter():
-	immune = true
+	#hitbox = Common.get_component(player, HitboxComponent)
+	hitbox.set_immune(true)
 	player.animated_sprite_2d.play("jump")
 	do_jump()
 	pass
 func exit():
-	immune = false
+	hitbox.set_immune(false)
 	pass
 
 func do_jump() -> void:
@@ -63,3 +69,6 @@ func process_physics(delta: float) -> State:
 	return null
 func process_input(_event: InputEvent) -> State:
 	return null
+
+func _assign_hitbox():
+	hitbox = Common.get_component(player, HitboxComponent)

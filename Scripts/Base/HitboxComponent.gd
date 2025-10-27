@@ -20,3 +20,7 @@ func detect_effect(effect: Effect):
 	if is_immune or not status_component:
 		return
 	status_component.addEffect(effect)
+
+
+func set_immune(active: bool):
+	is_immune = active

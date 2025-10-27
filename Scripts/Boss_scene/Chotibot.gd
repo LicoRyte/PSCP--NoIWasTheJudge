@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 				current_beam += 1
 				var attack = attack_scene["BEAM"].instantiate()
 				add_child(attack)
-				attack.global_position = Vector2(0, randf_range(0,360))
+				attack.global_position = Vector2(global_position.x, randf_range(global_position.y - 180 ,global_position.y + 180))
 				current_beam_timer = 0.0
 			if current_beam >= max_beam_count:
 				current_beam = 0
@@ -69,7 +69,7 @@ func _process(delta: float) -> void:
 				current_static += 1
 				var attack = attack_scene["STATIC"].instantiate()
 				add_child(attack)
-				attack.global_position = Vector2(0, 0)
+				attack.global_position = global_position
 				current_static_timer = 0.0
 			if current_static >= max_static_count:
 				current_static = 0
@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 				current_PSCP += 1
 				var attack = attack_scene["PSCP"].instantiate()
 				add_child(attack)
-				attack.global_position = Vector2(0, randf_range(0,360))
+				attack.global_position = Vector2(global_position.x, randf_range(global_position.y - 180 ,global_position.y + 180))
 				current_PSCP_timer = 0.0
 			if current_PSCP >= max_PSCP_count:
 				current_PSCP = 0
