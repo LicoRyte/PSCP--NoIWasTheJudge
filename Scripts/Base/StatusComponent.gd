@@ -45,6 +45,7 @@ func getMultiplier():
 	for eff: Effect in current_effect.values():
 		defense_sum += eff.get_defense_value() #5 "Flame" 0.35 2 2
 		speed_sum += eff.get_speed_value() #1 + 2 = 3
+		damage_sum += eff.get_damage_value()
 
 	return {
 		"defense": defense_sum,

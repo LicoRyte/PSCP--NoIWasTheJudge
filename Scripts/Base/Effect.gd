@@ -11,6 +11,10 @@ var defense_decreased : float = 0.0
 var defense_increased : float = 0.0
 var speed_decreased : float = 0.0
 var speed_increased: float = 0.0
+var damage_decreased: float = 0.0
+var damage_increased: float =0.0
+
+var is_permanent: bool = false
 
 
 
@@ -46,7 +50,8 @@ func refresh(extended_time: float):
 	return time_left
 
 func effect_update(delta :float) -> bool:
-	self.duration -= delta #5 "Flame" 0.35 2 2 #Enemy
+	if not is_permanent:
+		self.duration -= delta #5 "Flame" 0.35 2 2 #Enemy
 	self.timer += delta
 	
 	var ticked: bool = false
@@ -81,3 +86,6 @@ func get_defense_value():
 
 func get_speed_value():
 	return speed_increased - speed_decreased
+
+func get_damage_value():
+	return damage_increased - damage_decreased
