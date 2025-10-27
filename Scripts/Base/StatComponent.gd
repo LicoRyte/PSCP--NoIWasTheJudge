@@ -21,9 +21,14 @@ func _ready() -> void:
 func getStatusMultiplier():
 	if not status_component:
 		return
+	var base_defense_mult = 1.0
+	var base_speed_mult = 1.0
+	var base_damage_mult = 1.0
+
 	var stat = status_component.getMultiplier()
-	defense_multiplier = defense_multiplier + stat["defense"] #1 + 1 = 2
-	speed_multiplier = speed_multiplier + stat["speed"] #1 + 3 = 4
+	defense_multiplier = base_defense_mult + stat["defense"] #1 + 1 = 2
+	speed_multiplier = base_speed_mult + stat["speed"] #1 + 3 = 4
+	damage_multiplier = base_damage_mult + stat["damage"]
 	#in format of 1 + stat in which stat start at 0
 
 func calculate_output(attack: Attack):  #5 crit = 2 critmultiplier 25
@@ -38,5 +43,6 @@ func non_status_calculation(attack : Attack):
 	return attack
 
 func status_calculation(attack : Attack):
-	attack.damage = attack.get_damage() - base_defense
+	getStatusMultiplier()
+	attack.damage = attack.get_damage() - (base_defense * defense_multiplier)
 	return attack
