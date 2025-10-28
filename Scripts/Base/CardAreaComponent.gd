@@ -8,6 +8,7 @@ signal chosen(card: CardResource)
 
 var card : CardResource
 
+
 func _ready() -> void:
 	if not hitbox:
 		hitbox = Common.get_component(self, CollisionShape2D)
@@ -19,10 +20,15 @@ func _ready() -> void:
 	connect("mouse_exited", _on_mouse_exit )
 
 func _on_mouse_entered() -> void:
+	if sprite.material:
+		pass
 	if card:
 		GameEvents.update_description(card._get_name(), card._get_description(), card._get_stat())
+
 func _on_mouse_exit() -> void:
 	GameEvents.update_description("", "", "")
+	if sprite and sprite.material:
+		sprite.material.set_shader_parameter("border_visibility", 0.0)
 
 func set_card(c : CardResource):
 	card = c

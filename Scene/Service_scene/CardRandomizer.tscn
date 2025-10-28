@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cod70jap7w0p6"]
+[gd_scene load_steps=7 format=3 uid="uid://cod70jap7w0p6"]
 
 [ext_resource type="Script" uid="uid://cjo7areqf51l8" path="res://Scripts/Service_scripts/CardRandomizer.gd" id="1_s0e2e"]
-[ext_resource type="FontFile" uid="uid://3x8dmhqmf8d8" path="res://Asset/font/Roundberly.ttf" id="2_gr52n"]
-[ext_resource type="FontFile" uid="uid://cfwj7rg6ie5q" path="res://Asset/font/Tiny5-Regular.ttf" id="3_gr52n"]
+[ext_resource type="FontFile" uid="uid://df1gjhsobpf3q" path="res://Asset/font/DigitalDisco.ttf" id="2_021o5"]
 [ext_resource type="Script" uid="uid://12lhb3fecep2" path="res://Scripts/Base/CardAreaComponent.gd" id="4_021o5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_021o5"]
@@ -57,8 +56,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/Card/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_gr52n")
+theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 24
+text = "Text"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -74,8 +74,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/Description/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_gr52n")
+theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 16
+text = "Text
+"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -91,8 +93,10 @@ layout_mode = 2
 [node name="Label" type="Label" parent="SelectorUI/Control/VBoxContainer/tag/PanelContainer2"]
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_gr52n")
+theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 12
+text = "Text
+"
 horizontal_alignment = 1
 autowrap_mode = 2
 

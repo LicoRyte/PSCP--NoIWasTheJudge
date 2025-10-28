@@ -2,14 +2,15 @@ extends Entity
 class_name Chotibot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-enum BossStage {  
+enum BossStage {
+	INTRODUCTION, 
 	IDLE,
 	BULLET,
 	BEAM,
 	STATIC,
 	DEFEATED
 }
-var current_state = BossStage.BEAM
+var current_state = BossStage.INTRODUCTION
 
 var attack_scene = {
 	"BEAM" : preload("res://Scene/Boss_scene/beam.tscn"),
@@ -50,7 +51,14 @@ func _process(delta: float) -> void:
 	
 
 	match current_state:
-		
+		BossStage.INTRODUCTION:
+			animation_player.play("introduction")
+			await animation_player.animation_finished
+			to(BossStage.IDLE)
+		BossStage.IDLE:
+			animation_player.play("Idle")
+			await get_tree().create_timer(3).timeout
+			to(BossStage.BEAM)
 		BossStage.BEAM:
 			current_beam_timer += delta
 			if current_beam_timer > beam_cooldown:
@@ -94,6 +102,9 @@ func _process(delta: float) -> void:
 				GlobalAudio.fx("boss_defeated")
 				current_time = 0.0
 				GameEvents._shake_call.emit()
+			animation_player.play("defeated")
+			await animation_player.animation_finished
+			queue_free()
 
 func to(new_state : BossStage):
 	current_state = new_state

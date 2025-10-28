@@ -14,6 +14,11 @@ signal _card_append(card: CardResource)
 signal _card_description(card_name : String, card_description : String, card_tag: String)
 signal _reward_sequence
 
+"""Boss Scene"""
+var boss_scene = {
+	"GUIDE" : preload("uid://ub8xljt2csls")
+}
+
 var	player_health:HealthComponent
 var current_mod : Array[BulletModifier] = [
 	#ReverseBullet.new()

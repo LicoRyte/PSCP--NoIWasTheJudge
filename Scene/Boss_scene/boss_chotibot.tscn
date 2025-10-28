@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ub8xljt2csls"]
+[gd_scene load_steps=21 format=3 uid="uid://ub8xljt2csls"]
 
 [ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss_scene/Chotibot.gd" id="1_3vx4m"]
 [ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_bv5xh"]
@@ -115,11 +115,69 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bv5xh"]
+resource_name = "defeated"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_s0jiv"]
+resource_name = "introduction"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5333333, 2),
+"transitions": PackedFloat32Array(0.4665185, 2.6390157, 1),
+"update": 0,
+"values": [Vector2(0, 460), Vector2(0, -43), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.56, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrp62"]
 _data = {
 &"Idle": SubResource("Animation_ainwb"),
-&"RESET": SubResource("Animation_jrp62")
+&"RESET": SubResource("Animation_jrp62"),
+&"defeated": SubResource("Animation_bv5xh"),
+&"introduction": SubResource("Animation_s0jiv")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrp62"]
@@ -201,7 +259,7 @@ sprite_frames = SubResource("SpriteFrames_jrp62")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("5_n806f")
-max_health = 2000.0
+max_health = 30.0
 metadata/_custom_type_script = "uid://d6qnnarpvn53"
 
 [node name="StatComponent" type="Node" parent="."]
