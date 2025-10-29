@@ -11,10 +11,13 @@ signal _game_continue
 
 var current_card_on_screen = []
 
-
 var card_storage = [
 	NewBackfire.new(),
-	NewSpicySteak.new()
+	NewSpicySteak.new(),
+	NewCatWalk.new(),
+	NewQuickdraw.new(),
+	ColdSteak.new(),
+	NewSplitBullet.new()
 ]
 
 

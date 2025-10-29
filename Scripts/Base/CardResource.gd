@@ -15,6 +15,8 @@ func _health_change(health : HealthComponent):
 	pass
 func _stat_change(stat: StatComponent):
 	pass
+func _gun_change(gun:Gun):
+	pass
 
 func _add_mod(mod : BulletModifier):
 	modifier.append(mod)
