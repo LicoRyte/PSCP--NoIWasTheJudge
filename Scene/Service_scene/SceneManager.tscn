@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://bojjexsekg6or"]
+
+[ext_resource type="Script" uid="uid://dieu0kdprc4xu" path="res://Scripts/Service_scripts/SceneManager.gd" id="1_6wjwh"]
+
+[sub_resource type="Animation" id="Animation_6wjwh"]
+resource_name = "Transit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ud12n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdk24"]
+_data = {
+&"RESET": SubResource("Animation_ud12n"),
+&"Transit": SubResource("Animation_6wjwh")
+}
+
+[node name="SceneManager" type="CanvasLayer"]
+script = ExtResource("1_6wjwh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 654.0
+offset_bottom = 371.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qdk24")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 361.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 360.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 224
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "---WAVE XX---"
+horizontal_alignment = 1

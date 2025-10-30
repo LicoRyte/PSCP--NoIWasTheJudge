@@ -58,7 +58,6 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 24
-text = "Text"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -76,7 +75,7 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 16
-text = "Text
+text = "
 "
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -95,7 +94,7 @@ custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_021o5")
 theme_override_font_sizes/font_size = 12
-text = "Text
+text = "
 "
 horizontal_alignment = 1
 autowrap_mode = 2

@@ -22,6 +22,8 @@ Damage="*res://Scripts/Service_scripts/DamageSystem.gd"
 GlobalAudio="*res://Scene/Service_scene/GlobalAudioService.tscn"
 RewardSequence="*res://Scene/Service_scene/RewardSequence.tscn"
 CamCom="*res://Scene/Service_scene/CameraComposer.tscn"
+Wave="*res://Scripts/Service_scripts/WaveManager.gd"
+SceneManager="*res://Scene/Service_scene/SceneManager.tscn"
 
 [display]
 

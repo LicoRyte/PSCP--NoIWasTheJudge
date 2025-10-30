@@ -8,7 +8,8 @@ signal _hpchanged(current_hp: float)
 signal _player_died
 signal _shake_call
 signal _staminachanged(current_stamina: float)
-
+signal _game_start
+signal _game_continue
 """Card Events"""
 signal _card_append(card: CardResource)
 signal _card_description(card_name : String, card_description : String, card_tag: String)
@@ -19,10 +20,13 @@ var boss_scene = {
 	"GUIDE" : preload("uid://ub8xljt2csls")
 }
 
+
 var	player_health:HealthComponent
 var current_mod : Array[BulletModifier] = [
-	#ReverseBullet.new()
 ]
+
+func reset_mod():
+	current_mod.clear()
 
 func set_health(health:HealthComponent):
 	player_health = health

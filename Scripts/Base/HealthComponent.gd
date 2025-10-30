@@ -35,6 +35,12 @@ func _add_max_health(amount : float, increase_current: bool = false):
 	if increase_current:
 		current_health += amount
 
+func _set_max_health(amount: float):
+	max_health = amount
+
+func _set_current_health(amount: float):
+	current_health = amount
+
 func _get_health():
 	return current_health
 

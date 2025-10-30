@@ -7,7 +7,6 @@ extends Node2D
 @onready var grid: Node2D = $SelectorUI/CardGrid
 @onready var available_slots := grid.get_children()
 
-signal _game_continue
 
 var current_card_on_screen = []
 
@@ -38,11 +37,12 @@ func _process(delta: float) -> void:
 
 	match current_sequence:
 		sequence_flow.CONTINUE:
-			_game_continue.emit()
+			pass
 		sequence_flow.SELECTION:
 			show_card(card_storage)
 			to(sequence_flow.BEFORE_CONTINUE)
 		sequence_flow.BEFORE_CONTINUE:
+			to(sequence_flow.CONTINUE)
 			pass
 
 
@@ -75,6 +75,7 @@ func _on_card_selected(card: CardResource) -> void:
 	GameEvents.card_append(card)
 	selector_ui.visible = false
 	clear_card_from_screen()
+	GameEvents._game_continue.emit()
 	to(sequence_flow.CONTINUE)
 
 

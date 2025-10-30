@@ -2,6 +2,8 @@ extends Entity
 class_name Chotibot
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+signal boss_defeated
+
 enum BossStage {
 	INTRODUCTION, 
 	IDLE,
@@ -22,18 +24,18 @@ var attack_scene = {
 var current_bullet_time = 0.0
 var current_stage_time = 0.0
 
-var beam_cooldown = 0.6
-var max_beam_count = 4
+var beam_cooldown = 0.5
+var max_beam_count = 6
 var current_beam = 0
 var current_beam_timer = 0.0
 
-var static_cooldown = 1.4
-var max_static_count = 5
+var static_cooldown = 1.25
+var max_static_count = 6
 var current_static = 0
 var current_static_timer = 0.0
 
-var PSCP_cooldown = 0.45
-var max_PSCP_count = 7
+var PSCP_cooldown = 0.4
+var max_PSCP_count = 8
 var current_PSCP = 0
 var current_PSCP_timer = 0.0
 
@@ -46,9 +48,7 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("DevTest"):
-		to(BossStage.BEAM)
-	
+	pass
 
 	match current_state:
 		BossStage.INTRODUCTION:
@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 				current_static += 1
 				var attack = attack_scene["STATIC"].instantiate()
 				add_child(attack)
-				attack.global_position = global_position
+				attack.global_position = Vector2(global_position.x, global_position.y - 180)
 				current_static_timer = 0.0
 			if current_static >= max_static_count:
 				current_static = 0
@@ -104,6 +104,7 @@ func _process(delta: float) -> void:
 				GameEvents._shake_call.emit()
 			animation_player.play("defeated")
 			await animation_player.animation_finished
+			boss_defeated.emit()
 			queue_free()
 
 func to(new_state : BossStage):

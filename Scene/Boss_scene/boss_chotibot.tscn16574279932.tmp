@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ub8xljt2csls"]
+[gd_scene load_steps=21 format=3 uid="uid://ub8xljt2csls"]
 
 [ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss_scene/Chotibot.gd" id="1_3vx4m"]
 [ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_bv5xh"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="5_n806f"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="6_170nd"]
 [ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="7_170nd"]
-[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="9_s0jiv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6xj8"]
 size = Vector2(113, 165)
@@ -265,13 +264,8 @@ metadata/_custom_type_script = "uid://d6qnnarpvn53"
 
 [node name="StatComponent" type="Node" parent="."]
 script = ExtResource("6_170nd")
-base_defense = 2.0
 metadata/_custom_type_script = "uid://d3nyobw1vdebu"
 
 [node name="StatusComponent" type="Node" parent="."]
 script = ExtResource("7_170nd")
 metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
-
-[node name="WaveDataGetterSetter" type="Node" parent="."]
-script = ExtResource("9_s0jiv")
-metadata/_custom_type_script = "uid://cc4yeu1nikuox"
