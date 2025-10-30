@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ub8xljt2csls" path="res://Scene/Boss_scene/boss_chotibot.tscn" id="1_ofhem"]
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/player/Player.tscn" id="1_sdf0p"]
-[ext_resource type="PackedScene" uid="uid://iccjh5nvx5k7" path="res://Scene/UIBAR/health_staminaBar.tscn" id="3_noxhu"]
+[ext_resource type="PackedScene" uid="uid://iccjh5nvx5k7" path="res://Scene/UX,UI_scene/health_staminaBar.tscn" id="3_noxhu"]
 
 [node name="Node2D" type="Node2D"]
 

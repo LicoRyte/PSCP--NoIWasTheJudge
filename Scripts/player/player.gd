@@ -38,6 +38,9 @@ func _process(delta: float) -> void:
 		if _dash_cd_left <= 0.0:
 			_dash_cd_left = 0.0
 			can_dash = true
+	"""regen stamina"""
+	if  current_stamina < max_stamina:
+		change_stamina(10 * delta)
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 func _unhandled_input(event: InputEvent) -> void:

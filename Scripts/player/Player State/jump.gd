@@ -16,6 +16,7 @@ var is_jumping = false
 var immune = true
 
 var hitbox : HitboxComponent
+var jump_stamina_cost := 20.0 #กระโดดใช้ stamina
 
 func _ready() -> void:
 	call_deferred("_assign_hitbox")
@@ -23,9 +24,13 @@ func _ready() -> void:
 func enter():
 	#hitbox = Common.get_component(player, HitboxComponent)
 	hitbox.set_immune(true)
-	player.animated_sprite_2d.play("jump")
-	do_jump()
-	pass
+	if player.stamina_request(jump_stamina_cost):
+		player.change_stamina(-jump_stamina_cost)
+		player.animated_sprite_2d.play("jump")
+		do_jump()
+	else:
+		print("Not enough stamina to jump")
+		return idle_state
 func exit():
 	hitbox.set_immune(false)
 	pass
@@ -34,6 +39,7 @@ func do_jump() -> void:
 	if not is_jumping and height_of_jump <= 0.0:
 		is_jumping = true
 		vertical_jump_speed = jump_speed
+		print("jump", player.current_stamina)
 
 func apply_jump_physics(delta: float) -> void:
 	if is_jumping:
