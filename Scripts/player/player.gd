@@ -27,7 +27,7 @@ func _ready() -> void:
 	GameEvents._shake_call.connect(camera_shake)
 	gun = get_node_or_null("AnimatedSprite2D/gun")
 	current_stamina = max_stamina
-	_entity_died.connect(_on_player_died)
+	_object_died.connect(_on_player_died)
 	state_machine_mm.initialize(self)
 
 func _process(delta: float) -> void:

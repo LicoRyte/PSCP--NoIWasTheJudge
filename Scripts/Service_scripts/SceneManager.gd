@@ -9,6 +9,13 @@ var tscn : String = ".tscn"
 func _ready() -> void:
 	Wave.new_wave.connect(update_wave_text)
 
+func play_summary() -> void:
+	var sum_scene = preload("uid://ctl5uoqi234tf")
+	var new_sum = sum_scene.instantiate()
+	get_tree().current_scene.add_child(new_sum)
+
+
+
 func change_scene(scene_name: String):
 	animation_player.play("Transit")
 	await animation_player.animation_finished

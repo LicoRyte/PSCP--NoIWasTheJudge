@@ -54,7 +54,7 @@ func _state_spawn() -> void:
 			var boss: Node2D = _spawn_boss(0, 180)
 		else:
 			current_enemy = _get_enemy_count(current_wave)
-			var count := current_enemy
+			var count = current_enemy
 			for i in count:
 				var e: Enemy = _spawn_enemy(randf_range(0, 640), randf_range(0, 360))
 				await get_tree().create_timer(0.15).timeout
@@ -93,6 +93,7 @@ func _spawn_boss(x: float, y: float) -> Node2D:
 	#var new_boss: Node2D = Sce
 
 func _on_enemy_defeated() -> void:
+	GameEvents.update_enemy_killed.emit()
 	current_enemy -= 1
 	print("ENEMIES LEFT : ", current_enemy)
 	if current_enemy <= 0 and cur_seq == Sequence.SPAWN:
