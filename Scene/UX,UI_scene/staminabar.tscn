@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://0u3t2qlvq814"]
+
+[ext_resource type="Texture2D" uid="uid://w5w2u7cntoo3" path="res://Asset/art/bg.png" id="1_msh4l"]
+[ext_resource type="Texture2D" uid="uid://bq407b24ff0i4" path="res://Asset/art/blue.png" id="2_la0k0"]
+[ext_resource type="Script" uid="uid://c223pid3r2p13" path="res://Scripts/UX,UI_scripts/staminabar.gd" id="3_838yu"]
+
+[node name="staminabar" type="TextureProgressBar"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -92.0
+offset_right = -4.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 2
+value = 100.0
+texture_under = ExtResource("1_msh4l")
+texture_progress = ExtResource("2_la0k0")
+script = ExtResource("3_838yu")

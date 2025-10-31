@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://iccjh5nvx5k7"]
+[gd_scene load_steps=3 format=3 uid="uid://iccjh5nvx5k7"]
 
-[ext_resource type="Texture2D" uid="uid://w5w2u7cntoo3" path="res://Asset/art/bg.png" id="1_80816"]
-[ext_resource type="Texture2D" uid="uid://drcgsajx8nfne" path="res://Asset/art/red.png" id="2_13i2f"]
-[ext_resource type="Script" uid="uid://enrvnudjhypj" path="res://Scripts/UX,UI_scripts/healthBar.gd" id="3_13i2f"]
-[ext_resource type="Texture2D" uid="uid://bq407b24ff0i4" path="res://Asset/art/blue.png" id="4_dr0th"]
-[ext_resource type="Script" uid="uid://c223pid3r2p13" path="res://Scripts/UX,UI_scripts/staminabar.gd" id="5_13i2f"]
+[ext_resource type="PackedScene" uid="uid://dto6cmyu6rhds" path="res://Scene/UX,UI_scene/healthbar.tscn" id="1_knlce"]
+[ext_resource type="PackedScene" uid="uid://0u3t2qlvq814" path="res://Scene/UX,UI_scene/staminabar.tscn" id="2_e8w8c"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,36 +12,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="healthbar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -265.0
-offset_top = 11.0
-offset_right = -9.0
-offset_bottom = 59.0
-grow_horizontal = 0
-value = 100.0
-texture_under = ExtResource("1_80816")
-texture_progress = ExtResource("2_13i2f")
-script = ExtResource("3_13i2f")
+[node name="healthbar" parent="." instance=ExtResource("1_knlce")]
+layout_mode = 0
+anchors_preset = 0
 
-[node name="staminabar" type="TextureProgressBar" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -264.0
-offset_top = -120.0
-offset_right = -8.0
-offset_bottom = -72.0
-grow_horizontal = 0
-grow_vertical = 2
-value = 70.0
-texture_under = ExtResource("1_80816")
-texture_progress = ExtResource("4_dr0th")
-script = ExtResource("5_13i2f")
-max_stamina = null
+[node name="staminabar" parent="." instance=ExtResource("2_e8w8c")]
+layout_mode = 0
+anchors_preset = 0

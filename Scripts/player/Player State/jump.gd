@@ -17,7 +17,6 @@ var immune = true
 
 var hitbox : HitboxComponent
 var jump_stamina_cost := 20.0 #กระโดดใช้ stamina
-
 func _ready() -> void:
 	call_deferred("_assign_hitbox")
 

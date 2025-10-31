@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvr84a0ucs0qc"]
+[gd_scene load_steps=5 format=3 uid="uid://dvr84a0ucs0qc"]
 
 [ext_resource type="PackedScene" uid="uid://ub8xljt2csls" path="res://Scene/Boss_scene/boss_chotibot.tscn" id="1_ofhem"]
 [ext_resource type="PackedScene" uid="uid://cy62k0nefobxq" path="res://Scene/player/Player.tscn" id="1_sdf0p"]
-[ext_resource type="PackedScene" uid="uid://iccjh5nvx5k7" path="res://Scene/UX,UI_scene/health_staminaBar.tscn" id="3_noxhu"]
+[ext_resource type="PackedScene" uid="uid://dto6cmyu6rhds" path="res://Scene/UX,UI_scene/healthbar.tscn" id="3_httfq"]
+[ext_resource type="PackedScene" uid="uid://0u3t2qlvq814" path="res://Scene/UX,UI_scene/staminabar.tscn" id="4_rkymw"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -11,8 +12,16 @@ position = Vector2(-119, 157)
 
 [node name="Player" parent="." instance=ExtResource("1_sdf0p")]
 
-[node name="Control" parent="." instance=ExtResource("3_noxhu")]
-offset_left = 328.0
-offset_top = -64.0
-offset_right = 328.0
-offset_bottom = -64.0
+[node name="healthbar" parent="." instance=ExtResource("3_httfq")]
+offset_left = 61.0
+offset_top = -176.0
+offset_right = 317.0
+offset_bottom = -128.0
+
+[node name="staminabar2" parent="." instance=ExtResource("4_rkymw")]
+offset_left = 62.0
+offset_top = -71.0
+offset_right = 318.0
+offset_bottom = -23.0
+
+[connection signal="stamina_changed" from="Player" to="staminabar2" method="_on_player_stamina_changed"]
