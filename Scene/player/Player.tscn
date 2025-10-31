@@ -327,6 +327,7 @@ run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 stunned_state = NodePath("../Stunned")
 dash_state = NodePath("../Dash")
+animation_name = "dash"
 
 [node name="Stunned" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "dash_state")]
 script = ExtResource("7_3pik8")

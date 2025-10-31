@@ -32,9 +32,6 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("DevTest"):
-		GameEvents._reward_sequence.emit()
-
 	match current_sequence:
 		sequence_flow.CONTINUE:
 			pass
@@ -72,6 +69,7 @@ func show_card(pool: Array) -> void:
 		current_card_on_screen.append(card_area)
 
 func _on_card_selected(card: CardResource) -> void:
+	GameEvents.update_card_collected.emit()
 	GameEvents.card_append(card)
 	selector_ui.visible = false
 	clear_card_from_screen()
