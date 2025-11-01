@@ -62,7 +62,7 @@ func stamina_request(amount: float) -> bool:
 func change_stamina(amount: float):
 	current_stamina += amount
 	current_stamina = clamp(current_stamina, 0, max_stamina)
-	emit_signal("stamina_changed", current_stamina)
+	GameEvents._on_stamina_changed.emit(current_stamina)
 
 
 """Signal-Based Function"""

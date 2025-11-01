@@ -2,7 +2,8 @@ extends TextureProgressBar
 
 
 func _ready():
-	max_value = 100
+	max_value = 75
+	GameEvents._on_stamina_changed.connect(_on_player_stamina_changed)
 
 
 func _on_player_stamina_changed(value: Variant) -> void:

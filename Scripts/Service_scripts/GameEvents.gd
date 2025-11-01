@@ -10,6 +10,7 @@ signal _shake_call
 signal _staminachanged(current_stamina: float)
 signal _game_start
 signal _game_continue
+signal _on_stamina_changed(value)
 
 """Card Events"""
 signal _card_append(card: CardResource)

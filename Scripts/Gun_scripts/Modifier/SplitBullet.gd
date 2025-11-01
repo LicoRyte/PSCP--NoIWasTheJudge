@@ -24,7 +24,6 @@ func _do_split(bullet: Bullet) -> void:
 	bullet.set_meta("dir", base_dir)
 	bullet.global_rotation = base_angle
 	bullet.top_level = true
-	bullet.extra_damage += -2
 
 	var half := (cloned_bullets - 1) / 2.0
 	for i in range(cloned_bullets):

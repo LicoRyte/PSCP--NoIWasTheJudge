@@ -4,6 +4,7 @@ class_name Enemy
 var player : Player = null #get_node("/root/guide_test_pc/Player")
 @export var health:float = 100.0
 var player_chase = false
+var died : bool = false
 
 signal defeated
 
@@ -29,8 +30,10 @@ func _on_detection_area_body_exited(_body: Node2D) -> void:
 		player_chase = false
 
 func _enemy_is_died():
-	defeated.emit()
-	queue_free()
+	if not died:
+		defeated.emit()
+		queue_free()
+		died = true	
 	
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:
 	if receiver == self:
