@@ -51,8 +51,7 @@ func apply_hit(target: Node2D):
 		"canDestroy" : can_destroy,
 		"bulletDuration" : bullet_duration,
 		"function" : [
-			#Callable(Damage, "deal_effect").bind(eff, hitbox)
-		] #สำหรับเรียกใช้ function """function เป็นชนิดข้อมูลรูปแบบหนึ่งคือ Callable  สามารถเก็บเข้า Array เหมือนข้อมูลปกติได้
+		]
 	}
 	#วิธีการคือเราจะ Append function ของ Modifier เข้าไปใน values ของ key function
 	for mod in modifier:

@@ -3,6 +3,8 @@ class_name StatusComponent
 
 @export var entity: HealthComponent
 
+var parent : Node2D
+
 var current_effect : Dictionary = {
 }
 var output_defense: float = 0.0
@@ -10,6 +12,7 @@ var output_speed: float = 0.0
 
 
 func _ready() -> void:
+	parent = get_parent()
 	entity = Common.get_component(get_parent(), HealthComponent)
 
 func _process(delta: float) -> void:
@@ -32,6 +35,12 @@ func updateCurrent(delta : float):
 			pass
 		if effect.is_expired():
 			remove_effect(name)
+		
+		match name:
+			"Flame":
+				parent.modulate = Color(1.0, 0.365, 0.18)
+			"Chill":
+				parent.modulate = Color(0.341, 0.694, 1.0)
 
 func remove_effect(effect_name : String):
 	current_effect.erase(effect_name)

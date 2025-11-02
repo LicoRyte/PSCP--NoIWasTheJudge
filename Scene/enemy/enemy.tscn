@@ -109,7 +109,7 @@ metadata/_custom_type_script = "uid://d6qnnarpvn53"
 [node name="StatComponent" type="Node" parent="."]
 script = ExtResource("5_62j1s")
 base_defense = 1.0
-base_speed = 1.0
+base_speed = 100.0
 metadata/_custom_type_script = "uid://d3nyobw1vdebu"
 
 [node name="StatusComponent" type="Node" parent="."]

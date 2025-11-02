@@ -8,6 +8,8 @@ var player : Player
 var died : bool
 
 signal defeated
+@onready var stat_component: StatComponent = $StatComponent
+
 
 func _ready() -> void:
 	player = get_tree().current_scene.get_node_or_null("Player")
@@ -17,12 +19,10 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if player:
 		if player_chase:
-			#print("in")
 			var direction = global_position.direction_to(player.global_position)
-			velocity = direction * 100
+			velocity = direction * (stat_component.base_speed * stat_component.speed_multiplier)
 			move_and_slide()
 		else:
-			#print("out")
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * 100
 			move_and_slide()

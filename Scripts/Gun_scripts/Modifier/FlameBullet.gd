@@ -16,6 +16,7 @@ func on_spawn(bullet: Bullet):
 
 func on_hit(bullet, target, bullet_attributes):
 	var eff = Effect.new()
+	eff.effect_name = "Flame"
 	eff.damage = burn_damage
 	eff.tick_value = burn_tick
 	eff.duration = duration
