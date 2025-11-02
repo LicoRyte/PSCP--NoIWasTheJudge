@@ -258,7 +258,7 @@ metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 [node name="StatComponent" type="Node" parent="."]
 script = ExtResource("2_3u0m1")
 base_defense = 2.0
-base_speed = 2.0
+base_speed = 200.0
 metadata/_custom_type_script = "uid://d3nyobw1vdebu"
 
 [node name="HealthComponent" type="Node" parent="."]
@@ -271,19 +271,19 @@ script = ExtResource("15_kbnkk")
 metadata/_custom_type_script = "uid://ceuhx3dreapte"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 8.5)
+position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_kbnkk")
 script = ExtResource("2_hm8o0")
 metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.25882354)
-position = Vector2(0, 21)
+position = Vector2(1, 1.0000019)
 scale = Vector2(0.75, 0.28125003)
 texture = SubResource("GradientTexture2D_inyuv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(1, -22)
 scale = Vector2(1.8125, 1.8125)
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"dash"
@@ -292,6 +292,7 @@ frame = 5
 frame_progress = 1.0
 
 [node name="gun" parent="AnimatedSprite2D" instance=ExtResource("2_7dww1")]
+position = Vector2(0, 0.55172414)
 
 [node name="StateMachine_MM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")

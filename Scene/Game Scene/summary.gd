@@ -17,8 +17,6 @@ var reveal_task_running: bool = false
 
 
 func _ready() -> void:
-	GameEvents.update_card_collected.connect(_on_card_collected)
-	GameEvents.update_enemy_killed.connect(_on_enemy_killed)
 
 	_set_all_visible(false)
 	_start_reveal_flow()
@@ -60,8 +58,8 @@ func _set_all_visible(val: bool) -> void:
 
 func _refresh_numbers() -> void:
 	summary_label.text = "--- SUMMARY ---"
-	enemy_killed_label.text = "Enemy Defeated : " + str(enemy_defeated)
-	collected_label.text = "Card Collected : " + str(card_collected)
+	enemy_killed_label.text = "Enemy Defeated : " + str(GameEvents.get_enemies_killed())
+	collected_label.text = "Card Collected : " + str(GameEvents.get_card_collected())
 	space_label.text = "Press SPACE to continue"
 
 func _on_enemy_killed() -> void:

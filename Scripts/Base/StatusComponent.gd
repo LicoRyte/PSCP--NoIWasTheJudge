@@ -4,7 +4,6 @@ class_name StatusComponent
 @export var entity: HealthComponent
 
 var current_effect : Dictionary = {
-	#5 "Flame" 0.35 2 2
 }
 var output_defense: float = 0.0
 var output_speed: float = 0.0
@@ -38,13 +37,13 @@ func remove_effect(effect_name : String):
 	current_effect.erase(effect_name)
 
 func getMultiplier():
-	var defense_sum: float = 1.0
-	var speed_sum: float = 1.0
-	var damage_sum: float = 1.0
+	var defense_sum: float = 0.0
+	var speed_sum: float = 0.0
+	var damage_sum: float = 0.0
 
 	for eff: Effect in current_effect.values():
-		defense_sum += eff.get_defense_value() #5 "Flame" 0.35 2 2
-		speed_sum += eff.get_speed_value() #1 + 2 = 3
+		defense_sum += eff.get_defense_value()
+		speed_sum += eff.get_speed_value()
 		damage_sum += eff.get_damage_value()
 
 	return {

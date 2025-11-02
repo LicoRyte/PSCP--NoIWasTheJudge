@@ -90,7 +90,6 @@ func _spawn_boss(x: float, y: float) -> Node2D:
 	new_boss.add_to_group("enemies")
 	new_boss.boss_defeated.connect(_on_enemy_defeated)
 	return new_boss
-	#var new_boss: Node2D = Sce
 
 func _on_enemy_defeated() -> void:
 	GameEvents.update_enemy_killed.emit()
@@ -101,7 +100,7 @@ func _on_enemy_defeated() -> void:
 
 
 func _get_enemy_count(wave: int) -> int:
-	return 5 + int(floor(wave / 0.75))
+	return 12 + int(floor(wave / 0.5))
 
 func get_wave_health_multiplier() -> float:
 	return max(1.0, 1.0 + 0.25 * float(floor(current_wave / 1.75)))

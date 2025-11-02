@@ -260,7 +260,7 @@ sprite_frames = SubResource("SpriteFrames_jrp62")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("5_n806f")
-max_health = 200.0
+max_health = 450.0
 metadata/_custom_type_script = "uid://d6qnnarpvn53"
 
 [node name="StatComponent" type="Node" parent="."]

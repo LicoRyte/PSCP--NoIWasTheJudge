@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="4_7daf2"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="5_62j1s"]
 [ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="6_7daf2"]
-[ext_resource type="Script" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
+[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7daf2"]
 atlas = ExtResource("1_ksmlx")
@@ -75,7 +75,7 @@ scale = Vector2(1.9166666, 1.9166666)
 sprite_frames = SubResource("SpriteFrames_7daf2")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.935473
+frame_progress = 0.97757894
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
@@ -88,13 +88,22 @@ metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_62j1s")
 debug_color = Color(0.57551855, 0.45502687, 0.82508385, 0.41960785)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_a2w56")
+debug_color = Color(0.95571464, 1.4439225e-06, 0.54431456, 0.41960785)
+script = ExtResource("3_y0sql")
+metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
+
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_7daf2")
-max_health = 50.0
+max_health = 12.0
 metadata/_custom_type_script = "uid://d6qnnarpvn53"
 
 [node name="StatComponent" type="Node" parent="."]

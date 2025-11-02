@@ -24,18 +24,18 @@ var attack_scene = {
 var current_bullet_time = 0.0
 var current_stage_time = 0.0
 
-var beam_cooldown = 0.5
+var beam_cooldown = 0.4
 var max_beam_count = 6
 var current_beam = 0
 var current_beam_timer = 0.0
 
-var static_cooldown = 1.25
+var static_cooldown = 1.4
 var max_static_count = 6
 var current_static = 0
 var current_static_timer = 0.0
 
-var PSCP_cooldown = 0.4
-var max_PSCP_count = 8
+var PSCP_cooldown = 0.45
+var max_PSCP_count = 9
 var current_PSCP = 0
 var current_PSCP_timer = 0.0
 
@@ -43,6 +43,8 @@ var destroyed_effect_cooldown = 0.17
 var current_time = 0.0
 
 func _ready() -> void:
+	beam_cooldown = max(0.15 ,0.35 - (Wave.current_wave / 100))
+	max_beam_count = 6 + floor(Wave.current_wave / 3)
 	animation_player.play("Idle")
 	connect("_object_died", defeated)
 	
@@ -57,7 +59,7 @@ func _process(delta: float) -> void:
 			to(BossStage.IDLE)
 		BossStage.IDLE:
 			animation_player.play("Idle")
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(1.0).timeout
 			to(BossStage.BEAM)
 		BossStage.BEAM:
 			current_beam_timer += delta

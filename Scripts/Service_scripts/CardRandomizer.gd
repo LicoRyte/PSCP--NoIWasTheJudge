@@ -69,7 +69,7 @@ func show_card(pool: Array) -> void:
 		current_card_on_screen.append(card_area)
 
 func _on_card_selected(card: CardResource) -> void:
-	GameEvents.update_card_collected.emit()
+	GameEvents.card_collected += 1
 	GameEvents.card_append(card)
 	selector_ui.visible = false
 	clear_card_from_screen()

@@ -4,7 +4,7 @@ extends Node2D
 @onready var hitbox: Area2D = $Area2D
 @onready var beam: Sprite2D = $Sprite2D
 
-@export var delay_before_attack: float = 1.5
+@export var delay_before_attack: float = 1.25
 @export var fade_time: float = 0.5
 @export var beam_damage: float = 30
 

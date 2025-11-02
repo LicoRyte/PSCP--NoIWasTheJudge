@@ -6,11 +6,13 @@ signal stamina_changed(value)
 @onready var state_machine_mm: StateMachine = $StateMachine_MM
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player_cam: Camera2D = $Camera2D
+@onready var stat_component: StatComponent = $StatComponent
 
 """dash component"""
 @export var dash_speed: float = 750.0
 @export var dash_duration: float = 0.10
 @export var dash_cooldown: float = 0.15
+
 var last_input_direction := Vector2(0,0)
 var _dash_cd_left: float = 0.0
 var is_dashing: bool = false
@@ -18,7 +20,6 @@ var can_dash: bool = true
 
 """player component"""
 @export var max_stamina: float = 100.0
-@export var move_speed: float = 200
 
 var current_stamina: float
 var current_move_speed: float
@@ -33,7 +34,7 @@ func _ready() -> void:
 	state_machine_mm.initialize(self)
 
 func _process(delta: float) -> void:
-	current_move_speed = move_speed
+	current_move_speed = stat_component.base_speed * stat_component.speed_multiplier
 	"""นับเวลา dash cooldown"""
 	if not can_dash:
 		_dash_cd_left -= delta

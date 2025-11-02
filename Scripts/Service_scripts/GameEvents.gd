@@ -21,10 +21,20 @@ signal _reward_sequence
 signal update_enemy_killed
 signal update_card_collected
 
+var enemy_killed = 0
+var card_collected = 0
 
 var	player_health:HealthComponent
 var current_mod : Array[BulletModifier] = [
 ]
+
+func reset_game():
+	reset_mod()
+	reset_statistic()
+
+func reset_statistic():
+	enemy_killed = 0
+	card_collected = 0
 
 func reset_mod():
 	current_mod.clear()
@@ -47,3 +57,9 @@ func add_bullet_mod(mod : BulletModifier) -> void:
 
 func remove_bullet_mod(mod : BulletModifier) -> void:
 	current_mod.erase(mod)
+
+func get_enemies_killed():
+	return enemy_killed
+func get_card_collected():
+	return card_collected
+	

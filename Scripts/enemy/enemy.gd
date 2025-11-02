@@ -37,6 +37,7 @@ func _enemy_is_died():
 	if not died:
 		defeated.emit()
 		queue_free()
+		GameEvents.enemy_killed += 1
 		died = true	
 	
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:

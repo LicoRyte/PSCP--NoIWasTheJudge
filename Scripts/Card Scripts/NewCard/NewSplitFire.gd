@@ -9,3 +9,7 @@ func _init() -> void:
 	_set_stat_name("Bullet SPLIT!")
 	_set_image(SPLIT_BULLET)
 	_add_mod(SplitBullet.new())
+
+func _gun_change(gun:Gun):
+	gun.reduce_fire_rate += -0.15
+	gun.change_fire_rate()

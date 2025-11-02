@@ -1,7 +1,7 @@
 extends CardResource
 class_name NewCatWalk
 
-var speed:float = 200
+var speed:float = 75
 const CATWALK = preload("res://Asset/pic/Card/Cat-Walk.png")
 
 func _init() -> void:
@@ -12,4 +12,4 @@ func _init() -> void:
 
 func _stat_change(stat: StatComponent):
 	print("Move faster")
-	stat.speed_multiplier += speed
+	stat.base_speed += speed
