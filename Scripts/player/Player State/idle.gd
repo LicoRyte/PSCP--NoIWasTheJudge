@@ -7,7 +7,7 @@ extends State
 @export var dash_state: State
 
 func enter():
-	print("Hello")
+	#print("Hello")
 	player.animated_sprite_2d.play("Idle")
 func exit():
 	pass

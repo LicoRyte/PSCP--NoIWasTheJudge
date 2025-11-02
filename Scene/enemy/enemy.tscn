@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="4_7daf2"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="5_62j1s"]
 [ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="6_7daf2"]
-[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
+[ext_resource type="Script" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7daf2"]
 atlas = ExtResource("1_ksmlx")
@@ -57,13 +57,16 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_a2w56"]
+radius = 15.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_62j1s"]
 radius = 182.88794
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a2w56"]
-radius = 16.0
-
 [node name="enemy" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_a2w56")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -74,6 +77,13 @@ animation = &"run"
 autoplay = "run"
 frame_progress = 0.935473
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_a2w56")
+debug_color = Color(0.95571464, 1.4439225e-06, 0.54431456, 0.41960785)
+script = ExtResource("3_y0sql")
+metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
+
 [node name="detection_area" type="Area2D" parent="."]
 collision_mask = 2
 
@@ -81,13 +91,6 @@ collision_mask = 2
 position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_62j1s")
 debug_color = Color(0.57551855, 0.45502687, 0.82508385, 0.41960785)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
-shape = SubResource("CircleShape2D_a2w56")
-debug_color = Color(0.95571464, 1.4439225e-06, 0.54431456, 0.41960785)
-script = ExtResource("3_y0sql")
-metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_7daf2")
@@ -106,7 +109,6 @@ metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 
 [node name="WaveDataGetterSetter" type="Node" parent="."]
 script = ExtResource("7_62j1s")
-metadata/_custom_type_script = "uid://cc4yeu1nikuox"
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

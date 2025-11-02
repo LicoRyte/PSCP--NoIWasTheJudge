@@ -11,7 +11,9 @@ var dash_time_left: float = 0.0
 var acceleration = 60
 
 func enter():
-	print("before_input_direction", player.last_input_direction)
+	player.is_dashing = true
+	player.change_stamina(-0)
+	#print("before_input_direction", player.last_input_direction)
 	player._dash_cd_left = player.dash_cooldown
 	player.can_dash = false
 	
@@ -24,14 +26,14 @@ func enter():
 		dash_direction = input_dir
 	else:
 		dash_direction = player.last_input_direction
-		print(player.last_input_direction)
 	
 	dash_time_left = player.dash_cooldown
 	
 	player.animated_sprite_2d.play("dash")
 
 func exit():
-	pass
+	player.is_dashing = false
+
 func process_physics(delta: float) -> State:
 	player.velocity = dash_direction * player.dash_speed
 	player.move_and_slide()

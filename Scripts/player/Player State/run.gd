@@ -28,7 +28,7 @@ func process_physics(delta: float) -> State:
 	"""ตัวแปรการ dash"""
 	if not input_direction:
 		player.last_input_direction = temp
-		print("last_input_direction", player.last_input_direction)
+		#print("last_input_direction", player.last_input_direction)
 	temp = input_direction
 	"""หันซ้ายขวาของ sprite ผู้เล่น"""
 	if input_direction.x > 0:
