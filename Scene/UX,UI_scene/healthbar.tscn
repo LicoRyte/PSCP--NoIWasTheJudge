@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dto6cmyu6rhds"]
 
-[ext_resource type="Texture2D" uid="uid://w5w2u7cntoo3" path="res://Asset/art/bg.png" id="1_dxt1e"]
-[ext_resource type="Texture2D" uid="uid://drcgsajx8nfne" path="res://Asset/art/red.png" id="2_wdmdv"]
+[ext_resource type="Texture2D" uid="uid://b7axov3dcwgkp" path="res://Asset/art/healthbar.png" id="1_dxt1e"]
+[ext_resource type="Texture2D" uid="uid://371l0hxjmr13" path="res://Asset/art/progresshealthbar.png" id="2_wdmdv"]
 [ext_resource type="Script" uid="uid://enrvnudjhypj" path="res://Scripts/UX,UI_scripts/healthBar.gd" id="3_61wsu"]
 
 [node name="healthbar" type="TextureProgressBar"]
@@ -14,6 +14,6 @@ offset_right = -9.0
 offset_bottom = 59.0
 grow_horizontal = 0
 value = 100.0
-texture_under = ExtResource("1_dxt1e")
+texture_over = ExtResource("1_dxt1e")
 texture_progress = ExtResource("2_wdmdv")
 script = ExtResource("3_61wsu")
