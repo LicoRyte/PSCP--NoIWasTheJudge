@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=48 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/player/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Scripts/Base/state_machine.gd" id="2_3eeal"]
@@ -15,17 +15,6 @@
 [ext_resource type="Script" uid="uid://c1iw6g24hvfx7" path="res://Scripts/player/Player State/stunned.gd" id="7_3pik8"]
 [ext_resource type="Script" uid="uid://b7whr2y1petr7" path="res://Scripts/player/Player State/dash.gd" id="10_fq3oi"]
 [ext_resource type="Script" uid="uid://ceuhx3dreapte" path="res://Scripts/Base/CardComponent.gd" id="15_kbnkk"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbnkk"]
-
-[sub_resource type="Gradient" id="Gradient_7dww1"]
-offsets = PackedFloat32Array(0, 0.56, 0.62, 0.9866667)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_inyuv"]
-gradient = SubResource("Gradient_7dww1")
-fill = 1
-fill_from = Vector2(0.47196263, 0.50934577)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dww1"]
 atlas = ExtResource("2_jriwm")
@@ -239,6 +228,21 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbnkk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u0m1"]
+radius = 3.999998
+height = 22.0
+
+[sub_resource type="Gradient" id="Gradient_7dww1"]
+offsets = PackedFloat32Array(0, 0.56, 0.62, 0.9866667)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_inyuv"]
+gradient = SubResource("Gradient_7dww1")
+fill = 1
+fill_from = Vector2(0.47196263, 0.50934577)
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 3
@@ -270,20 +274,7 @@ metadata/_custom_type_script = "uid://d6qnnarpvn53"
 script = ExtResource("15_kbnkk")
 metadata/_custom_type_script = "uid://ceuhx3dreapte"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
-shape = SubResource("CapsuleShape2D_kbnkk")
-script = ExtResource("2_hm8o0")
-metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.25882354)
-position = Vector2(1, 1.0000019)
-scale = Vector2(0.75, 0.28125003)
-texture = SubResource("GradientTexture2D_inyuv")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -22)
 scale = Vector2(1.8125, 1.8125)
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"dash"
@@ -293,6 +284,29 @@ frame_progress = 1.0
 
 [node name="gun" parent="AnimatedSprite2D" instance=ExtResource("2_7dww1")]
 position = Vector2(0, 0.55172414)
+
+[node name="hitbox_player" type="Area2D" parent="."]
+collision_layer = 9
+
+[node name="Hitbox" type="CollisionShape2D" parent="hitbox_player"]
+position = Vector2(0, 9)
+shape = SubResource("CapsuleShape2D_kbnkk")
+script = ExtResource("2_hm8o0")
+metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
+
+[node name="real_hitbox" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, 20)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_3u0m1")
+debug_color = Color(0.79402095, 0.4263646, 0, 0.41960785)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.25882354)
+position = Vector2(0, 20)
+scale = Vector2(0.75, 0.28125003)
+texture = SubResource("GradientTexture2D_inyuv")
 
 [node name="StateMachine_MM" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("2_3eeal")

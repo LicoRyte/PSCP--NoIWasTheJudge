@@ -7,8 +7,8 @@ var is_immune : bool
 @export var status_component : StatusComponent
 
 func _ready() -> void:
-	health_component = Common.get_component(get_parent(), HealthComponent)
-	status_component = Common.get_component(get_parent(), StatusComponent)
+	health_component = Common.get_component(Common.find_real_parent(self, CharacterBody2D), HealthComponent)
+	status_component = Common.get_component(Common.find_real_parent(self, CharacterBody2D), StatusComponent)
 
 func detect_attack(attack: Attack):
 	if is_immune or not health_component:

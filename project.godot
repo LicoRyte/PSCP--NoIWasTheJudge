@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="NoIWasTheJudge"
+run/main_scene="uid://d2ymyqoxoc30l"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,6 +24,7 @@ RewardSequence="*res://Scene/Service_scene/RewardSequence.tscn"
 CamCom="*res://Scene/Service_scene/CameraComposer.tscn"
 Wave="*res://Scripts/Service_scripts/WaveManager.gd"
 SceneManager="*res://Scene/Service_scene/SceneManager.tscn"
+Common="*res://Scripts/Service_scripts/Common.gd"
 
 [display]
 

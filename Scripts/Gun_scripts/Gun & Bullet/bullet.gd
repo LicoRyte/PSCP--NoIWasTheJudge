@@ -38,6 +38,7 @@ func _process(delta: float) -> void:
 
 func apply_hit(target: Node2D):
 	var hitbox = Common.get_component(target, HitboxComponent)
+	print(hitbox)
 	if not hitbox:
 		return
 	var eff = Effect.new()
@@ -51,8 +52,7 @@ func apply_hit(target: Node2D):
 		"canDestroy" : can_destroy,
 		"bulletDuration" : bullet_duration,
 		"function" : [
-			#Callable(Damage, "deal_effect").bind(eff, hitbox)
-		] #สำหรับเรียกใช้ function """function เป็นชนิดข้อมูลรูปแบบหนึ่งคือ Callable  สามารถเก็บเข้า Array เหมือนข้อมูลปกติได้
+		]
 	}
 	#วิธีการคือเราจะ Append function ของ Modifier เข้าไปใน values ของ key function
 	for mod in modifier:
@@ -80,9 +80,22 @@ func remove_mod(mod: BulletModifier):
 	
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if body is Player:
+	pass
+	#print(body)
+	#if body is Player:
+		#return
+	#GameEvents._shake_call.emit()
+	#GlobalAudio.fx("damage")
+	#apply_hit(body)
+	#queue_free()
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	print(area.get_parent())
+	if area.get_parent() is Player:
 		return
 	GameEvents._shake_call.emit()
 	GlobalAudio.fx("damage")
-	apply_hit(body)
+	apply_hit(area.get_parent())
 	queue_free()
+	
+	

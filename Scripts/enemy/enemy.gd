@@ -8,21 +8,20 @@ var player : Player
 var died : bool
 
 signal defeated
+@onready var stat_component: StatComponent = $StatComponent
+
 
 func _ready() -> void:
 	player = get_tree().current_scene.get_node_or_null("Player")
 	connect("_object_died",_enemy_is_died)
 	_entity_died.connect(_enemy_is_died)
-
 func _physics_process(_delta: float) -> void:
 	if player:
 		if player_chase:
-			#print("in")
 			var direction = global_position.direction_to(player.global_position)
-			velocity = direction * 100
+			velocity = direction * (stat_component.base_speed * stat_component.speed_multiplier)
 			move_and_slide()
 		else:
-			#print("out")
 			var direction = global_position.direction_to(player.global_position)
 			velocity = direction * 100
 			move_and_slide()
@@ -43,6 +42,3 @@ func _enemy_is_died():
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:
 	if receiver == self:
 		CamCom.play_effect("fracture", receiver.global_position)
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	return
