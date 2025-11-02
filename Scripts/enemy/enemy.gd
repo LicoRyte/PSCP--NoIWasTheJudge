@@ -15,7 +15,6 @@ func _ready() -> void:
 	player = get_tree().current_scene.get_node_or_null("Player")
 	connect("_object_died",_enemy_is_died)
 	_entity_died.connect(_enemy_is_died)
-
 func _physics_process(_delta: float) -> void:
 	if player:
 		if player_chase:
@@ -43,6 +42,3 @@ func _enemy_is_died():
 func _on_deal_damage(amount: float, receiver: Node2D, _source: Node) -> void:
 	if receiver == self:
 		CamCom.play_effect("fracture", receiver.global_position)
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	return

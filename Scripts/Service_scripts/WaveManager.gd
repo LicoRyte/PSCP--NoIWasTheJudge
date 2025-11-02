@@ -100,7 +100,7 @@ func _on_enemy_defeated() -> void:
 
 
 func _get_enemy_count(wave: int) -> int:
-	return 12 + int(floor(wave / 0.5))
+	return 1 + int(floor(wave / 0.5))
 
 func get_wave_health_multiplier() -> float:
 	return max(1.0, 1.0 + 0.25 * float(floor(current_wave / 1.75)))
