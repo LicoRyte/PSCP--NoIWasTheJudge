@@ -9,17 +9,17 @@ signal stamina_changed(value)
 
 """dash component"""
 @export var dash_speed: float = 750.0
-@export var dash_duration: float = 0.18
-@export var dash_cooldown: float = 0.35
+@export var dash_duration: float = 0.10
+@export var dash_cooldown: float = 0.15
+var last_input_direction := Vector2(0,0)
+var _dash_cd_left: float = 0.0
+var is_dashing: bool = false
+var can_dash: bool = true
 
 """player component"""
 @export var max_stamina: float = 100.0
 @export var move_speed: float = 200
 
-var last_input_direction := Vector2(0,0)
-var is_dashing: bool = false
-var can_dash: bool = true
-var _dash_cd_left: float = 0.0
 var current_stamina: float
 var current_move_speed: float
 var gun : Gun

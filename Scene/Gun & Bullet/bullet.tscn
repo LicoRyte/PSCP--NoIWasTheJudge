@@ -55,6 +55,7 @@ position = Vector2(-88, 0)
 rect = Rect2(76, -10, 24, 20)
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 light_mask = 0

@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfccfti1q103b"]
+[gd_scene load_steps=3 format=3 uid="uid://dfccfti1q103b"]
 
 [ext_resource type="Script" uid="uid://cqhhyo08m4cps" path="res://Scene/Game Scene/arena.gd" id="1_ll2um"]
+[ext_resource type="Texture2D" uid="uid://dd0oj87l0aqqu" path="res://Asset/pic/EX_main_menu.png" id="2_nufsy"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_ll2um")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(126.99998, 82)
+scale = Vector2(0.82461876, 1.2039217)
+texture = ExtResource("2_nufsy")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+light_mask = 3
+y_sort_enabled = true
+polygon = PackedVector2Array(-615, 0, -628, 673, 875, 682, 885, -506, -630, -538, -614, -7, -689, -9, -688, -624, 943, -587, 963, 768, -720, 755, -690, -4)

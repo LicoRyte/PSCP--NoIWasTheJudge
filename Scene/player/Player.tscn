@@ -16,8 +16,7 @@
 [ext_resource type="Script" uid="uid://b7whr2y1petr7" path="res://Scripts/player/Player State/dash.gd" id="10_fq3oi"]
 [ext_resource type="Script" uid="uid://ceuhx3dreapte" path="res://Scripts/Base/CardComponent.gd" id="15_kbnkk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8lcb"]
-size = Vector2(24, 35)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbnkk"]
 
 [sub_resource type="Gradient" id="Gradient_7dww1"]
 offsets = PackedFloat32Array(0, 0.56, 0.62, 0.9866667)
@@ -241,6 +240,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_inyuv")
 max_stamina = 75.0
@@ -270,8 +270,8 @@ script = ExtResource("15_kbnkk")
 metadata/_custom_type_script = "uid://ceuhx3dreapte"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 5.5)
-shape = SubResource("RectangleShape2D_j8lcb")
+position = Vector2(-1, 8.5)
+shape = SubResource("CapsuleShape2D_kbnkk")
 script = ExtResource("2_hm8o0")
 metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 

@@ -6,7 +6,6 @@ extends State
 @export var stunned_state: State
 @export var dash_state: State
 
-var acceleration = 60
 var move_speed = 200.0
 var jump_speed = 420.0 #อยากให้กระโดดได้เร็วเท่าไหร่
 var gravity_vertical = 1200.0
@@ -14,9 +13,13 @@ var height_of_jump = 0.0 #อยากให้กระโดดได้สู
 var vertical_jump_speed = 0.0
 var is_jumping = false
 var immune = true
+var dash_direction: Vector2 = Vector2.ZERO
+var dash_time_left: float = 0.0
+var acceleration = 60
 
 var hitbox : HitboxComponent
-var jump_stamina_cost := 20.0 #กระโดดใช้ stamina
+var jump_stamina_cost := 0.0 #กระโดดใช้ stamina
+
 func _ready() -> void:
 	call_deferred("_assign_hitbox")
 
@@ -30,9 +33,9 @@ func enter():
 	else:
 		print("Not enough stamina to jump")
 		return idle_state
+
 func exit():
 	hitbox.set_immune(false)
-	pass
 
 func do_jump() -> void:
 	if not is_jumping and height_of_jump <= 0.0:
@@ -53,26 +56,52 @@ func apply_jump_physics(delta: float) -> void:
 	player.animated_sprite_2d.global_position.y = player.global_position.y - height_of_jump
 
 func process_physics(delta: float) -> State:
-	var input_direction = Vector2(
-		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
-		Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	).normalized()
-	player.velocity = lerp(player.velocity, input_direction * player.current_move_speed, delta * acceleration)
-	player.move_and_slide()
-	apply_jump_physics(delta)
-	if not height_of_jump and input_direction:
-		return run_state
-	if not height_of_jump and not input_direction:
-		return idle_state
-	
-	"""dash"""
-	if Input.is_action_just_pressed("Dash") and player.can_dash:
-		return dash_state
+	if dash_time_left <= 0.0:
+		player.is_dashing = false
+	if player.is_dashing:
+		player.velocity = dash_direction * player.dash_speed
+		player.move_and_slide()
+		dash_time_left -= delta
+		apply_jump_physics(delta)
+
+	else:
+		var input_direction = Vector2(
+			Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+			Input.get_action_strength("Down") - Input.get_action_strength("Up")
+		).normalized()
+		player.velocity = lerp(player.velocity, input_direction * player.current_move_speed, delta * acceleration)
+		player.move_and_slide()
+		apply_jump_physics(delta)
+		if not height_of_jump and input_direction:
+			return run_state
+		if not height_of_jump and not input_direction:
+			return idle_state
 	
 	if player.is_died:
 		return killed_state
 	return null
+
 func process_input(_event: InputEvent) -> State:
+	if Input.is_action_just_pressed("Dash") and player.can_dash:
+		player.is_dashing = true
+		player.change_stamina(-0)
+		#print("before_input_direction", player.last_input_direction)
+		player._dash_cd_left = player.dash_cooldown
+		player.can_dash = false
+		
+		var input_dir = Vector2(
+			Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+			Input.get_action_strength("Down") - Input.get_action_strength("Up")
+		).normalized()
+		
+		if input_dir:
+			dash_direction = input_dir
+		else:
+			dash_direction = player.last_input_direction
+		
+		dash_time_left = player.dash_cooldown
+		
+		player.animated_sprite_2d.play("dash")
 	return null
 
 func _assign_hitbox():

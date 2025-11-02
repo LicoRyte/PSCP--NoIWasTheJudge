@@ -108,6 +108,7 @@ func get_wave_health_multiplier() -> float:
 
 func get_wave_damage_multiplier() -> float:
 	return max(1.0, 1.0 + 0.25 * float(floor(current_wave / 1.75)))
+
 func _on_game_start() -> void:
 	print("start")
 	cur_seq = Sequence.WAIT
