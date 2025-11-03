@@ -36,7 +36,15 @@ func fx(sfx: String):
 	player.queue_free()
 
 func change_music(new_music: String):
-	if current_music != music[new_music]:
+	if new_music == "STOP":
+		var tween = create_tween()
+		tween.tween_property(background_player, "volume_db", -80, fade_time)
+		tween.tween_callback(func():
+			background_player.stream = null
+			background_player.volume_db = -15
+		)
+		return
+	elif current_music != music[new_music]:
 		current_music = music[new_music]
 		var tween = create_tween()
 		# Fade out current music
@@ -45,13 +53,6 @@ func change_music(new_music: String):
 			background_player.stream = music[new_music]
 			background_player.volume_db = -18
 			background_player.play()
-		)
-	elif new_music == "STOP":
-		var tween = create_tween()
-		tween.tween_property(background_player, "volume_db", -80, fade_time)
-		tween.tween_callback(func():
-			background_player.stream = null
-			background_player.volume_db = -15
 		)
 
 func reverb(pitch_scale : float):

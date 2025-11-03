@@ -10,7 +10,7 @@ script = ExtResource("1_0uvw4")
 
 [node name="static_line" type="Line2D" parent="."]
 position = Vector2(-2, 0)
-points = PackedVector2Array(-1, -50, 9, 32, -3, 68, 10, 110, -8, 180, 10, 242, -10, 304, 8, 394)
+points = PackedVector2Array(2, -58, 9, 32, -3, 68, 10, 110, -8, 180, 10, 242, -10, 304, 8, 394, -3, 463, 6, 502)
 width = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
