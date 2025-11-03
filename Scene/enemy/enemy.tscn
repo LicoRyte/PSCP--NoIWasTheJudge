@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="4_7daf2"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="5_62j1s"]
 [ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="6_7daf2"]
-[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
+[ext_resource type="Script" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7daf2"]
 atlas = ExtResource("1_ksmlx")
@@ -61,7 +61,7 @@ animations = [{
 radius = 16.03122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_62j1s"]
-radius = 121.004135
+radius = 92.19544
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo3e1"]
 radius = 4.0
@@ -127,7 +127,7 @@ metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 script = ExtResource("7_62j1s")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]

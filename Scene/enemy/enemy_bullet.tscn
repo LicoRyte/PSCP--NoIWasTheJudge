@@ -91,7 +91,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8pmdm")
 }],
-"loop": false,
+"loop": true,
 "name": &"blue",
 "speed": 16.0
 }, {
@@ -134,7 +134,7 @@ scale = Vector2(0.36666664, 0.36666667)
 sprite_frames = SubResource("SpriteFrames_ddm8l")
 animation = &"pink"
 autoplay = "pink"
-frame_progress = 0.25033
+frame_progress = 0.09086315
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-88, 0)

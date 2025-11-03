@@ -268,6 +268,7 @@ offset_bottom = 212.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -20)
 ignore_rotation = false
+zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
@@ -331,45 +332,40 @@ texture = SubResource("GradientTexture2D_inyuv")
 script = ExtResource("2_3eeal")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("run_state", "jump_state", "killed_state", "stunned_state", "dash_state")]
+[node name="Idle" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("run_state", "jump_state", "killed_state", "dash_state")]
 script = ExtResource("3_mud5u")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
-[node name="Run" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "jump_state", "killed_state", "stunned_state", "dash_state")]
+[node name="Run" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "jump_state", "killed_state", "dash_state")]
 script = ExtResource("3_jvxg0")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
-[node name="Jump" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "killed_state", "stunned_state", "dash_state")]
+[node name="Jump" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "killed_state", "dash_state")]
 script = ExtResource("5_fvocf")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
-[node name="Killed" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "stunned_state", "dash_state")]
+[node name="Killed" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "dash_state")]
 script = ExtResource("6_pmp2f")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
-stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 animation_name = "dash"
 
-[node name="Dash" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "stunned")]
+[node name="Dash" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state")]
 script = ExtResource("10_fq3oi")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned = NodePath("")
 
 [connection signal="area_entered" from="hitbox_player" to="StateMachine_MM/Dash" method="_on_hitbox_player_area_entered"]

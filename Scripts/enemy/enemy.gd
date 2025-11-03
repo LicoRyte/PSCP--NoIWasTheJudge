@@ -3,6 +3,11 @@ class_name Enemy
 
 @export var health:float = 100.0
 @export var enemy_bullet_scene = preload("res://Scene/enemy/enemy_bullet.tscn")
+var direction = position.direction_to(Vector2(0, 0))
+var randomdistance_x := randf_range(-1000, 1000)
+var randomdistance_y := randf_range(-1000, 1000)
+var position_to_atk := Vector2(0, 0)
+var position_to_end := Vector2(0, 0)
 var player_chase := true
 var can_shoot := true
 var player : Player
@@ -21,12 +26,13 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	#print(player_chase)
 	if player_chase:
-		var direction = global_position.direction_to(player.global_position)
+		position_to_atk = Vector2(player.position.x + randomdistance_x, player.position.y + randomdistance_y)
+		direction = position.direction_to(position_to_atk)
 		velocity = direction * 50
 		move_and_slide()
 		can_shoot = true
 	else:
-		var direction = global_position.direction_to(player.global_position)
+		direction = position.direction_to((player.position))
 		velocity = direction * 25
 		move_and_slide()
 		can_shoot = true
@@ -58,5 +64,7 @@ func shoot_bullet():
 	get_tree().current_scene.add_child(new_enemy_bullet)
 	
 func _on_timer_timeout() -> void:
+	randomdistance_x = randf_range(-1000, 1000)
+	randomdistance_y = randf_range(-1000, 1000)
 	if can_shoot:
 		shoot_bullet()
