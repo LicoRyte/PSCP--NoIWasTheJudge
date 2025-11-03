@@ -33,6 +33,8 @@ func enter():
 	
 	if input_dir:
 		dash_direction = input_dir
+	elif not player.last_input_direction:
+		dash_direction = Vector2(1,0)
 	else:
 		dash_direction = player.last_input_direction
 	
