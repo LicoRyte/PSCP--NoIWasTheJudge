@@ -12,6 +12,8 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
+	if player.is_died:
+		return killed_state
 	return null
 
 func process_input(event: InputEvent) -> State:
@@ -35,7 +37,5 @@ func process_input(event: InputEvent) -> State:
 		return run_state
 	
 	"""die"""
-	if player.is_died:
-		return killed_state
 
 	return null

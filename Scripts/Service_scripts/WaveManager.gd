@@ -113,6 +113,8 @@ func get_wave_damage_multiplier() -> float:
 
 func _on_game_start() -> void:
 	print("start")
+	spawn_done = false
+	current_wave = 0
 	cur_seq = Sequence.WAIT
 
 func _on_game_continue() -> void:
