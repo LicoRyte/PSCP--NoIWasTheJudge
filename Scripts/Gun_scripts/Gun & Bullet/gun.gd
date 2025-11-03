@@ -20,8 +20,10 @@ var is_reloading := false
 
 var fire_timer : Timer
 var reload_timer : Timer
+var player_died: bool = false
 
 func _ready() -> void:
+	GameEvents._player_died.connect(no_longer_shooting)
 	sprite = get_parent()
 	fire_timer = Timer.new()
 	fire_timer.one_shot = true
@@ -44,7 +46,7 @@ func _process(delta: float) -> void:
 	rotation_degrees = wrap(rotation_degrees, 0, 360)
 	scale.y = -1 if rotation_degrees > 90 and rotation_degrees <= 270 else 1
 
-	if Input.is_action_pressed("Lmb") and can_shoot and not is_reloading:
+	if Input.is_action_pressed("Lmb") and can_shoot and not is_reloading and not player_died:
 		if curr_bullet > 0:
 			shoot()
 		else:
@@ -85,3 +87,6 @@ func _on_reload_timer_timeout() -> void:
 	can_shoot = true
 	curr_bullet = max_bullet + extra_bullet
 	print("Reload complete! Bullets refilled:", curr_bullet)
+
+func no_longer_shooting():
+	player_died = true
