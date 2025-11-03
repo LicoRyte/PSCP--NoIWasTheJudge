@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://0u3t2qlvq814"]
 
-[ext_resource type="Texture2D" uid="uid://btjasnpm37k5q" path="res://Asset/art/staminabar.png" id="1_msh4l"]
-[ext_resource type="Texture2D" uid="uid://bir6mlvrp4e8r" path="res://Asset/art/progressstaminabar.png" id="2_la0k0"]
+[ext_resource type="Texture2D" uid="uid://cehehcbt2jk5t" path="res://Asset/art/Sprite-0003(1)(1).png" id="1_msh4l"]
+[ext_resource type="Texture2D" uid="uid://cnbe7751w4fcn" path="res://Asset/art/Sprite-0004(1)(1).png" id="2_la0k0"]
 [ext_resource type="Script" uid="uid://c223pid3r2p13" path="res://Scripts/UX,UI_scripts/staminabar.gd" id="3_838yu"]
 
 [node name="staminabar" type="TextureProgressBar"]

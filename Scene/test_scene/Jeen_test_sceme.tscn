@@ -13,15 +13,13 @@ position = Vector2(-119, 157)
 [node name="Player" parent="." instance=ExtResource("1_sdf0p")]
 
 [node name="healthbar" parent="." instance=ExtResource("3_httfq")]
-offset_left = 64.0
-offset_top = -97.0
-offset_right = 704.0
-offset_bottom = 263.0
+offset_left = 66.0
+offset_top = -102.0
+offset_right = 213.0
+offset_bottom = -72.0
 
-[node name="staminabar2" parent="." instance=ExtResource("4_rkymw")]
-offset_left = 64.0
-offset_top = -62.0
-offset_right = 704.0
-offset_bottom = 298.0
-
-[connection signal="stamina_changed" from="Player" to="staminabar2" method="_on_player_stamina_changed"]
+[node name="staminabar" parent="." instance=ExtResource("4_rkymw")]
+offset_left = 65.0
+offset_top = -71.0
+offset_right = 218.0
+offset_bottom = -38.0
