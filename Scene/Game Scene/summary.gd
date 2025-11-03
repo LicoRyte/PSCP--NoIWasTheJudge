@@ -48,6 +48,7 @@ func _exit_summary() -> void:
 	can_exit = false
 	_set_all_visible(false)
 	SceneManager.change_scene("main_menu")
+	GlobalAudio.change_music("STOP")
 	queue_free()
 
 func _set_all_visible(val: bool) -> void:

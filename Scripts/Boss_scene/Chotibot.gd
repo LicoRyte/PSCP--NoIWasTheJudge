@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 			to(BossStage.IDLE)
 		BossStage.IDLE:
 			animation_player.play("Idle")
-			await get_tree().create_timer(1.0).timeout
+			await get_tree().create_timer(0.5).timeout
 			to(BossStage.BEAM)
 		BossStage.BEAM:
 			current_beam_timer += delta

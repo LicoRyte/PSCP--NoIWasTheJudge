@@ -20,7 +20,6 @@ func receive_damage(attack : Attack, is_magic : bool = false):
 	
 	if not is_magic:
 		actual_attack = stat_component.calculate_output(attack).get_damage()  #1
-		
 	current_health -= actual_attack #100 - 1 = 99
 	emit_signal("health_changed", current_health, max_health)
 	print(current_health)

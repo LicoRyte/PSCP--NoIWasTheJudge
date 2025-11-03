@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2wv505mwep4y"
+path="res://.godot/imported/Orbital Colossus.mp3-28335bfc7bb902b7e9a3f4d0d5ae0cba.mp3str"
+
+[deps]
+
+source_file="res://Asset/Old_asset/music/Orbital Colossus.mp3"
+dest_files=["res://.godot/imported/Orbital Colossus.mp3-28335bfc7bb902b7e9a3f4d0d5ae0cba.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

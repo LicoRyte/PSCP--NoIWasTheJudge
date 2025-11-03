@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 
 		Sequence.CARD_CHOOSING:
 			GameEvents._reward_sequence.emit()
+			GlobalAudio.change_music("intermission")
 			current_wave += 1
 			spawn_done = false
 			cur_seq = Sequence.WAIT_FOR_START
@@ -50,9 +51,11 @@ func _state_spawn() -> void:
 	if not spawn_done:
 		spawn_done = true
 		if current_wave > 0 and current_wave % 3 == 0:
+			GlobalAudio.change_music("boss")
 			current_enemy = 1
 			var boss: Node2D = _spawn_boss(0, 180)
 		else:
+			GlobalAudio.change_music("normal")
 			current_enemy = _get_enemy_count(current_wave)
 			var count = current_enemy
 			for i in count:
