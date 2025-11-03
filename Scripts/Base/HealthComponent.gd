@@ -17,7 +17,6 @@ func _ready() -> void:
 
 func receive_damage(attack : Attack, is_magic : bool = false):
 	var actual_attack = attack.get_damage() #5
-	
 	if not is_magic:
 		actual_attack = stat_component.calculate_output(attack).get_damage()  #1
 	current_health -= actual_attack #100 - 1 = 99

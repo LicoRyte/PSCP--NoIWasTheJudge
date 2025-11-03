@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=49 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/player/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Scripts/Base/state_machine.gd" id="2_3eeal"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://p01pweda4x5p" path="res://Scripts/player/Player State/idle.gd" id="3_mud5u"]
 [ext_resource type="Script" uid="uid://b2phmbicu3qei" path="res://Scripts/player/Player State/jump.gd" id="5_fvocf"]
 [ext_resource type="Script" uid="uid://b10f5seiqoync" path="res://Scripts/player/Player State/killed.gd" id="6_pmp2f"]
-[ext_resource type="Script" uid="uid://c1iw6g24hvfx7" path="res://Scripts/player/Player State/stunned.gd" id="7_3pik8"]
 [ext_resource type="Script" uid="uid://b7whr2y1petr7" path="res://Scripts/player/Player State/dash.gd" id="10_fq3oi"]
 [ext_resource type="Script" uid="uid://ceuhx3dreapte" path="res://Scripts/Base/CardComponent.gd" id="15_kbnkk"]
 
@@ -337,7 +336,7 @@ script = ExtResource("3_mud5u")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("../Stunned")
+stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
 [node name="Run" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "jump_state", "killed_state", "stunned_state", "dash_state")]
@@ -345,7 +344,7 @@ script = ExtResource("3_jvxg0")
 idle_state = NodePath("../Idle")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("../Stunned")
+stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
 [node name="Jump" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "killed_state", "stunned_state", "dash_state")]
@@ -353,7 +352,7 @@ script = ExtResource("5_fvocf")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 killed_state = NodePath("../Killed")
-stunned_state = NodePath("../Stunned")
+stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 
 [node name="Killed" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "stunned_state", "dash_state")]
@@ -361,17 +360,9 @@ script = ExtResource("6_pmp2f")
 idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
-stunned_state = NodePath("../Stunned")
+stunned_state = NodePath("")
 dash_state = NodePath("../Dash")
 animation_name = "dash"
-
-[node name="Stunned" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "dash_state")]
-script = ExtResource("7_3pik8")
-idle_state = NodePath("../Idle")
-run_state = NodePath("../Run")
-jump_state = NodePath("../Jump")
-killed_state = NodePath("../Killed")
-dash_state = NodePath("../Dash")
 
 [node name="Dash" type="Node" parent="StateMachine_MM" node_paths=PackedStringArray("idle_state", "run_state", "jump_state", "killed_state", "stunned")]
 script = ExtResource("10_fq3oi")
@@ -379,6 +370,6 @@ idle_state = NodePath("../Idle")
 run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
-stunned = NodePath("../Stunned")
+stunned = NodePath("")
 
 [connection signal="area_entered" from="hitbox_player" to="StateMachine_MM/Dash" method="_on_hitbox_player_area_entered"]

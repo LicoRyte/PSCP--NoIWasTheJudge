@@ -73,7 +73,3 @@ func _on_player_died():
 
 func camera_shake():
 	CamCom.apply_shake(player_cam,3,5)
-
-func recieve_damage(amount: float, target: Entity, source : Node = null) -> void:
-	camera_shake()
-	GlobalAudio.fx("damage")
