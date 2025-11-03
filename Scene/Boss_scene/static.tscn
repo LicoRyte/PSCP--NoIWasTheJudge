@@ -14,6 +14,7 @@ points = PackedVector2Array(2, -58, 9, 32, -3, 68, 10, 110, -8, 180, 10, 242, -1
 width = 3.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(1.25, 161)

@@ -19,10 +19,15 @@ func _ready() -> void:
 	_entity_died.connect(_enemy_is_died)
 
 func _physics_process(_delta: float) -> void:
-	print(player_chase)
+	#print(player_chase)
 	if player_chase:
 		var direction = global_position.direction_to(player.global_position)
 		velocity = direction * 50
+		move_and_slide()
+		can_shoot = true
+	else:
+		var direction = global_position.direction_to(player.global_position)
+		velocity = direction * 25
 		move_and_slide()
 		can_shoot = true
 

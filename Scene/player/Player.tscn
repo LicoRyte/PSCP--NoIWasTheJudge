@@ -1,9 +1,11 @@
-[gd_scene load_steps=48 format=3 uid="uid://cy62k0nefobxq"]
+[gd_scene load_steps=50 format=3 uid="uid://cy62k0nefobxq"]
 
 [ext_resource type="Script" uid="uid://cx8rb6brsgxw7" path="res://Scripts/player/player.gd" id="1_inyuv"]
 [ext_resource type="Script" uid="uid://dv4odxj0h0m3p" path="res://Scripts/Base/state_machine.gd" id="2_3eeal"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="2_3u0m1"]
+[ext_resource type="PackedScene" uid="uid://0u3t2qlvq814" path="res://Scene/UX,UI_scene/staminabar.tscn" id="2_6k38i"]
 [ext_resource type="PackedScene" uid="uid://cpr40bw0gbsp5" path="res://Scene/Gun & Bullet/gun.tscn" id="2_7dww1"]
+[ext_resource type="PackedScene" uid="uid://dto6cmyu6rhds" path="res://Scene/UX,UI_scene/healthbar.tscn" id="2_1240t"]
 [ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_hm8o0"]
 [ext_resource type="Texture2D" uid="uid://sr4pf1fejscy" path="res://Asset/Old_asset/sprites/knight.png" id="2_jriwm"]
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="2_kbnkk"]
@@ -249,6 +251,20 @@ collision_layer = 3
 collision_mask = 129
 script = ExtResource("1_inyuv")
 max_stamina = 75.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="healthbar" parent="CanvasLayer" instance=ExtResource("2_1240t")]
+offset_left = -639.0
+offset_top = 2.0
+offset_right = 1.0
+offset_bottom = 362.0
+
+[node name="staminabar" parent="CanvasLayer" instance=ExtResource("2_6k38i")]
+offset_left = -640.0
+offset_top = -148.0
+offset_right = 0.0
+offset_bottom = 212.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -20)

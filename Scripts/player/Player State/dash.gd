@@ -9,9 +9,15 @@ extends State
 var dash_direction: Vector2 = Vector2.ZERO
 var dash_time_left: float = 0.0
 var acceleration = 60
-var dash_damage := 5
+var dash_damage := 50
+
+var real_hitbox : HitboxComponent
+
+func _ready() -> void:
+	call_deferred("_assign_hitbox")
 
 func enter():
+	real_hitbox.set_immune(true)
 	hitbox.set_collision_mask_value(8, true)
 	hitbox.set_collision_layer_value(1, false)
 	player.is_dashing = true
@@ -35,6 +41,7 @@ func enter():
 	player.animated_sprite_2d.play("dash")
 
 func exit():
+	real_hitbox.set_immune(false)
 	hitbox.set_collision_mask_value(8, false)
 	hitbox.set_collision_layer_value(1, true)
 	player.is_dashing = false
@@ -73,3 +80,6 @@ func _on_hitbox_player_area_entered(area: Area2D) -> void:
 	GameEvents._shake_call.emit()
 	GlobalAudio.fx("damage")
 	apply_hit(area.get_parent())
+	
+func _assign_hitbox():
+	real_hitbox = Common.get_component(player, HitboxComponent)

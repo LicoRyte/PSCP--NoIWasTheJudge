@@ -18,7 +18,7 @@ var dash_time_left: float = 0.0
 var acceleration = 60
 
 var hitbox : HitboxComponent
-var jump_stamina_cost := 0.0 #กระโดดใช้ stamina
+var jump_stamina_cost := 30.0 #กระโดดใช้ stamina
 
 func _ready() -> void:
 	call_deferred("_assign_hitbox")

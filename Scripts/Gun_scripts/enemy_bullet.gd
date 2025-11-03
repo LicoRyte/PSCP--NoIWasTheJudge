@@ -5,7 +5,7 @@ class_name Enemy_bullet
 var velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta):
-	global_position += velocity * delta
+	global_position += velocity * delta * 0.5
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
