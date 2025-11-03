@@ -15,18 +15,21 @@ var effect = {
 }
 
 var music = {
-	"test_music": "put an files here though"
+	"boss" : preload("uid://d2wv505mwep4y"), #Orbital Colossal
+	"normal" :preload("uid://cangj2jvwfnc5"), #DeckFight
+	"intermission" : preload("uid://btmwyopyat2lv") #Local Forecast
+	
 }
 
 var current_music: AudioStream
 @onready var background_player: AudioStreamPlayer = $BackgroundPlayer
-var fade_time = 0.2
+var fade_time = 1
 
 func fx(sfx: String):
 	var player = AudioStreamPlayer.new()
 	player.stream = effect[sfx]
 	add_child(player)
-	player.volume_db -= 30
+	player.volume_db -= 15
 	player.play()
 	await player.finished
 	remove_child(player)
@@ -40,10 +43,17 @@ func change_music(new_music: String):
 		tween.tween_property(background_player, "volume_db", -80, fade_time)
 		tween.tween_callback(func():
 			background_player.stream = music[new_music]
-			background_player.volume_db = -15
+			background_player.volume_db = -18
 			background_player.play()
 		)
-	
+	elif new_music == "STOP":
+		var tween = create_tween()
+		tween.tween_property(background_player, "volume_db", -80, fade_time)
+		tween.tween_callback(func():
+			background_player.stream = null
+			background_player.volume_db = -15
+		)
+
 func reverb(pitch_scale : float):
 	if background_player.stream:
 		var tween = create_tween()
