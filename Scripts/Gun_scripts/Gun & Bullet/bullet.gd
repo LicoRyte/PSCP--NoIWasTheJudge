@@ -77,7 +77,6 @@ func add_mod(mod : BulletModifier):
 	
 func remove_mod(mod: BulletModifier):
 	modifier.erase(mod)
-	
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	pass
@@ -90,8 +89,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	#queue_free()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	print(area.get_parent())
-	if area.get_parent() is Player:
+	if area.get_parent() is Player or area.get_parent() is Bullet:
 		return
 	GameEvents._shake_call.emit()
 	GlobalAudio.fx("damage")

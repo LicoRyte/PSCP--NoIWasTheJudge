@@ -231,8 +231,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kbnkk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3u0m1"]
-radius = 3.999998
-height = 22.0
+height = 20.0
 
 [sub_resource type="Gradient" id="Gradient_7dww1"]
 offsets = PackedFloat32Array(0, 0.56, 0.62, 0.9866667)
@@ -251,6 +250,7 @@ script = ExtResource("1_inyuv")
 max_stamina = 75.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -20)
 ignore_rotation = false
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -275,6 +275,7 @@ script = ExtResource("15_kbnkk")
 metadata/_custom_type_script = "uid://ceuhx3dreapte"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -20)
 scale = Vector2(1.8125, 1.8125)
 sprite_frames = SubResource("SpriteFrames_j8lcb")
 animation = &"dash"
@@ -286,7 +287,9 @@ frame_progress = 1.0
 position = Vector2(0, 0.55172414)
 
 [node name="hitbox_player" type="Area2D" parent="."]
+position = Vector2(0, -20)
 collision_layer = 9
+collision_mask = 0
 
 [node name="Hitbox" type="CollisionShape2D" parent="hitbox_player"]
 position = Vector2(0, 9)
@@ -297,14 +300,14 @@ metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 [node name="real_hitbox" type="CollisionShape2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(0, 20)
+y_sort_enabled = true
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_3u0m1")
 debug_color = Color(0.79402095, 0.4263646, 0, 0.41960785)
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.25882354)
-position = Vector2(0, 20)
+position = Vector2(1, 0)
 scale = Vector2(0.75, 0.28125003)
 texture = SubResource("GradientTexture2D_inyuv")
 
@@ -360,3 +363,5 @@ run_state = NodePath("../Run")
 jump_state = NodePath("../Jump")
 killed_state = NodePath("../Killed")
 stunned = NodePath("../Stunned")
+
+[connection signal="area_entered" from="hitbox_player" to="StateMachine_MM/Dash" method="_on_hitbox_player_area_entered"]

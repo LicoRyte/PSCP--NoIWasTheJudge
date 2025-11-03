@@ -61,7 +61,7 @@ animations = [{
 radius = 16.03122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_62j1s"]
-radius = 182.88794
+radius = 121.004135
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo3e1"]
 radius = 4.0
@@ -71,6 +71,7 @@ height = 26.0
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 2
+platform_floor_layers = 4294967292
 script = ExtResource("1_a2w56")
 
 [node name="AnimatedSprite2D_enemy" type="AnimatedSprite2D" parent="."]
@@ -82,6 +83,7 @@ autoplay = "run"
 frame_progress = 0.97757894
 
 [node name="hitbox_enemy" type="Area2D" parent="."]
+collision_layer = 130
 
 [node name="HitboxComponent" type="CollisionShape2D" parent="hitbox_enemy"]
 position = Vector2(0, -15)
@@ -96,7 +98,7 @@ collision_mask = 10
 
 [node name="detection_area" type="CollisionShape2D" parent="detection_area"]
 shape = SubResource("CircleShape2D_62j1s")
-debug_color = Color(0.57551855, 0.45502687, 0.82508385, 0.41960785)
+debug_color = Color(0.5757751, 0.45533067, 0.8249593, 0.116000004)
 
 [node name="real_hitbox" type="CollisionShape2D" parent="."]
 light_mask = 2
@@ -124,5 +126,10 @@ metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 [node name="WaveDataGetterSetter" type="Node" parent="."]
 script = ExtResource("7_62j1s")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

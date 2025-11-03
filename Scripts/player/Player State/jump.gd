@@ -24,6 +24,8 @@ func _ready() -> void:
 	call_deferred("_assign_hitbox")
 
 func enter():
+	player.set_collision_layer_value(1, false)
+	player.set_collision_layer_value(2, false)
 	#hitbox = Common.get_component(player, HitboxComponent)
 	hitbox.set_immune(true)
 	if player.stamina_request(jump_stamina_cost):
@@ -35,6 +37,8 @@ func enter():
 		return idle_state
 
 func exit():
+	player.set_collision_layer_value(1, true)
+	player.set_collision_layer_value(2, true)
 	hitbox.set_immune(false)
 
 func do_jump() -> void:
@@ -53,7 +57,7 @@ func apply_jump_physics(delta: float) -> void:
 		vertical_jump_speed = 0.0
 		is_jumping = false
 	
-	player.animated_sprite_2d.global_position.y = player.global_position.y - height_of_jump
+	player.animated_sprite_2d.global_position.y = (player.global_position.y - 20) - height_of_jump
 
 func process_physics(delta: float) -> State:
 	if dash_time_left <= 0.0:
