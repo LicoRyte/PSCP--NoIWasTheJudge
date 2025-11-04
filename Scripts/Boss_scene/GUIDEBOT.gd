@@ -50,8 +50,6 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	pass
-
 	match current_state:
 		BossStage.INTRODUCTION:
 			animation_player.play("introduction")

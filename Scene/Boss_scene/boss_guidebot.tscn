@@ -1,14 +1,14 @@
 [gd_scene load_steps=23 format=3 uid="uid://ub8xljt2csls"]
 
-[ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss_scene/Chotibot.gd" id="1_3vx4m"]
-[ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_bv5xh"]
-[ext_resource type="Texture2D" uid="uid://cnkntt5r6x4i2" path="res://Asset/pic/Art Asset/handleft.png" id="2_mld1g"]
-[ext_resource type="Texture2D" uid="uid://dpay6hnjt3bnb" path="res://Asset/pic/Art Asset/GuideHEad.png" id="3_n806f"]
-[ext_resource type="Texture2D" uid="uid://dvorq868m5cim" path="res://Asset/pic/Art Asset/handright.png" id="4_170nd"]
-[ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="5_n806f"]
-[ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="6_170nd"]
-[ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="7_170nd"]
-[ext_resource type="Script" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="9_s0jiv"]
+[ext_resource type="Script" uid="uid://cpmnl0go8yold" path="res://Scripts/Boss_scene/GUIDEBOT.gd" id="1_n1vy1"]
+[ext_resource type="Script" uid="uid://c0syw6q6vu1rm" path="res://Scripts/Base/HitboxComponent.gd" id="2_4rgj3"]
+[ext_resource type="Texture2D" uid="uid://cnkntt5r6x4i2" path="res://Asset/pic/Art Asset/handleft.png" id="3_blsol"]
+[ext_resource type="Texture2D" uid="uid://dpay6hnjt3bnb" path="res://Asset/pic/Art Asset/GuideHEad.png" id="4_px5ya"]
+[ext_resource type="Texture2D" uid="uid://dvorq868m5cim" path="res://Asset/pic/Art Asset/handright.png" id="5_khk0x"]
+[ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="6_pgtxo"]
+[ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="7_wi56v"]
+[ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="8_kguui"]
+[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="9_ue37v"]
 
 [sub_resource type="Animation" id="Animation_ainwb"]
 resource_name = "Idle"
@@ -185,7 +185,7 @@ size = Vector2(113, 165)
 size = Vector2(120, 172)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrp62"]
-atlas = ExtResource("2_mld1g")
+atlas = ExtResource("3_blsol")
 region = Rect2(0, 0, 433, 577)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0np8t"]
@@ -200,7 +200,7 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7l2h8"]
-atlas = ExtResource("3_n806f")
+atlas = ExtResource("4_px5ya")
 region = Rect2(0, 0, 470, 388)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ainwb"]
@@ -215,7 +215,7 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ainwb"]
-atlas = ExtResource("4_170nd")
+atlas = ExtResource("5_khk0x")
 region = Rect2(0, 0, 433, 577)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jrp62"]
@@ -229,8 +229,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Chotibot" type="CharacterBody2D"]
-script = ExtResource("1_3vx4m")
+[node name="boss_guideibot" type="CharacterBody2D"]
+script = ExtResource("1_n1vy1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -242,7 +242,7 @@ libraries = {
 [node name="CollisionShape2D_hit_box" type="CollisionShape2D" parent="hit_box"]
 position = Vector2(-3, -16)
 shape = SubResource("RectangleShape2D_i6xj8")
-script = ExtResource("2_bv5xh")
+script = ExtResource("2_4rgj3")
 metadata/_custom_type_script = "uid://c0syw6q6vu1rm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -269,18 +269,18 @@ scale = Vector2(0.30369517, 0.24696709)
 sprite_frames = SubResource("SpriteFrames_jrp62")
 
 [node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("5_n806f")
+script = ExtResource("6_pgtxo")
 max_health = 450.0
 metadata/_custom_type_script = "uid://d6qnnarpvn53"
 
 [node name="StatComponent" type="Node" parent="."]
-script = ExtResource("6_170nd")
+script = ExtResource("7_wi56v")
 base_defense = 2.0
 metadata/_custom_type_script = "uid://d3nyobw1vdebu"
 
 [node name="StatusComponent" type="Node" parent="."]
-script = ExtResource("7_170nd")
+script = ExtResource("8_kguui")
 metadata/_custom_type_script = "uid://ca1xhcfcwxplw"
 
 [node name="WaveDataGetterSetter" type="Node" parent="."]
-script = ExtResource("9_s0jiv")
+script = ExtResource("9_ue37v")

@@ -28,5 +28,5 @@ scale = Vector2(1, 0.80734134)
 sprite_frames = SubResource("SpriteFrames_dk5gl")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(15, 2.6226833e-06)
+position = Vector2(26, 4.5459847e-06)
 gizmo_extents = 239.4
