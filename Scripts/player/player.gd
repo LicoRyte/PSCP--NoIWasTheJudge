@@ -68,6 +68,7 @@ func change_stamina(amount: float):
 
 """Signal-Based Function"""
 func _on_player_died():
+	print("DIED")
 	GameEvents._player_died.emit()
 	is_died = true
 

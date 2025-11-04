@@ -27,10 +27,15 @@ var card_collected = 0
 var	player_health:HealthComponent
 var current_mod : Array[BulletModifier] = [
 ]
+var game_end : bool = false
+
+func _ready() -> void:
+	_player_died.connect(show_summary)
 
 func reset_game():
 	reset_mod()
 	reset_statistic()
+	game_end = false
 
 func reset_statistic():
 	enemy_killed = 0
@@ -63,3 +68,7 @@ func get_enemies_killed():
 func get_card_collected():
 	return card_collected
 	
+func show_summary():
+	if not game_end:
+		SceneManager.play_summary()
+		game_end = true

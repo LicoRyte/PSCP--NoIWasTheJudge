@@ -7,7 +7,7 @@ extends State
 @export var dash_state: State
 
 func enter():
-	SceneManager.play_summary()
+	pass
 func exit():
 	pass
 func process_physics(delta: float) -> State:
