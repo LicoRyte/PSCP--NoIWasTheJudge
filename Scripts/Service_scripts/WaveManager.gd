@@ -16,6 +16,16 @@ func _ready() -> void:
 	GameEvents._game_start.connect(_on_game_start)
 	GameEvents._game_continue.connect(_on_game_continue)
 
+func _on_game_start() -> void:
+	print("start")
+	spawn_done = false
+	current_wave = 0
+	cur_seq = Sequence.WAIT
+
+func _on_game_continue() -> void:
+	print("continue")
+	cur_seq = Sequence.WAIT
+
 func _process(_delta: float) -> void:
 	match cur_seq:
 		Sequence.WAIT_FOR_START:
@@ -108,15 +118,13 @@ func _get_enemy_count(wave: int) -> int:
 func get_wave_health_multiplier() -> float:
 	return max(1.0, 1.0 + 0.25 * float(floor(current_wave / 1.75)))
 
+
+
+
+
+
+
+
+
 func get_wave_damage_multiplier() -> float:
 	return max(1.0, 1.0 + 0.25 * float(floor(current_wave / 1.75)))
-
-func _on_game_start() -> void:
-	print("start")
-	spawn_done = false
-	current_wave = 0
-	cur_seq = Sequence.WAIT
-
-func _on_game_continue() -> void:
-	print("continue")
-	cur_seq = Sequence.WAIT

@@ -13,5 +13,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Enemy or area.get_parent() is Enemy_bullet:
 		return
-	Damage.deal_damage(3.5, area.get_parent())
+	Damage.deal_damage(3.0, area.get_parent())
 	queue_free()

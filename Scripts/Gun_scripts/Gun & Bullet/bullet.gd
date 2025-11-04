@@ -40,16 +40,7 @@ func apply_hit(target: Node2D):
 	var hitbox = Common.get_component(target, HitboxComponent)
 	if not hitbox:
 		return
-	var eff = Effect.new()
-	#eff.effect_name = "flame"
-	#eff.damage = 5
-	#eff.duration = 3
-	#eff.tick_value = 0.3
 	var bullet_attributes = {
-		"damage" : base_damage,
-		"bulletSpeed" : base_bullet_speed,
-		"canDestroy" : can_destroy,
-		"bulletDuration" : bullet_duration,
 		"function" : [
 		]
 	}
