@@ -29,7 +29,7 @@ func fx(sfx: String):
 	var player = AudioStreamPlayer.new()
 	player.stream = effect[sfx]
 	add_child(player)
-	player.volume_db -= 15
+	player.volume_db = -2
 	player.play()
 	await player.finished
 	remove_child(player)
@@ -41,7 +41,7 @@ func change_music(new_music: String):
 		tween.tween_property(background_player, "volume_db", -80, fade_time)
 		tween.tween_callback(func():
 			background_player.stream = null
-			background_player.volume_db = -15
+			background_player.volume_db = -5
 		)
 		return
 	elif current_music != music[new_music]:
@@ -51,7 +51,7 @@ func change_music(new_music: String):
 		tween.tween_property(background_player, "volume_db", -80, fade_time)
 		tween.tween_callback(func():
 			background_player.stream = music[new_music]
-			background_player.volume_db = -18
+			background_player.volume_db = -5
 			background_player.play()
 		)
 
