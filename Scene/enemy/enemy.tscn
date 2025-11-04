@@ -70,7 +70,7 @@ height = 26.0
 [node name="enemy" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 2
+collision_mask = 130
 platform_floor_layers = 4294967292
 script = ExtResource("1_a2w56")
 
