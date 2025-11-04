@@ -86,9 +86,9 @@ func process_physics(delta: float) -> State:
 	return null
 
 func process_input(_event: InputEvent) -> State:
-	if Input.is_action_just_pressed("Dash") and player.can_dash:
+	if Input.is_action_just_pressed("Dash") and player.can_dash and player.stamina_request(player.dash_stamina_cost):
 		player.is_dashing = true
-		player.change_stamina(-0)
+		player.change_stamina(-player.dash_stamina_cost)
 		#print("before_input_direction", player.last_input_direction)
 		player._dash_cd_left = player.dash_cooldown
 		player.can_dash = false

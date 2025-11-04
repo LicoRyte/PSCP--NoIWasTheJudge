@@ -10,6 +10,7 @@ var dash_direction: Vector2 = Vector2.ZERO
 var dash_time_left: float = 0.0
 var acceleration = 60
 var dash_damage := 50
+var dash_stamina_cost := 35
 
 var real_hitbox : HitboxComponent
 
@@ -17,11 +18,16 @@ func _ready() -> void:
 	call_deferred("_assign_hitbox")
 
 func enter():
+	if player.stamina_request(dash_stamina_cost):
+		player.change_stamina(-dash_stamina_cost)
+		player.animated_sprite_2d.play("dash")
+	else:
+		print("Not enough stamina to dash")
+		return idle_state
 	real_hitbox.set_immune(true)
 	hitbox.set_collision_mask_value(8, true)
 	hitbox.set_collision_layer_value(1, false)
 	player.is_dashing = true
-	player.change_stamina(-0)
 	#print("before_input_direction", player.last_input_direction)
 	player._dash_cd_left = player.dash_cooldown
 	player.can_dash = false
@@ -40,7 +46,6 @@ func enter():
 	
 	dash_time_left = player.dash_cooldown
 	
-	player.animated_sprite_2d.play("dash")
 
 func exit():
 	real_hitbox.set_immune(false)

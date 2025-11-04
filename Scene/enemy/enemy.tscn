@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d6qnnarpvn53" path="res://Scripts/Base/HealthComponent.gd" id="4_7daf2"]
 [ext_resource type="Script" uid="uid://d3nyobw1vdebu" path="res://Scripts/Base/StatComponent.gd" id="5_62j1s"]
 [ext_resource type="Script" uid="uid://ca1xhcfcwxplw" path="res://Scripts/Base/StatusComponent.gd" id="6_7daf2"]
-[ext_resource type="Script" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
+[ext_resource type="Script" uid="uid://cc4yeu1nikuox" path="res://Scripts/Base/WaveDataGetterSetter.gd" id="7_62j1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7daf2"]
 atlas = ExtResource("1_ksmlx")

@@ -41,12 +41,14 @@ func process_physics(delta: float) -> State:
 		return jump_state
 		
 	"""หยุด"""
-	if not player.velocity:
+	if not input_direction:
 		return idle_state
 		
 	"""dash"""
-	if Input.is_action_just_pressed("Dash") and player.can_dash:
+	if Input.is_action_just_pressed("Dash") and player.can_dash and player.stamina_request(player.dash_stamina_cost):
 		return dash_state
+	else:
+		print("Not enough stamina to dash")
 		
 	"""die"""
 	if player.is_died:

@@ -12,6 +12,12 @@ func enter():
 func exit():
 	pass
 func process_physics(delta: float) -> State:
+	var input_direction = Vector2(
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
+	)
+	if input_direction:
+		return run_state
 	if player.is_died:
 		return killed_state
 	return null
@@ -19,22 +25,16 @@ func process_physics(delta: float) -> State:
 func process_input(event: InputEvent) -> State:
 	
 	"""ตัวแปร ตรวจสอบว่า player ขยับไหม"""
-	var input_direction = Vector2(
-		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
-		Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	)
 	
 	"""กระโดด"""
 	if Input.is_action_just_pressed("Space"):
 		return jump_state
 
 	"""dash"""
-	if Input.is_action_just_pressed("Dash") and player.can_dash:
+	if Input.is_action_just_pressed("Dash") and player.can_dash and player.stamina_request(player.dash_stamina_cost):
 		return dash_state
 	
 	"""run"""
-	if input_direction:
-		return run_state
 	
 	"""die"""
 

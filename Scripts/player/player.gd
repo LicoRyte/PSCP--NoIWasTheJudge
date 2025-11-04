@@ -13,6 +13,7 @@ signal stamina_changed(value)
 @export var dash_duration: float = 0.10
 @export var dash_cooldown: float = 0.15
 
+var dash_stamina_cost := 35
 var last_input_direction := Vector2(0,0)
 var _dash_cd_left: float = 0.0
 var is_dashing: bool = false
@@ -43,7 +44,7 @@ func _process(delta: float) -> void:
 			can_dash = true
 	"""regen stamina"""
 	if  current_stamina < max_stamina:
-		change_stamina(10 * delta)
+		change_stamina(13 * delta)
 func _physics_process(delta: float) -> void:
 	state_machine_mm.process_physics(delta)
 func _unhandled_input(event: InputEvent) -> void:
