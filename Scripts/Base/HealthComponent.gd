@@ -26,7 +26,8 @@ func receive_damage(attack : Attack, is_magic : bool = false):
 		if get_parent().has_signal("_object_died"):
 			get_parent()._object_died.emit()
 
-
+func _add_current_health(amount: float):
+	current_health += amount
 
 func _add_max_health(amount : float, increase_current: bool = false):
 	max_health += amount

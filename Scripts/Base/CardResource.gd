@@ -12,7 +12,7 @@ var modifier = [
 ]
 
 func _health_change(health : HealthComponent):
-	pass
+	health._add_current_health(15)
 func _stat_change(stat: StatComponent):
 	pass
 func _gun_change(gun:Gun):
