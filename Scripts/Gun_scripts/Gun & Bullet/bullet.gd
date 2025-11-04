@@ -38,7 +38,6 @@ func _process(delta: float) -> void:
 
 func apply_hit(target: Node2D):
 	var hitbox = Common.get_component(target, HitboxComponent)
-	print(hitbox)
 	if not hitbox:
 		return
 	var eff = Effect.new()
@@ -67,26 +66,12 @@ func apply_hit(target: Node2D):
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-func new_mod_added(mod : BulletModifier):
-	add_mod(mod)
 
 func add_mod(mod : BulletModifier):
 	if mod not in modifier:
 		modifier.append(mod)
 		mod.on_spawn(self)
-	
-func remove_mod(mod: BulletModifier):
-	modifier.erase(mod)
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	pass
-	#print(body)
-	#if body is Player:
-		#return
-	#GameEvents._shake_call.emit()
-	#GlobalAudio.fx("damage")
-	#apply_hit(body)
-	#queue_free()
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Player or area.get_parent() is Bullet:
